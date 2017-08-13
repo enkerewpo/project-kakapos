@@ -11,4 +11,20 @@ _Project kakapos IDE_ is licensed under `the GNU General Public License v3.0`, A
 ## Introduction
 [project-kakapos](https://github.com/enkerewpo/kakapos) is a next-generation open-source programming integrated development environment (IDE).
 
+## Build from source code
+The source files are under the Qt project building method.
+### Install Qt5
+1. Download Qt5 from the [official website](https://www.qt.io/download/).
+2. Install it with the Qt5 with __MinGW 5.3.0 core__ ( and __tool__ if you didn't have gcc `make` on you computer ) just within the installer package to build this project.
+### Setting up qmake and make
+1. Set Environment varibles in directory `PATH/TO/YOUR/QT/5.x.x/mingw_xx/bin/` to enable `qmake`.
+2.  Set Environment varibles in directory `PATH/TO/GCC/bin/` which has `make` program in it.
+### Commandline
+```bash
+$ (enter the project-kakapos source root dirctory)
+$ qmake -project
+$ qmake kakapos.pro
+$ make
+```
+
 Copyright (C) 2017 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
