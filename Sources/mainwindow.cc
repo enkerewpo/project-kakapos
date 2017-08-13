@@ -236,6 +236,7 @@ void MainWindow::show_about() {
 
 
 void MainWindow::build() {
+    this->save_obj();
     QProcess p(0);
     QString path = QCoreApplication::applicationDirPath();
     QString arguments = " -Wall -o ";

@@ -62,7 +62,7 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
                     << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bwhile\\b"
                     << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bswitch\\b"
                     << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b"
-                    << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b"
+                    << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\bif\\b"
                     << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b"
                     << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b"
                     << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bbool\\b" << "\\busing\\b";
@@ -96,7 +96,7 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
 
     functionFormat.setFontItalic(true);
     functionFormat.setForeground(QColor("#63DAE8"));
-    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_][^for_while_switch]+(?=\\()");
+    rule.pattern = QRegularExpression("\\b[A-Za-z0-9]*[^if_for_while_switch](?=\\()");
     rule.format = functionFormat;
     highlightingRules.append(rule);
 

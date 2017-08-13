@@ -149,7 +149,7 @@ item:pressed {
     </font>
    </property>
    <property name="shortcut">
-    <string>Ctrl+R</string>
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionSave">
