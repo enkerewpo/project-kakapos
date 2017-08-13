@@ -5,7 +5,10 @@
 #include <QProcess>
 #include <QLayout>
 #include <QDebug>
-#include <bits/stdc++.h>
+#include <cstdlib>
+#include <cstring>
+#include <string>
+#include <vector>
 #include <QTextStream>
 #include "Headers/codeeditor.h"
 
