@@ -13,12 +13,12 @@ _Project kakapos IDE_ is licensed under `the GNU General Public License v3.0`, A
 ## Build from source code
 The source files are under the Qt project building method.
 ### Install Qt5
-1. Download Qt5 from the [official website](https://www.qt.io/download/).
-2. Install it with the Qt5 with __MinGW 5.3.0 core__ ( and __tool__ if you didn't have gcc `make` on you computer ) just within the installer package to build this project.
+1. Download Qt5.9 from the [official website](https://www.qt.io/download/).
+2. Install it with the Qt5.9 with __MinGW 5.3.0 Qt core__ just within the installer package to build this project.
 
 ### Setting up qmake and make
 1. Set Environment varibles in directory `PATH/TO/YOUR/QT/5.x.x/mingw_xx/bin/` to enable `qmake`.
-2.  Set Environment varibles in directory `PATH/TO/GCC/bin/` which has `make` program in it.
+2. Set Environment varibles in directory `PATH/TO/GCC/bin/` which has `make` program in it.
 
 ### Commandline
 ```bash
