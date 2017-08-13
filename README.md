@@ -9,6 +9,6 @@
 _Project kakapos IDE_ is licensed under `the GNU General Public License v3.0`, And some part of the source codes may be used under the licenses of BSD, etc.
 
 ## Introduction
-[Kakapos](https://github.com/enkerewpo/kakapos) is a next-generation open-source programming integrated development environment (IDE).
+[project-kakapos](https://github.com/enkerewpo/kakapos) is a next-generation open-source programming integrated development environment (IDE).
 
 Copyright (C) 2017 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
