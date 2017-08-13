@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SplashWindow</class>
+ <widget class="QMainWindow" name="SplashWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>825</width>
+    <height>503</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>825</width>
+    <height>503</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>825</width>
+    <height>520</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Segoe UI</family>
+    <weight>50</weight>
+    <italic>false</italic>
+    <bold>false</bold>
+    <underline>false</underline>
+    <strikeout>false</strikeout>
+    <stylestrategy>PreferAntialias</stylestrategy>
+    <kerning>true</kerning>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Welcome</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>24</width>
+    <height>24</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="title">
+    <property name="geometry">
+     <rect>
+      <x>98</x>
+      <y>88</y>
+      <width>251</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI Light</family>
+      <pointsize>53</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Kakapos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="new_object">
+    <property name="geometry">
+     <rect>
+      <x>139</x>
+      <y>238</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style: outset;}
+
+QPushButton:hover:pressed{background-color:white;color:rgb(45,45,45);}
+
+QPushButton:hover:!pressed{background-color:rgb(65,65,65);border-style:inset;}
+
+QPushButton{font-family:Segoe UI;}</string>
+    </property>
+    <property name="text">
+     <string>New Object</string>
+    </property>
+    <property name="shortcut">
+     <string>N</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="open_object">
+    <property name="geometry">
+     <rect>
+      <x>139</x>
+      <y>286</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style: outset;}
+
+QPushButton:hover:pressed{background-color:white;color:rgb(45,45,45);}
+
+QPushButton:hover:!pressed{background-color:rgb(65,65,65);border-style:inset;}
+
+QPushButton{font-family:Segoe UI;}</string>
+    </property>
+    <property name="text">
+     <string>Open Object</string>
+    </property>
+    <property name="shortcut">
+     <string>O</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="setting_button">
+    <property name="geometry">
+     <rect>
+      <x>139</x>
+      <y>335</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style: outset;}
+
+QPushButton:hover:pressed{background-color:white;color:rgb(45,45,45);}
+
+QPushButton:hover:!pressed{background-color:rgb(65,65,65);border-style:inset;}
+
+QPushButton{font-family:Segoe UI;}</string>
+    </property>
+    <property name="text">
+     <string>IDE Configure</string>
+    </property>
+    <property name="shortcut">
+     <string>C</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>459</x>
+      <y>-10</y>
+      <width>341</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(117, 117, 117);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="subtitle">
+    <property name="geometry">
+     <rect>
+      <x>149</x>
+      <y>165</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Inteligent IDE to all</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="info_label">
+    <property name="geometry">
+     <rect>
+      <x>465</x>
+      <y>239</y>
+      <width>321</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+font-family:Segoe UI;
+color:rgb(210,210,210);</string>
+    </property>
+    <property name="text">
+     <string>Your recent files or projects will show here</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <zorder>new_object</zorder>
+   <zorder>open_object</zorder>
+   <zorder>setting_button</zorder>
+   <zorder>tableWidget</zorder>
+   <zorder>subtitle</zorder>
+   <zorder>title</zorder>
+   <zorder>info_label</zorder>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
