@@ -97,7 +97,7 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
 
     functionFormat.setFontItalic(true);
     functionFormat.setForeground(QColor("#63DAE8"));
-    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_*]+(?=\\()");
+    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_*]*((?!for).)*((?!switch).)*((?!while).)*((?!foreach).)*((?!if).)*(?=\\()");
     rule.format = functionFormat;
     highlightingRules.append(rule);
 
