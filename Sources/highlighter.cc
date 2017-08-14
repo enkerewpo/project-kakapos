@@ -61,10 +61,10 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
                     << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b" << "\\bconstexpr\\b"
                     << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bwhile\\b"
                     << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bswitch\\b"
-                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b"
+                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\bextern\\b"
                     << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\bif\\b"
-                    << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b"
-                    << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b"
+                    << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bfloat\\b"
+                    << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b" << "\\b__int128\\b"
                     << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bbool\\b" << "\\busing\\b";
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
