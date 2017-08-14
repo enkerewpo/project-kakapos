@@ -1,5 +1,6 @@
 #include "Headers/mainwindow.h"
 #include "ui_mainwindow.h"
+#include "Headers/customshadoweffect.h"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QProcess>
@@ -27,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
     connect(ui->actionAbout, &QAction::triggered, this, &MainWindow::show_about);
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::save_obj);
@@ -34,7 +36,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNew, &QAction::triggered, this, &MainWindow::new_obj);
     connect(ui->actionBuild, &QAction::triggered, this, &MainWindow::build);
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
-
     code_edit = new CodeEditor(ui->centralWidget);
     code_edit->setGeometry(-1, 0, width() + 2, height() - 20);
     code_edit->setFont(QFont("Consolas",11));

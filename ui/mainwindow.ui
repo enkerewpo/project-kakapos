@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1121</width>
-    <height>694</height>
+    <width>1123</width>
+    <height>608</height>
    </rect>
   </property>
   <property name="font">
@@ -44,7 +44,7 @@ font-family:Segoe UI;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1121</width>
+     <width>1123</width>
      <height>22</height>
     </rect>
    </property>
