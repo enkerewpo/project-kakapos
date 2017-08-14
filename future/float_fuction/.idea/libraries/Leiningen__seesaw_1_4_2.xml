@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Leiningen: seesaw:1.4.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/seesaw/seesaw/1.4.2/seesaw-1.4.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
