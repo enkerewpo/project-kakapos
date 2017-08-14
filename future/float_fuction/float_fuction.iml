@@ -13,8 +13,18 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Leiningen: clojure-complete:0.2.4" level="project" />
-    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.4.0" level="project" />
+    <orderEntry type="library" name="Leiningen: com.fifesoft/rsyntaxtextarea:2.5.6" level="project" />
+    <orderEntry type="library" name="Leiningen: com.jgoodies/forms:1.2.1" level="project" />
+    <orderEntry type="library" name="Leiningen: com.miglayout/miglayout:3.7.4" level="project" />
+    <orderEntry type="library" name="Leiningen: j18n:1.0.2" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.8.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/tools.nrepl:0.2.12" level="project" />
-    <orderEntry type="library" name="Leiningen: seesaw:1.4.2" level="project" />
+    <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-action:1.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-autocomplete:1.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-common:1.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-core:1.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-painters:1.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-plaf:1.6.3" level="project" />
+    <orderEntry type="library" name="Leiningen: seesaw:1.4.5" level="project" />
   </component>
 </module>
