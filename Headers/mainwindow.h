@@ -26,6 +26,7 @@ public slots:
     void build();
     void run();
     void debug();
+    void get_file_dir();
 
 private:
     Ui::MainWindow *ui;

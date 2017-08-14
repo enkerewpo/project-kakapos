@@ -54,6 +54,8 @@ void MainWindow::update() {
        global_filename.endsWith(".c", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".h", Qt::CaseInsensitive)) {
         highlighter = new Highlighter(code_edit->document());
+    } else {
+        if(highlighter != NULL) delete highlighter;
     }
 }
 
@@ -66,30 +68,7 @@ void MainWindow::open_obj() {
                tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
     pDir = new QDir(".");
     global_filename = fileName;
-
-
-    QRegExp match(fileName);
-    QRegExp disklabel(fileName);
-    disklabel.setPattern("[a-z_A-Z]:");
-    match.setPattern("\/[a-z_A-Z_0-9]+");
-    int pos = 0;
-    QString str;
-    std::vector<QString> vec;
-    while ((pos = disklabel.indexIn(fileName, pos)) != -1) {
-        str = disklabel.cap(0);
-        vec.push_back(str);
-        break;
-    }
-    while ((pos = match.indexIn(fileName, pos)) != -1) {
-       str = match.cap(0);
-       vec.push_back(str);
-       pos += match.matchedLength();
-    }
-    for(auto it = vec.begin(); it != vec.end() - 1; it++) {
-        g_filedir += *it;
-    }
-
-    global_file_shortname = str;
+    get_file_dir();
     update();
     fileDir = pDir->filePath(fileName);
     QFile file(fileName);
@@ -106,30 +85,7 @@ void MainWindow::open_obj_file(QString fileName) {
     pDir = new QDir(".");
     global_filename = fileName;
     fileDir = pDir->filePath(fileName);
-
-    QRegExp match(fileName);
-    QRegExp disklabel(fileName);
-    disklabel.setPattern("[a-z_A-Z]:");
-    match.setPattern("\/[a-z_A-Z_0-9]+");
-    int pos = 0;
-    QString str;
-    std::vector<QString> vec;
-    while ((pos = disklabel.indexIn(fileName, pos)) != -1) {
-        str = disklabel.cap(0);
-        vec.push_back(str);
-        break;
-    }
-    while ((pos = match.indexIn(fileName, pos)) != -1) {
-       str = match.cap(0);
-       vec.push_back(str);
-       pos += match.matchedLength();
-    }
-    for(auto it = vec.begin(); it != vec.end() - 1; it++) {
-        g_filedir += *it;
-    }
-    qDebug() << g_filedir;
-
-    global_file_shortname = str;
+    get_file_dir();
     QFile file(fileName);
     if(!file.open(QIODevice::ReadWrite)) return;
     QTextStream out(&file);
@@ -172,30 +128,7 @@ void MainWindow::save_obj() {
             tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
         pDir = new QDir(".");
         fileDir = pDir->filePath(savefilename);
-
-
-        QRegExp match(savefilename);
-        QRegExp disklabel(savefilename);
-        disklabel.setPattern("[a-z_A-Z]:");
-        match.setPattern("\/[a-z_A-Z_0-9]+");
-        int pos = 0;
-        QString str;
-        std::vector<QString> vec;
-        while ((pos = disklabel.indexIn(savefilename, pos)) != -1) {
-            str = disklabel.cap(0);
-            vec.push_back(str);
-            break;
-        }
-        while ((pos = match.indexIn(savefilename, pos)) != -1) {
-           str = match.cap(0);
-           vec.push_back(str);
-           pos += match.matchedLength();
-        }
-        for(auto it = vec.begin(); it != vec.end() - 1; it++) {
-            g_filedir += *it;
-        }
-
-        global_file_shortname = str;
+        get_file_dir();
         QFile file(savefilename);
         if (file.open(QIODevice::ReadWrite))
         {
@@ -263,4 +196,28 @@ void MainWindow::run(){
 
 void MainWindow::debug() {
 
+}
+
+void MainWindow::get_file_dir(){
+    QRegExp match(global_filename);
+    QRegExp disklabel(global_filename);
+    disklabel.setPattern("[a-z_A-Z]:");
+    match.setPattern("\/[a-z_A-Z_0-9]+");
+    int pos = 0;
+    QString str;
+    std::vector<QString> vec;
+    while ((pos = disklabel.indexIn(global_filename, pos)) != -1) {
+        str = disklabel.cap(0);
+        vec.push_back(str);
+        break;
+    }
+    while ((pos = match.indexIn(global_filename, pos)) != -1) {
+       str = match.cap(0);
+       vec.push_back(str);
+       pos += match.matchedLength();
+    }
+    for(auto it = vec.begin(); it != vec.end() - 1; it++) {
+        g_filedir += *it;
+    }
+    global_file_shortname = str;
 }

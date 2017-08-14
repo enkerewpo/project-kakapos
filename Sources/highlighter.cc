@@ -84,7 +84,7 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
     highlightingRules.append(rule);
 
     singleLineCommentFormat.setForeground(QColor("#71C671"));
-    rule.pattern = QRegularExpression("//[^\n]*");
+    rule.pattern = QRegularExpression("//[^\n]*[\"]*[^\n]*[\"]*[^\n]*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
@@ -97,7 +97,7 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
 
     functionFormat.setFontItalic(true);
     functionFormat.setForeground(QColor("#63DAE8"));
-    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_*]*((?!for).)*((?!switch).)*((?!while).)*((?!foreach).)*((?!if).)*(?=\\()");
+    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_*]+(?=\\()");
     rule.format = functionFormat;
     highlightingRules.append(rule);
 
