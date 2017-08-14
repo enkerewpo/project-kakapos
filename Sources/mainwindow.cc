@@ -5,9 +5,16 @@
 #include <QProcess>
 #include <QLayout>
 #include <QDebug>
+<<<<<<< HEAD
 #include <vector>
 #include <string>
 #include <cstdlib>
+=======
+#include <cstdlib>
+#include <cstring>
+#include <string>
+#include <vector>
+>>>>>>> 0628c67a9a1bf32fb185071fd7f417569b6ea906
 #include <QTextStream>
 #include "Headers/codeeditor.h"
 
@@ -241,7 +248,7 @@ void MainWindow::build() {
     this->save_obj();
     QProcess p(0);
     QString path = QCoreApplication::applicationDirPath();
-    QString arguments = " -Wall -o ";
+    QString arguments = " -Wall -o -m32";
     QString command = "g++ " + global_filename + arguments + g_filedir + global_file_shortname;
     p.start(command);
     qDebug() << command;
