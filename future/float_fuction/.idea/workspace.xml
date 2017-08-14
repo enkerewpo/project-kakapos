@@ -13,21 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="core.clj" pinned="false" current-in-tab="false">
+      <file leaf-file-name="core.clj" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/float_fuction/core.clj">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -74,8 +64,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="36" />
-    <option name="y" value="21" />
+    <option name="x" value="45" />
+    <option name="y" value="29" />
     <option name="width" value="1285" />
     <option name="height" value="668" />
   </component>
@@ -121,7 +111,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="ReplState" timestamp="1502713215896">{:repl-history {:ide [], :local [{:command &quot;((fn [x] (+ x 1)) 100)&quot;, :offset 22, :ns &quot;user&quot;} {:command &quot;(* 19385913 19385109)&quot;, :offset 21, :ns &quot;user&quot;} {:command &quot;Biginteger&quot;, :offset 10, :ns &quot;user&quot;} {:command &quot;BigInteger&quot;, :offset 10, :ns &quot;user&quot;} {:command &quot;java.util.Vector&quot;, :offset 16, :ns &quot;user&quot;} {:command &quot;`(alkdjf )&quot;, :offset 10, :ns &quot;user&quot;} {:command &quot;``(asf)&quot;, :offset 7, :ns &quot;user&quot;} {:command &quot;(println \&quot;hello\&quot;)&quot;, :offset 17, :ns &quot;user&quot;} {:command &quot;(println \&quot;Hello World\&quot;)&quot;, :offset 23, :ns &quot;user&quot;} {:command &quot;{:a a :b b}&quot;, :offset 11, :ns &quot;user&quot;} {:command &quot;(+ 1 2)&quot;, :offset 7, :ns &quot;user&quot;}], :remote []}}</component>
+  <component name="ReplState" timestamp="1502713514866">{:repl-history {:ide [], :local [{:command &quot;((fn [x] (+ x 1)) 100)&quot;, :offset 22, :ns &quot;user&quot;} {:command &quot;(* 19385913 19385109)&quot;, :offset 21, :ns &quot;user&quot;} {:command &quot;Biginteger&quot;, :offset 10, :ns &quot;user&quot;} {:command &quot;BigInteger&quot;, :offset 10, :ns &quot;user&quot;} {:command &quot;java.util.Vector&quot;, :offset 16, :ns &quot;user&quot;} {:command &quot;`(alkdjf )&quot;, :offset 10, :ns &quot;user&quot;} {:command &quot;``(asf)&quot;, :offset 7, :ns &quot;user&quot;} {:command &quot;(println \&quot;hello\&quot;)&quot;, :offset 17, :ns &quot;user&quot;} {:command &quot;(println \&quot;Hello World\&quot;)&quot;, :offset 23, :ns &quot;user&quot;} {:command &quot;{:a a :b b}&quot;, :offset 11, :ns &quot;user&quot;} {:command &quot;(+ 1 2)&quot;, :offset 7, :ns &quot;user&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -268,7 +258,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="36" y="21" width="1285" height="668" extended-state="0" />
+    <frame x="45" y="29" width="1285" height="668" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -364,18 +354,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/float_fuction/core.clj">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="210">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/float_fuction/core.clj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
           <folding />
         </state>
       </provider>
