@@ -1,2 +1,1 @@
-*.class linguist-language=Java
-*.xml linguist-language=Clojure
+*.class linguist-language=Clojure
