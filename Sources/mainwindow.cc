@@ -179,7 +179,7 @@ void MainWindow::build() {
     this->save_obj();
     QProcess p(0);
     QString path = QCoreApplication::applicationDirPath();
-    QString arguments = " -Wall -o -m32";
+    QString arguments = " -Wall -o -m32 ";
     QString command = "g++ " + global_filename + arguments + g_filedir + global_file_shortname;
     p.start(command);
     qDebug() << command;
