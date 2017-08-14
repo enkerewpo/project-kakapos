@@ -20,6 +20,9 @@ public slots:
 
 private:
     Ui::SplashWindow *ui;
+    void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *);
 };
 
 #endif // SPLASHWINDOW_H

@@ -65,3 +65,26 @@ void SplashWindow::new_obj() {
             (QApplication::desktop()->height() - w->height())/2 - 35);
     w->new_obj();
 }
+bool m_Drag;
+QPoint m_DragPosition;
+void SplashWindow::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        m_Drag = true;
+        m_DragPosition = event->globalPos() - this->pos();
+        event->accept();
+    }
+}
+
+void SplashWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if (m_Drag && (event->buttons() && Qt::LeftButton)) {
+        move(event->globalPos() - m_DragPosition);
+        event->accept();
+    }
+}
+
+void SplashWindow::mouseReleaseEvent(QMouseEvent *)
+{
+    m_Drag = false;
+}
