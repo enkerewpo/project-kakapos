@@ -61,20 +61,12 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
                     << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b" << "\\bconstexpr\\b"
                     << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bwhile\\b"
                     << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bswitch\\b"
-<<<<<<< HEAD
                     << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\breturn\\b"
                     << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\bif\\b" << "\\bbreak\\b"
                     << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bgoto\\b"
                     << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b" << "\\bcontinue\\b" << "\\bdelete\\b"
                     << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bbool\\b" << "\\busing\\b" << "\\bnew\\b"
                     << "\\band\\b" << "\\bor\\b" << "\\bxor\\b";
-=======
-                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\bextern\\b"
-                    << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\bif\\b"
-                    << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bfloat\\b"
-                    << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b" << "\\b__int128\\b"
-                    << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bbool\\b" << "\\busing\\b";
->>>>>>> 0628c67a9a1bf32fb185071fd7f417569b6ea906
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = keywordFormat;
