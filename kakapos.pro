@@ -43,3 +43,6 @@ FORMS += \
         ui\mainwindow.ui \
     ui\splashwindow.ui \
     ui\splash_recentfile.ui \
+
+RESOURCES += \
+    images.qrc

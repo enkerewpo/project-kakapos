@@ -5,7 +5,9 @@
 #include <QProcess>
 #include <QLayout>
 #include <QDebug>
-#include <bits/stdc++.h>
+#include <vector>
+#include <string>
+#include <cstdlib>
 #include <QTextStream>
 #include "Headers/codeeditor.h"
 

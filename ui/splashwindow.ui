@@ -47,10 +47,10 @@
    <widget class="QLabel" name="title">
     <property name="geometry">
      <rect>
-      <x>98</x>
-      <y>88</y>
-      <width>251</width>
-      <height>81</height>
+      <x>28</x>
+      <y>51</y>
+      <width>420</width>
+      <height>190</height>
      </rect>
     </property>
     <property name="font">
@@ -60,15 +60,21 @@
      </font>
     </property>
     <property name="text">
-     <string>Kakapos</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../images.qrc">:/images/images/Kakapos_logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="new_object">
     <property name="geometry">
      <rect>
-      <x>139</x>
-      <y>238</y>
-      <width>171</width>
+      <x>123</x>
+      <y>237</y>
+      <width>200</width>
       <height>41</height>
      </rect>
     </property>
@@ -94,9 +100,9 @@ QPushButton{font-family:Segoe UI;}</string>
    <widget class="QPushButton" name="open_object">
     <property name="geometry">
      <rect>
-      <x>139</x>
-      <y>286</y>
-      <width>171</width>
+      <x>123</x>
+      <y>285</y>
+      <width>200</width>
       <height>41</height>
      </rect>
     </property>
@@ -122,9 +128,9 @@ QPushButton{font-family:Segoe UI;}</string>
    <widget class="QPushButton" name="setting_button">
     <property name="geometry">
      <rect>
-      <x>139</x>
-      <y>335</y>
-      <width>171</width>
+      <x>123</x>
+      <y>334</y>
+      <width>200</width>
       <height>41</height>
      </rect>
     </property>
@@ -169,25 +175,6 @@ QPushButton{font-family:Segoe UI;}</string>
      <string notr="true">background-color:rgb(117, 117, 117);</string>
     </property>
    </widget>
-   <widget class="QLabel" name="subtitle">
-    <property name="geometry">
-     <rect>
-      <x>149</x>
-      <y>165</y>
-      <width>161</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Segoe UI</family>
-      <pointsize>13</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Inteligent IDE to all</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="info_label">
     <property name="geometry">
      <rect>
@@ -218,15 +205,10 @@ color:rgb(210,210,210);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <zorder>new_object</zorder>
-   <zorder>open_object</zorder>
-   <zorder>setting_button</zorder>
-   <zorder>tableWidget</zorder>
-   <zorder>subtitle</zorder>
-   <zorder>title</zorder>
-   <zorder>info_label</zorder>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../images.qrc"/>
+ </resources>
  <connections/>
 </ui>

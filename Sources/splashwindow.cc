@@ -4,6 +4,7 @@
 #include "Headers/codeeditor.h"
 #include <QFileDialog>
 #include <QApplication>
+#include <QPixmap>
 #include <QDesktopWidget>
 #include <QSyntaxHighlighter>
 
