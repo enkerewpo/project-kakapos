@@ -1,0 +1,2 @@
+*.class linguist-language=clojure
+*.xml linguist-language=clojure
