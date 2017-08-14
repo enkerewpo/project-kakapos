@@ -5,7 +5,7 @@
 (defn -main [& args]
   (invoke-later
     (-> (frame :title "Kakapos",
-               :content "",
+               :content "In development",
                :on-close :exit)
         pack!
         show!)))
