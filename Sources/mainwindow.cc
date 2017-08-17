@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
     code_edit = new CodeEditor(ui->centralWidget);
     code_edit->setGeometry(-1, 0, width() + 2, height() - 20);
-    code_edit->setFont(QFont("Consolas",11));
+    code_edit->setFont(QFont("Consolas",13));
     code_edit->setStyleSheet("color:rgb(235,235,235);");
     code_edit->setTabStopWidth(40);
 }
@@ -54,8 +54,6 @@ void MainWindow::update() {
        global_filename.endsWith(".c", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".h", Qt::CaseInsensitive)) {
         highlighter = new Highlighter(code_edit->document());
-    } else {
-        if(highlighter != NULL) delete highlighter;
     }
 }
 
@@ -216,8 +214,8 @@ void MainWindow::get_file_dir(){
        vec.push_back(str);
        pos += match.matchedLength();
     }
-    for(auto it = vec.begin(); it != vec.end() - 1; it++) {
-        g_filedir += *it;
-    }
+//    for(auto it = vec.begin(); it != vec.end() - 1; it++) {
+//        g_filedir += *it;
+//    }
     global_file_shortname = str;
 }

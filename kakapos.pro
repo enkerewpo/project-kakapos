@@ -26,25 +26,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cc \
-    Sources\mainwindow.cc \
-    Sources\splash_recentfile.cc \
-    Sources\splashwindow.cc \
-    Sources\codeeditor.cc \
-    Sources\highlighter.cc \
+    Sources/mainwindow.cc \
+    Sources/splash_recentfile.cc \
+    Sources/splashwindow.cc \
+    Sources/codeeditor.cc \
+    Sources/highlighter.cc \
     Sources/customshadoweffect.cc
 
 HEADERS += \
-        Headers\mainwindow.h \
-    Headers\splashwindow.h \
-    Headers\splash_recentfile.h \
-    Headers\codeeditor.h \
-    Headers\highlighter.h \
+        Headers/mainwindow.h \
+    Headers/splashwindow.h \
+    Headers/splash_recentfile.h \
+    Headers/codeeditor.h \
+    Headers/highlighter.h \
     Headers/customshadoweffect.h
 
 FORMS += \
-        ui\mainwindow.ui \
-    ui\splashwindow.ui \
-    ui\splash_recentfile.ui \
+        ui/mainwindow.ui \
+    ui/splashwindow.ui \
+    ui/splash_recentfile.ui \
 
 RESOURCES += \
     images.qrc

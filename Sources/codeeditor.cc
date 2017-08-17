@@ -147,7 +147,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
-            QFont font("Consolas", 11);
+            QFont font("Consolas", 13);
             QString number = " ";
             number += QString::number(blockNumber + 1);
             number += " ";
