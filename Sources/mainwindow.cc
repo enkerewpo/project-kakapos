@@ -22,7 +22,7 @@ QString fileDir;
 QString global_filename, global_file_shortname, g_filedir;
 QString gcc_path;
 bool modified, saved, newfile;
-
+int dynamic_width, dynamic_height;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -95,7 +95,9 @@ void MainWindow::open_obj_file(QString fileName) {
 
 }
 void MainWindow::resizeEvent(QResizeEvent *event) {
-    ui->centralWidget->resize(frameGeometry().size());
+    dynamic_height = this->height();
+    dynamic_width = this->width();
+    code_edit->setGeometry(-1, 0, width() + 2, height() - 20);
 }
 
 void MainWindow::new_obj() {

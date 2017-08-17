@@ -28,6 +28,9 @@ public slots:
     void debug();
     void get_file_dir();
 
+signals:
+    void window_change();
+
 private:
     Ui::MainWindow *ui;
     QHBoxLayout *ButtomHBLayout;
