@@ -37,6 +37,10 @@
   <property name="windowTitle">
    <string>Welcome</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/kakapos_ico.png</normaloff>../images/kakapos_ico.png</iconset>
+  </property>
   <property name="iconSize">
    <size>
     <width>24</width>

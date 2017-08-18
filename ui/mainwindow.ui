@@ -19,7 +19,11 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>Kakapos 1.0.0</string>
+   <string>Kakapos 0.5.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../images/kakapos_ico.png</normaloff>../images/kakapos_ico.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
@@ -45,7 +49,7 @@ font-family:Segoe UI;</string>
      <x>0</x>
      <y>0</y>
      <width>1123</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <property name="font">

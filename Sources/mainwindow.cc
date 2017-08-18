@@ -168,7 +168,7 @@ void MainWindow::save_as() {
 }
 
 void MainWindow::show_about() {
-   QMessageBox Msgbox(QMessageBox::Information, "About", "   Kakapos intelligent IDE \n    1.0.0 under GNU GPL3\n Kvar_ispw17 Copyright 2017",QMessageBox::Ok ,this);
+   QMessageBox Msgbox(QMessageBox::Information, "About", "   Kakapos intelligent IDE \n    0.5.0 under GNU GPL3\n Kvar_ispw17 Copyright 2017",QMessageBox::Ok ,this);
     Msgbox.setStandardButtons(QMessageBox::Ok);
     Msgbox.setButtonText(QMessageBox::Ok, QString("        OK        "));
     Msgbox.exec();

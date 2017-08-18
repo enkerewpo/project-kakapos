@@ -48,3 +48,9 @@ FORMS += \
 
 RESOURCES += \
     images.qrc
+
+RC_ICONS = kakapos.ico
+win32:RC_FILE = kakapos.rc
+
+DISTFILES += \
+    kakapos.rc

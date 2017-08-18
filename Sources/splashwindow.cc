@@ -22,6 +22,7 @@ SplashWindow::SplashWindow(QWidget *parent) :
     bodyShadow->setBlurRadius(20.0);
     bodyShadow->setDistance(6.0);
     bodyShadow->setColor(QColor(0, 0, 0, 80));
+//    setWindowIcon(QIcon(""));
     ui->tableWidget->setAutoFillBackground(true);
     ui->tableWidget->setGraphicsEffect(bodyShadow);
     connect(ui->open_object, &QPushButton::clicked, this, &SplashWindow::open_obj);
