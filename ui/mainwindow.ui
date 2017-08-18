@@ -61,9 +61,9 @@ font-family:Segoe UI;</string>
     <enum>Qt::CustomContextMenu</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(235, 235, 235); 
+    <string notr="true">color:black; 
 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-stop:0 rgb(74, 148, 0), stop:1 rgb(38, 76, 0));
+stop:0 white, stop:1 rgb(182, 182, 182));
 
 item {
      spacing: 3px; /* spacing between menu bar items */
