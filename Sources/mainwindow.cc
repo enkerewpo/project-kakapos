@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <QLayout>
+#include <QtGlobal>
 #include <QDebug>
 #include <vector>
 #include <string>
@@ -38,7 +39,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
     code_edit = new CodeEditor(ui->centralWidget);
     code_edit->setGeometry(-1, 0, width() + 2, height() - 20);
-    code_edit->setFont(QFont("Consolas",13));
+#ifdef  Q_OS_MAC
+    code_edit->setFont(QFont("DejaVu Sans Mono",13));
+#elif defined (Q_OS_WIN)
+    code_edit->setFont(QFont("Consolas", 13);
+#endif
     code_edit->setStyleSheet("color:rgb(235,235,235);");
     code_edit->setTabStopWidth(40);
 }
