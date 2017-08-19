@@ -149,8 +149,10 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
 #ifdef Q_OS_MAC
-            QFont font("DejaVu Sans Mono", this->fontsize);
+            QFont font("DejaVu Sans Mono", this->fontsize + 1);
 #elif defined (Q_OS_WIN)
+            QFont font("Consolas", this->fontsize);
+#else
             QFont font("Consolas", this->fontsize);
 #endif
             QString number = " ";
