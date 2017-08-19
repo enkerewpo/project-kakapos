@@ -186,8 +186,8 @@ void MainWindow::build() {
     this->save_obj();
     QProcess p(0);
     QString path = QCoreApplication::applicationDirPath();
-    QString arguments = " -Wall -o -m32 ";
-    QString command = "g++ " + global_filename + arguments + g_filedir + global_file_shortname;
+    QString arguments = " -Wall -m32 -o ";
+    QString command = "g++ " + global_filename + arguments + g_filedir + global_filename.mid(0, global_filename.length() - 4);
     p.start(command);
     qDebug() << command;
     p.waitForStarted();
@@ -195,7 +195,7 @@ void MainWindow::build() {
 }
 
 void MainWindow::run(){
-    QString command = g_filedir + global_file_shortname + "& pause";
+    QString command = global_filename.mid(0, global_filename.length() - 4)+ "& pause";
     QByteArray ba = command.toLatin1();
     char *mm = ba.data();
     std::system(mm);
