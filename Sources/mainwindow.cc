@@ -23,8 +23,7 @@ QString fileDir;
 QString global_filename, global_file_shortname, g_filedir;
 QString gcc_path;
 bool modified, saved, newfile;
-int dynamic_width, dynamic_height;
-
+int dynamic_width, dynamic_height, user_fontsize;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
@@ -37,12 +36,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNew, &QAction::triggered, this, &MainWindow::new_obj);
     connect(ui->actionBuild, &QAction::triggered, this, &MainWindow::build);
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
+    
     code_edit = new CodeEditor(ui->centralWidget);
+    code_edit->fontsize = 11;
+    user_fontsize = 11;
     code_edit->setGeometry(-1, 0, width() + 2, height() - 20);
 #ifdef  Q_OS_MAC
-    code_edit->setFont(QFont("DejaVu Sans Mono",13));
+    code_edit->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
 #elif defined (Q_OS_WIN)
-    code_edit->setFont(QFont("Consolas", 13);
+    code_edit->setFont(QFont("Consolas", user_fontsize));
 #endif
     code_edit->setStyleSheet("color:rgb(235,235,235);");
     code_edit->setTabStopWidth(40);
