@@ -49,13 +49,14 @@ font-family:Segoe UI;</string>
      <x>0</x>
      <y>0</y>
      <width>1123</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Segoe UI</family>
-     <pointsize>10</pointsize>
+     <pointsize>9</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
    <property name="focusPolicy">
@@ -65,9 +66,9 @@ font-family:Segoe UI;</string>
     <enum>Qt::CustomContextMenu</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:black; 
+    <string notr="true">color:rgb(255, 255, 255); 
 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-stop:0 white, stop:1 rgb(182, 182, 182));
+stop:0 rgb(51, 185, 78), stop:1 rgb(70, 113, 63));
 
 item {
      spacing: 3px; /* spacing between menu bar items */
@@ -102,6 +103,7 @@ item:pressed {
     <property name="font">
      <font>
       <family>Segoe UI</family>
+      <stylestrategy>PreferAntialias</stylestrategy>
      </font>
     </property>
     <property name="autoFillBackground">
@@ -131,8 +133,33 @@ item:pressed {
     <addaction name="actionRun"/>
     <addaction name="actionDebug"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="font">
+     <font>
+      <stylestrategy>PreferAntialias</stylestrategy>
+     </font>
+    </property>
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+   </widget>
+   <widget class="QMenu" name="menuTool">
+    <property name="title">
+     <string>Tool</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuPreferences">
+    <property name="title">
+     <string>Preferences</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuTool"/>
    <addaction name="menuCompule"/>
+   <addaction name="menuPreferences"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionAbout">
@@ -152,6 +179,7 @@ item:pressed {
    <property name="font">
     <font>
      <family>Segoe UI</family>
+     <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
    <property name="shortcut">
@@ -162,6 +190,11 @@ item:pressed {
    <property name="text">
     <string>Save</string>
    </property>
+   <property name="font">
+    <font>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
    </property>
@@ -170,6 +203,11 @@ item:pressed {
    <property name="text">
     <string>Save As</string>
    </property>
+   <property name="font">
+    <font>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Alt+S</string>
    </property>
@@ -177,6 +215,11 @@ item:pressed {
   <action name="actionNew">
    <property name="text">
     <string>New</string>
+   </property>
+   <property name="font">
+    <font>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -204,6 +247,32 @@ item:pressed {
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="font">
+    <font>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="font">
+    <font>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Z</string>
    </property>
   </action>
  </widget>

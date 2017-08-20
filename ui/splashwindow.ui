@@ -138,10 +138,10 @@ QPushButton{font-family:Segoe UI;}</string>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>459</x>
-      <y>17</y>
+      <x>444</x>
+      <y>11</y>
       <width>314</width>
-      <height>463</height>
+      <height>475</height>
      </rect>
     </property>
     <property name="font">
@@ -160,7 +160,7 @@ QPushButton{font-family:Segoe UI;}</string>
    <widget class="QLabel" name="info_label">
     <property name="geometry">
      <rect>
-      <x>465</x>
+      <x>454</x>
       <y>242</y>
       <width>294</width>
       <height>13</height>

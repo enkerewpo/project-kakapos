@@ -23,8 +23,8 @@ SplashWindow::SplashWindow(QWidget *parent) :
     bodyShadow->setDistance(6.0);
     bodyShadow->setColor(QColor(0, 0, 0, 80));
 //    setWindowIcon(QIcon(""));
-    ui->tableWidget->setAutoFillBackground(true);
-    ui->tableWidget->setGraphicsEffect(bodyShadow);
+//    ui->tableWidget->setAutoFillBackground(true);
+//    ui->tableWidget->setGraphicsEffect(bodyShadow);
     connect(ui->open_object, &QPushButton::clicked, this, &SplashWindow::open_obj);
     connect(ui->new_object, &QPushButton::clicked, this, &SplashWindow::new_obj);
 }

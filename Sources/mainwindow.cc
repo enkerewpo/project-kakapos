@@ -7,6 +7,8 @@
 #include <QLayout>
 #include <QtGlobal>
 #include <QDebug>
+#include <QWidget>
+#include <QScrollBar>
 #include <vector>
 #include <string>
 #include <cstdlib>
@@ -17,14 +19,20 @@
 #include <yaml-cpp/yaml.h>
 #include "Headers/codeeditor.h"
 
-CodeEditor *code_edit;
+CodeEditor *editor;
 QDir *pDir;
 QString fileDir;
 QString global_filename, global_file_shortname, g_filedir;
 QString gcc_path;
 bool modified, saved, newfile;
-int dynamic_width, dynamic_height, user_fontsize, tab_len = 4;
-
+int dynamic_width, dynamic_height, user_fontsize;
+#ifdef Q_OS_WIN
+    int tab_len = 5;
+#elif defined (Q_OS_OSX)
+    int tab_len = 4;
+#else
+int tab_len = 5;
+#endif
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -39,17 +47,49 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionBuild, &QAction::triggered, this, &MainWindow::build);
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
     
-    code_edit = new CodeEditor(ui->centralWidget);
-    code_edit->fontsize = 11;
+    QFile file("/images/scrollbar.qss");
+    file.open(QFile::ReadOnly);
+
+    qDebug() << file.fileName();
+    editor = new CodeEditor(ui->centralWidget);
+    editor->setWordWrapMode(QTextOption::NoWrap);
+    editor->fontsize = 11;
+    editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
+                                                          "    border: 0px solid #999999;"
+                                                          "    background:transparent;"
+                                                          "    width:10px;    "
+                                                          "    margin: 0px 0px 0px 0px;"
+                                                          "}"
+                                                          "QScrollBar::handle:vertical {"
+                                                          "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
+                                                          "    stop: 0 white, stop: 0.5 white, stop:1 white);"
+                                                          "    min-height: 0px;"
+                                                          "}"
+                                                          "QScrollBar::add-line:vertical {"
+                                                          "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
+                                                          "    stop: 0 white, stop: 0.5 white,  stop:1 white);"
+                                                          "    height: 0px;"
+                                                          "    subcontrol-position: bottom;"
+                                                          "    subcontrol-origin: margin;"
+                                                          "}"
+                                                          "QScrollBar::sub-line:vertical {"
+                                                          "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
+                                                          "    stop: 0  white, stop: 0.5 white,  stop:1 white);"
+                                                          "    height: 0 px;"
+                                                          "    subcontrol-position: top;"
+                                                          "    subcontrol-origin: margin;"
+                                                          "}"
+                                                          ));
+
     user_fontsize = 11;
-    code_edit->setGeometry(-1, 0, width() + 2, height() - 20);
+    editor->setGeometry(-1, 0, width() + 2, height() - 40);
 #ifdef  Q_OS_MAC
-    code_edit->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
+    editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
 #elif defined (Q_OS_WIN)
-    code_edit->setFont(QFont("Consolas", user_fontsize));
+    editor->setFont(QFont("Consolas", user_fontsize));
 #endif
-    code_edit->setStyleSheet("color:rgb(235,235,235);");
-    code_edit->setTabStopWidth(fontMetrics().width(QLatin1Char('9')) * tab_len);
+    editor->setStyleSheet("color:rgb(235,235,235);");
+    editor->setTabStopWidth(fontMetrics().width(QLatin1Char('9')) * tab_len);
 }
 MainWindow::~MainWindow() {
     delete ui;
@@ -62,7 +102,7 @@ void MainWindow::update() {
        global_filename.endsWith(".hpp", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".c", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".h", Qt::CaseInsensitive)) {
-        highlighter = new Hightlighter_C(code_edit->document());
+        highlighter = new Hightlighter_C(editor->document());
     }
 }
 
@@ -82,9 +122,9 @@ void MainWindow::open_obj() {
     if(!file.open(QIODevice::ReadWrite)) return;
     QTextStream out(&file);
     this->setWindowTitle(global_filename);
-    code_edit->clear();
+    editor->clear();
     while(!file.atEnd()) {
-        code_edit->insertPlainText(out.readAll());
+        editor->insertPlainText(out.readAll());
     }
 }
 
@@ -98,7 +138,7 @@ void MainWindow::open_obj_file(QString fileName) {
     QTextStream out(&file);
     this->setWindowTitle(global_filename);
     while(!file.atEnd()) {
-        code_edit->insertPlainText(out.readAll());
+        editor->insertPlainText(out.readAll());
     }
     update();
 
@@ -106,7 +146,7 @@ void MainWindow::open_obj_file(QString fileName) {
 void MainWindow::resizeEvent(QResizeEvent *event) {
     dynamic_height = this->height();
     dynamic_width = this->width();
-    code_edit->setGeometry(-1, 0, width() + 2, height() - 20);
+    editor->setGeometry(-1, 0, width() + 2, height() - 20);
 }
 
 void MainWindow::new_obj() {
@@ -115,7 +155,7 @@ void MainWindow::new_obj() {
     if(modified) {
 
     }
-    code_edit->clear();
+    editor->clear();
     update();
 }
 
@@ -128,7 +168,7 @@ void MainWindow::save_obj() {
         {
             QTextStream out(&file);
             qDebug() << global_filename;
-            out << code_edit->toPlainText();
+            out << editor->toPlainText();
         }
     } else {
         QString savefilename = QFileDialog::getSaveFileName(this,
@@ -143,7 +183,7 @@ void MainWindow::save_obj() {
         {
             QTextStream out(&file);
             qDebug() << savefilename;
-            out << code_edit->toPlainText();
+            out << editor->toPlainText();
         }
         global_filename = savefilename;
         newfile = false;
@@ -165,13 +205,13 @@ void MainWindow::save_as() {
     {
         QTextStream out(&file);
         qDebug() << savefilename;
-        out << code_edit->toPlainText();
+        out << editor->toPlainText();
         global_filename = savefilename;
     }
     QTextStream out(&file);
     this->setWindowTitle(savefilename);
     while(!file.atEnd()) {
-        code_edit->insertPlainText(out.readAll());
+        editor->insertPlainText(out.readAll());
     }
     update();
 }

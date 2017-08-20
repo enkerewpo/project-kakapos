@@ -2,5 +2,6 @@
     <qresource prefix="/images">
         <file>images/Kakapos_logo.png</file>
         <file alias="logo">images/kakapos_ico.png</file>
+        <file>scrollbar.qss</file>
     </qresource>
 </RCC>
