@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "Headers/highlighter.h"
+#include "Headers/highlighter_C.h"
 #include <QMainWindow>
 #include <QLayout>
 
@@ -34,7 +34,7 @@ signals:
 private:
     Ui::MainWindow *ui;
     QHBoxLayout *ButtomHBLayout;
-    Highlighter *highlighter;
+    Hightlighter_C *highlighter;
     // QWidget interface
 protected:
     virtual void resizeEvent(QResizeEvent *event);

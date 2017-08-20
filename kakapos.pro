@@ -30,16 +30,16 @@ SOURCES += \
     Sources/splash_recentfile.cc \
     Sources/splashwindow.cc \
     Sources/codeeditor.cc \
-    Sources/highlighter.cc \
-    Sources/customshadoweffect.cc
+    Sources/customshadoweffect.cc \
+    Sources/highlighter_C.cc
 
 HEADERS += \
         Headers/mainwindow.h \
     Headers/splashwindow.h \
     Headers/splash_recentfile.h \
     Headers/codeeditor.h \
-    Headers/highlighter.h \
-    Headers/customshadoweffect.h
+    Headers/customshadoweffect.h \
+    Headers/highlighter_C.h
 
 FORMS += \
         ui/mainwindow.ui \

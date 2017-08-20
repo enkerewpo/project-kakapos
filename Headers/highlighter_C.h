@@ -48,8 +48,8 @@
 **
 ****************************************************************************/
 
-#ifndef HIGHLIGHTER_H
-#define HIGHLIGHTER_H
+#ifndef HIGHLIGHTER_C_H
+#define HIGHLIGHTER_C_H
 
 #include <QSyntaxHighlighter>
 #include <QTextCharFormat>
@@ -57,11 +57,11 @@
 
 class QTextDocument;
 
-class Highlighter : public QSyntaxHighlighter
+class Hightlighter_C : public QSyntaxHighlighter
 {
 
 public:
-    Highlighter(QTextDocument *parent = 0);
+    Hightlighter_C(QTextDocument *parent = 0);
 
 protected:
     void highlightBlock(const QString &text) override;
@@ -84,6 +84,9 @@ private:
     QTextCharFormat quotationFormat;
     QTextCharFormat functionFormat;
     QTextCharFormat sharpFormat;
+    QTextCharFormat signsFormat;
+    QTextCharFormat numbersFormat;
+    QTextCharFormat modulenumFormat;
 };
 
-#endif // HIGHLIGHTER_H
+#endif // HIGHLIGHTER_C_H

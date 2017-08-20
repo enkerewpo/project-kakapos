@@ -23,7 +23,9 @@ QString fileDir;
 QString global_filename, global_file_shortname, g_filedir;
 QString gcc_path;
 bool modified, saved, newfile;
-int dynamic_width, dynamic_height, user_fontsize;
+int dynamic_width, dynamic_height, user_fontsize, tab_len = 4;
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
@@ -47,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent) :
     code_edit->setFont(QFont("Consolas", user_fontsize));
 #endif
     code_edit->setStyleSheet("color:rgb(235,235,235);");
-    code_edit->setTabStopWidth(40);
+    code_edit->setTabStopWidth(fontMetrics().width(QLatin1Char('9')) * tab_len);
 }
 MainWindow::~MainWindow() {
     delete ui;
@@ -60,7 +62,7 @@ void MainWindow::update() {
        global_filename.endsWith(".hpp", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".c", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".h", Qt::CaseInsensitive)) {
-        highlighter = new Highlighter(code_edit->document());
+        highlighter = new Hightlighter_C(code_edit->document());
     }
 }
 

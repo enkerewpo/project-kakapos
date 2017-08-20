@@ -48,9 +48,9 @@
 **
 ****************************************************************************/
 
-#include "Headers/highlighter.h"
+#include "Headers/highlighter_C.h"
 
-Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
+Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent) {
     HighlightingRule rule;
 
     keywordFormat.setForeground(QColor("#F4E175"));
@@ -72,15 +72,35 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
         rule.format = keywordFormat;
         highlightingRules.append(rule);
     }
-    sharpFormat.setForeground(QColor("#ec711e"));
-    rule.pattern = QRegularExpression("\#.*[^\n]");
-    rule.format = sharpFormat;
-    highlightingRules.append(rule);
 
     classFormat.setFontWeight(QFont::Bold);
     classFormat.setForeground(QColor("#EFBCAC"));
     rule.pattern = QRegularExpression("\\bQ[A-Za-z]+\\b");
     rule.format = classFormat;
+    highlightingRules.append(rule);
+
+    signsFormat.setForeground(QColor("#B0E0E6"));
+    QStringList keywordPatterns_signs;
+    keywordPatterns_signs << "[~`!@#$%^&*()_+|\{},.?=:/<>;]";
+    foreach (const QString &pattern, keywordPatterns_signs) {
+        rule.pattern = QRegularExpression(pattern);
+        rule.format = signsFormat;
+        highlightingRules.append(rule);
+    }
+
+    numbersFormat.setForeground(QColor(186, 163, 229));
+    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]*");
+    rule.format = numbersFormat;
+    highlightingRules.append(rule);
+
+    modulenumFormat.setForeground(QColor("#9BCD9B"));
+    rule.pattern = QRegularExpression("%d?(lld)?(I64d)?c?s?u?(lf)?(llf)?");
+    rule.format = modulenumFormat;
+    highlightingRules.append(rule);
+
+    quotationFormat.setForeground(QColor("#E89D86"));
+    rule.pattern = QRegularExpression("\".*\"");
+    rule.format = quotationFormat;
     highlightingRules.append(rule);
 
     singleLineCommentFormat.setForeground(QColor("#71C671"));
@@ -90,22 +110,22 @@ Highlighter::Highlighter(QTextDocument *parent): QSyntaxHighlighter(parent) {
 
     multiLineCommentFormat.setForeground(QColor("#71C671"));
 
-    quotationFormat.setForeground(QColor("#E89D86"));
-    rule.pattern = QRegularExpression("\".*\"");
-    rule.format = quotationFormat;
-    highlightingRules.append(rule);
+//    functionFormat.setFontItalic(true);
+//    functionFormat.setForeground(QColor("#63DAE8"));
+//    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
+//    rule.format = functionFormat;
+//    highlightingRules.append(rule);
 
-    functionFormat.setFontItalic(true);
-    functionFormat.setForeground(QColor("#63DAE8"));
-    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
-    rule.format = functionFormat;
+    sharpFormat.setForeground(QColor("#ec711e"));
+    rule.pattern = QRegularExpression("\#.*[^\n]");
+    rule.format = sharpFormat;
     highlightingRules.append(rule);
 
     commentStartExpression = QRegularExpression("/\\*");
     commentEndExpression = QRegularExpression("\\*/");
 }
 
-void Highlighter::highlightBlock(const QString &text)
+void Hightlighter_C::highlightBlock(const QString &text)
 {
     foreach (const HighlightingRule &rule, highlightingRules) {
         QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);
