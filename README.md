@@ -30,3 +30,6 @@ $ make
 ```
 
 Copyright (C) 2017 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
+
+## Development notification launchpad
+This project is totally not official and so its codes maybe somehow messy.
