@@ -60,3 +60,11 @@ macx:{
 
 DISTFILES += \
     kakapos.rc
+
+
+unix: LIBS += -L$$PWD/./ -lyaml-cpp
+
+INCLUDEPATH += $$PWD/yaml-cpp
+DEPENDPATH += $$PWD/yaml-cpp
+
+unix: PRE_TARGETDEPS += $$PWD/./libyaml-cpp.a

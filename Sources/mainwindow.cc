@@ -10,11 +10,11 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
-#include <cstdlib>
 #include <cstring>
 #include <string>
 #include <vector>
 #include <QTextStream>
+#include <yaml-cpp/yaml.h>
 #include "Headers/codeeditor.h"
 
 CodeEditor *code_edit;
