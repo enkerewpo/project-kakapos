@@ -193,7 +193,7 @@ void MainWindow::save_obj() {
             out << editor->toPlainText();
         }
 
-        QFile file2(tmp_filename);
+        QFile file2(tmp_filenam);
         if (file2.open(QIODevice::ReadWrite))
         {
             QTextStream out(&file2);

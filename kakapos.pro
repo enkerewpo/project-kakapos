@@ -48,9 +48,6 @@ FORMS += \
     ui/splashwindow.ui \
     ui/splash_recentfile.ui \
 
-RESOURCES += \
-    images.qrc
-
 win32:{
     RC_ICONS = kakapos.ico
     RC_FILE = kakapos.rc
