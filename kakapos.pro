@@ -31,7 +31,21 @@ SOURCES += \
     Sources/splashwindow.cc \
     Sources/codeeditor.cc \
     Sources/customshadoweffect.cc \
-    Sources/highlighter_C.cc
+    Sources/highlighter_C.cc \
+    Sources/codeeditor.cc \
+    Sources/customshadoweffect.cc \
+    Sources/highlighter_C.cc \
+    Sources/mainwindow.cc \
+    Sources/splash_recentfile.cc \
+    Sources/splashwindow.cc \
+    main.cc \
+    Sources/codeeditor.cc \
+    Sources/customshadoweffect.cc \
+    Sources/highlighter_C.cc \
+    Sources/mainwindow.cc \
+    Sources/splash_recentfile.cc \
+    Sources/splashwindow.cc \
+    main.cc
 
 HEADERS += \
         Headers/mainwindow.h \
@@ -39,7 +53,93 @@ HEADERS += \
     Headers/splash_recentfile.h \
     Headers/codeeditor.h \
     Headers/customshadoweffect.h \
-    Headers/highlighter_C.h
+    Headers/highlighter_C.h \
+    Headers/codeeditor.h \
+    Headers/customshadoweffect.h \
+    Headers/highlighter_C.h \
+    Headers/mainwindow.h \
+    Headers/splash_recentfile.h \
+    Headers/splashwindow.h \
+    yaml-cpp/contrib/anchordict.h \
+    yaml-cpp/contrib/graphbuilder.h \
+    yaml-cpp/node/detail/bool_type.h \
+    yaml-cpp/node/detail/impl.h \
+    yaml-cpp/node/detail/iterator.h \
+    yaml-cpp/node/detail/iterator_fwd.h \
+    yaml-cpp/node/detail/memory.h \
+    yaml-cpp/node/detail/node.h \
+    yaml-cpp/node/detail/node_data.h \
+    yaml-cpp/node/detail/node_iterator.h \
+    yaml-cpp/node/detail/node_ref.h \
+    yaml-cpp/node/convert.h \
+    yaml-cpp/node/emit.h \
+    yaml-cpp/node/impl.h \
+    yaml-cpp/node/iterator.h \
+    yaml-cpp/node/node.h \
+    yaml-cpp/node/parse.h \
+    yaml-cpp/node/ptr.h \
+    yaml-cpp/node/type.h \
+    yaml-cpp/anchor.h \
+    yaml-cpp/binary.h \
+    yaml-cpp/dll.h \
+    yaml-cpp/emitfromevents.h \
+    yaml-cpp/emitter.h \
+    yaml-cpp/emitterdef.h \
+    yaml-cpp/emittermanip.h \
+    yaml-cpp/emitterstyle.h \
+    yaml-cpp/eventhandler.h \
+    yaml-cpp/exceptions.h \
+    yaml-cpp/mark.h \
+    yaml-cpp/noncopyable.h \
+    yaml-cpp/null.h \
+    yaml-cpp/ostream_wrapper.h \
+    yaml-cpp/parser.h \
+    yaml-cpp/stlemitter.h \
+    yaml-cpp/traits.h \
+    yaml-cpp/yaml.h \
+    Headers/codeeditor.h \
+    Headers/customshadoweffect.h \
+    Headers/highlighter_C.h \
+    Headers/mainwindow.h \
+    Headers/splash_recentfile.h \
+    Headers/splashwindow.h \
+    yaml-cpp/contrib/anchordict.h \
+    yaml-cpp/contrib/graphbuilder.h \
+    yaml-cpp/node/detail/bool_type.h \
+    yaml-cpp/node/detail/impl.h \
+    yaml-cpp/node/detail/iterator.h \
+    yaml-cpp/node/detail/iterator_fwd.h \
+    yaml-cpp/node/detail/memory.h \
+    yaml-cpp/node/detail/node.h \
+    yaml-cpp/node/detail/node_data.h \
+    yaml-cpp/node/detail/node_iterator.h \
+    yaml-cpp/node/detail/node_ref.h \
+    yaml-cpp/node/convert.h \
+    yaml-cpp/node/emit.h \
+    yaml-cpp/node/impl.h \
+    yaml-cpp/node/iterator.h \
+    yaml-cpp/node/node.h \
+    yaml-cpp/node/parse.h \
+    yaml-cpp/node/ptr.h \
+    yaml-cpp/node/type.h \
+    yaml-cpp/anchor.h \
+    yaml-cpp/binary.h \
+    yaml-cpp/dll.h \
+    yaml-cpp/emitfromevents.h \
+    yaml-cpp/emitter.h \
+    yaml-cpp/emitterdef.h \
+    yaml-cpp/emittermanip.h \
+    yaml-cpp/emitterstyle.h \
+    yaml-cpp/eventhandler.h \
+    yaml-cpp/exceptions.h \
+    yaml-cpp/mark.h \
+    yaml-cpp/noncopyable.h \
+    yaml-cpp/null.h \
+    yaml-cpp/ostream_wrapper.h \
+    yaml-cpp/parser.h \
+    yaml-cpp/stlemitter.h \
+    yaml-cpp/traits.h \
+    yaml-cpp/yaml.h
 
 FORMS += \
         ui/mainwindow.ui \
@@ -59,7 +159,8 @@ macx:{
 }
 
 DISTFILES += \
-    kakapos.rc
+    kakapos.rc \
+    config/kakapos_config.yml
 
 
 unix: LIBS += -L$$PWD/./ -lyaml-cpp
