@@ -33,3 +33,8 @@ Copyright (C) 2017 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
 
 ## Development notification launchpad
 This project is totally not official and so its codes maybe somehow messy.
+
+### 2017.8.22
+I just gave kakapos some simple auto-tab function and AStyle extension support.
+The program is coming to be like a editor now... but now an inteligent IDE that it will be in the far furture.
+Bugs to be fixed : terrible file directory split... and first time to write codes for C++ desktop program, the codes are terrible too...
