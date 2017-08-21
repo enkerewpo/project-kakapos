@@ -84,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
     user_fontsize = 11;
     editor->setGeometry(-1, 0, width() + 2, height() - 40);
 #ifdef  Q_OS_MAC
-    editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
+    editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 1));
 #elif defined (Q_OS_WIN)
     editor->setFont(QFont("Consolas", user_fontsize));
 #endif
