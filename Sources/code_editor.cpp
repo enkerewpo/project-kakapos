@@ -172,9 +172,11 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
 
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
+    if (event->modifiers() == (Qt::ShiftModifier | Qt::ControlModifier) && event->key() == Qt::Key_BraceLeft) {
+
+    }
     if(event->key() == Qt::Key_Return) {
-//        qDebug() << "AStyle toggled!";
-//        emit this->got_return_keypressed();
+
     }
     QPlainTextEdit::keyPressEvent(event);
 }

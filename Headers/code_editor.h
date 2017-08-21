@@ -73,6 +73,12 @@ public:
     int fontsize;
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
+    int snippets_depth;
+    int cursor_position;
+    CodeEditor() {
+        cursor_position = 0;
+        snippets_depth = 0;
+    }
 
 signals:
     void got_return_keypressed();
