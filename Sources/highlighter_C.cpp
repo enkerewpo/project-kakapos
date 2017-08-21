@@ -81,7 +81,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 
     signsFormat.setForeground(QColor("#B0E0E6"));
     QStringList keywordPatterns_signs;
-    keywordPatterns_signs << "[~`!@#$%^&*()_+|\{},.?=:/<>;]";
+    keywordPatterns_signs << "[~!#%^&*()_+|\\{},.?=:/<>;]";
     foreach (const QString &pattern, keywordPatterns_signs) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = signsFormat;
@@ -93,14 +93,15 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
+    quotationFormat.setForeground(QColor("#E89D86"));
+    rule.pattern = QRegularExpression("(\".*)?(\".*\")?");
+    rule.format = quotationFormat;
+    highlightingRules.append(rule);
+
+
     modulenumFormat.setForeground(QColor("#9BCD9B"));
     rule.pattern = QRegularExpression("%d?(lld)?(I64d)?c?s?u?(lf)?(llf)?");
     rule.format = modulenumFormat;
-    highlightingRules.append(rule);
-
-    quotationFormat.setForeground(QColor("#E89D86"));
-    rule.pattern = QRegularExpression("\".*\"");
-    rule.format = quotationFormat;
     highlightingRules.append(rule);
 
     singleLineCommentFormat.setForeground(QColor("#71C671"));

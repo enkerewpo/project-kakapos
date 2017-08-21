@@ -49,7 +49,10 @@
 ****************************************************************************/
 
 #include <QtWidgets>
-#include "Headers/codeeditor.h"
+#include <QWidget>
+#include <QTextCursor>
+#include <QDebug>
+#include "Headers/code_editor.h"
 
 
 CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
@@ -109,10 +112,6 @@ void CodeEditor::resizeEvent(QResizeEvent *e)
     lineNumberArea->setGeometry(QRect(cr.left()-3, cr.top(), lineNumberAreaWidth()+6, cr.height()+1));
 }
 
-void CodeEditor::size_change() {
-    close();
-}
-
 void CodeEditor::highlightCurrentLine()
 {
     QList<QTextEdit::ExtraSelection> extraSelections;
@@ -169,4 +168,13 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
         bottom = top + (int)blockBoundingRect(block).height();
         ++blockNumber;
     }
+}
+
+
+void CodeEditor::keyPressEvent(QKeyEvent *event) {
+    if(event->key() == Qt::Key_Return) {
+//        qDebug() << "AStyle toggled!";
+//        emit this->got_return_keypressed();
+    }
+    QPlainTextEdit::keyPressEvent(event);
 }

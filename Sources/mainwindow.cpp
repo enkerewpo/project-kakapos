@@ -1,10 +1,11 @@
 #include "Headers/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Headers/customshadoweffect.h"
+#include "Headers/shadow_effect.h"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QProcess>
 #include <QLayout>
+#include <QTime>
 #include <QtGlobal>
 #include <QDebug>
 #include <QWidget>
@@ -17,7 +18,7 @@
 #include <vector>
 #include <QTextStream>
 #include <yaml-cpp/yaml.h>
-#include "Headers/codeeditor.h"
+#include "Headers/code_editor.h"
 
 CodeEditor *editor;
 QDir *pDir;
@@ -39,6 +40,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
+    editor = new CodeEditor(ui->centralWidget);
+
     setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
     connect(ui->actionAbout, &QAction::triggered, this, &MainWindow::show_about);
@@ -47,14 +51,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNew, &QAction::triggered, this, &MainWindow::new_obj);
     connect(ui->actionBuild, &QAction::triggered, this, &MainWindow::build);
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
-    
-    QFile file("/images/scrollbar.qss");
-    file.open(QFile::ReadOnly);
 
-    qDebug() << file.fileName();
-    editor = new CodeEditor(ui->centralWidget);
+    connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
+
+
     editor->setWordWrapMode(QTextOption::NoWrap);
-    editor->fontsize = 11;
+    editor->fontsize = 12;
     editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
                                                           "    border: 0px solid #999999;"
                                                           "    background:transparent;"
@@ -82,10 +84,10 @@ MainWindow::MainWindow(QWidget *parent) :
                                                           "}"
                                                           ));
 
-    user_fontsize = 11;
+    user_fontsize = 12;
     editor->setGeometry(-1, 0, width() + 2, height() - 40);
 #ifdef  Q_OS_MAC
-    editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 1));
+    editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
 #elif defined (Q_OS_WIN)
     editor->setFont(QFont("Consolas", user_fontsize));
 #endif
@@ -97,6 +99,7 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::update() {
+    this->setWindowTitle(global_filename);
     if(global_filename.endsWith(".cpp", Qt::CaseInsensitive) ||
        global_filename.endsWith(".cc", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".c++", Qt::CaseInsensitive)  ||
@@ -137,7 +140,6 @@ void MainWindow::open_obj_file(QString fileName) {
     QFile file(fileName);
     if(!file.open(QIODevice::ReadWrite)) return;
     QTextStream out(&file);
-    this->setWindowTitle(global_filename);
     while(!file.atEnd()) {
         editor->insertPlainText(out.readAll());
     }
@@ -160,6 +162,18 @@ void MainWindow::new_obj() {
     update();
 }
 
+void MainWindow::save_file(QString filename) {
+    pDir = new QDir(".");
+    fileDir = pDir->filePath(filename);
+    QFile file(filename);
+    if (file.open(QIODevice::ReadWrite))
+    {
+        QTextStream out(&file);
+        qDebug() << filename;
+        out << editor->toPlainText();
+    }
+}
+
 void MainWindow::save_obj() {
     if(!newfile) {
         pDir = new QDir(".");
@@ -171,6 +185,15 @@ void MainWindow::save_obj() {
             qDebug() << global_filename;
             out << editor->toPlainText();
         }
+
+        QFile file2(global_filename + ".kat");
+        if (file2.open(QIODevice::ReadWrite))
+        {
+            QTextStream out(&file);
+            qDebug() << global_filename + ".kat";
+            out << editor->toPlainText();
+        }
+
     } else {
         QString savefilename = QFileDialog::getSaveFileName(this,
             tr("Save File"),
@@ -178,10 +201,10 @@ void MainWindow::save_obj() {
             tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
         pDir = new QDir(".");
 
-        tmp_filename = savefilename.append(".kat");
-
         fileDir = pDir->filePath(savefilename);
         tmpfileDir = pDir->filePath(tmp_filename);
+
+        tmp_filename = savefilename + ".kat";
 
         get_file_dir();
 
@@ -281,8 +304,29 @@ void MainWindow::get_file_dir(){
        vec.push_back(str);
        pos += match.matchedLength();
     }
-//    for(auto it = vec.begin(); it != vec.end() - 1; it++) {
-//        g_filedir += *it;
-//    }
     global_file_shortname = str;
+}
+
+void MainWindow::start_astyle(){
+    save_file(global_filename + ".kat");
+    qDebug() << "DO ASTYLE!";
+    QProcess astyle;
+    QString path;
+    QDir dir;
+    path = dir.currentPath();
+    astyle.start(path + "/astyle",QStringList() << "--style=kr" << "-p" << global_filename + ".kat");
+    qDebug() << path + "/astyle --style=kr -p " + global_filename + ".kat";
+    astyle.waitForFinished();
+    while (astyle.canReadLine()) {
+        qDebug() << astyle.readLine().trimmed();
+    }
+    editor->clear();
+    pDir = new QDir(".");
+    QFile file(global_filename + ".kat");
+    if(!file.open(QIODevice::ReadWrite)) return;
+    QTextStream out(&file);
+    while(!file.atEnd()) {
+        editor->insertPlainText(out.readAll());
+    }
+    update();
 }

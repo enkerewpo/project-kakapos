@@ -49,7 +49,7 @@ font-family:Segoe UI;</string>
      <x>0</x>
      <y>0</y>
      <width>1123</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="font">
@@ -149,6 +149,7 @@ item:pressed {
     <property name="title">
      <string>Tool</string>
     </property>
+    <addaction name="actionAStyle"/>
    </widget>
    <widget class="QMenu" name="menuPreferences">
     <property name="title">
@@ -273,6 +274,14 @@ item:pressed {
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+Z</string>
+   </property>
+  </action>
+  <action name="actionAStyle">
+   <property name="text">
+    <string>AStyle</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F</string>
    </property>
   </action>
  </widget>

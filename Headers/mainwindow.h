@@ -21,15 +21,14 @@ public slots:
     void new_obj();
     void show_about();
     void save_obj();
+    void save_file(QString filename);
     void save_as();
     void update();
     void build();
     void run();
     void debug();
     void get_file_dir();
-
-signals:
-    void window_change();
+    void start_astyle();
 
 private:
     Ui::MainWindow *ui;

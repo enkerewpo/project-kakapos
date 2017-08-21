@@ -52,6 +52,7 @@
 #define CODEEDITOR_H
 
 #include <QPlainTextEdit>
+#include <QKeyEvent>
 #include <QObject>
 
 class QPaintEvent;
@@ -72,11 +73,13 @@ public:
     int fontsize;
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
-public slots:
-    void size_change();
+
+signals:
+    void got_return_keypressed();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
 
 private slots:
     void updateLineNumberAreaWidth(int newBlockCount);

@@ -25,22 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    main.cc \
-    Sources/mainwindow.cc \
-    Sources/splash_recentfile.cc \
-    Sources/splashwindow.cc \
-    Sources/codeeditor.cc \
-    Sources/customshadoweffect.cc \
-    Sources/highlighter_C.cc \
+    main.cpp \
+    Sources/highlighter_C.cpp \
+    Sources/mainwindow.cpp \
+    Sources/splash_recentfile.cpp \
+    Sources/splashwindow.cpp \
+    Sources/code_editor.cpp \
+    Sources/shadow_effect.cpp
 
 
 HEADERS += \
         Headers/mainwindow.h \
     Headers/splashwindow.h \
     Headers/splash_recentfile.h \
-    Headers/customshadoweffect.h \
-    Headers/codeeditor.h \
     Headers/highlighter_C.h \
+    Headers/code_editor.h \
+    Headers/shadow_effect.h
 
 
 FORMS += \
@@ -60,8 +60,3 @@ macx:{
 DISTFILES += \
     kakapos.rc \
     config/kakapos_config.yml
-
-unix: LIBS += -L$$PWD/yaml-cpp/ -lyaml-cpp
-
-INCLUDEPATH += $$PWD/yaml-cpp
-DEPENDPATH += $$PWD/yaml-cpp
