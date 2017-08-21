@@ -54,6 +54,7 @@
 #include <QDebug>
 #include "Headers/code_editor.h"
 
+bool is_auto;
 
 CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
 {
@@ -148,11 +149,11 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
 #ifdef Q_OS_MAC
-            QFont font("DejaVu Sans Mono", this->fontsize + 1);
+            QFont font("DejaVu Sans Mono", fontsize + 1);
 #elif defined (Q_OS_WIN)
-            QFont font("Consolas", this->fontsize);
+            QFont font("Consolas", fontsize);
 #else
-            QFont font("Consolas", this->fontsize);
+            QFont font("Consolas", fontsize);
 #endif
             QString number = " ";
             number += QString::number(blockNumber + 1);
@@ -172,11 +173,77 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
 
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
-    if (event->modifiers() == (Qt::ShiftModifier | Qt::ControlModifier) && event->key() == Qt::Key_BraceLeft) {
-
-    }
-    if(event->key() == Qt::Key_Return) {
-
-    }
     QPlainTextEdit::keyPressEvent(event);
+
+    update_layer(toPlainText());
+
+
+    if (event->key() == Qt::Key_BraceLeft) {
+        qDebug() << "GOT A BRACE LEFT";
+        qDebug() << textCursor().position();
+        is_auto = true;
+    }
+
+    if(event->key() == Qt::Key_BraceRight) {
+        int pos = textCursor().position();
+        int lay = layer[pos];
+        QString text = toPlainText();
+        int start;
+        for(int i = pos - 1; ; i--) {
+            if(text[i] == '\n') {
+                qDebug() << i;
+                start = i;
+                break;
+            }
+//            if(text[i]!= '\t' || text[i] != ' ') goto ed;
+            textCursor().deletePreviousChar();
+        }
+        textCursor().setPosition(start);
+        for(int i = 1; i <= layer[pos]; i++) {
+            qDebug() << "AT LAYER " << layer[pos];
+            insertPlainText(QString("\t"));
+        }
+        insertPlainText("}");
+    }
+    ed:
+    QKeyEvent* e = event;
+    if(e->key() == Qt::Key_Return) {
+        int pos = textCursor().position();
+        qDebug() << "RETURN AT POS " << pos <<" WITH LAYER " << layer[pos];
+        for(int i = 1; i <= layer[pos]; i++) {
+            qDebug() << "AT LAYER " << layer[pos];
+            insertPlainText(QString("\t"));
+        }
+        if(is_auto) {
+            int curp = textCursor().position();
+            qDebug() << curp ;
+            int cur_p = textCursor().position();
+            insertPlainText(QString("\n"));
+            update_layer(toPlainText());
+
+            for(int i = 1; i < layer[cur_p]; i++) {
+                insertPlainText(QString("\t"));
+            }
+            insertPlainText("}");
+            QTextCursor tc = textCursor();
+            tc.setPosition(curp, QTextCursor::MoveAnchor);
+            setTextCursor(tc);
+            is_auto = false;
+        }
+    }
+}
+
+void CodeEditor::update_layer(QString text) {
+    qDebug() << text;
+    int tot = 0;
+    int size = text.size();
+    int i;
+
+    for(i = 0; i < size; i++){
+        if(text[i] == '{') tot++;
+        if(text[i] == '}') tot--;
+        layer[i] = tot;
+        qDebug() << "layer[" << i << "] = " << layer[i];
+    }
+    for(int j = i; j <= i + 1000; j++) layer[i] = tot;
 }

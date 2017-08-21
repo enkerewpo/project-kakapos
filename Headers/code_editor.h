@@ -75,6 +75,9 @@ public:
     int lineNumberAreaWidth();
     int snippets_depth;
     int cursor_position;
+    int layer[10000000];
+    void update_layer(QString text);
+
     CodeEditor() {
         cursor_position = 0;
         snippets_depth = 0;
