@@ -38,3 +38,7 @@ This project is totally not official and so its codes maybe somehow messy.
 I just gave kakapos some simple auto-tab function and AStyle extension support.
 The program is coming to be like a editor now... but now an inteligent IDE that it will be in the far furture.
 Bugs to be fixed : terrible file directory split... and first time to write codes for C++ desktop program, the codes are terrible too...
+
+
+## Latest test release on SourceForge
+[Download -> kakapos-0.5.5-win32-release](https://sourceforge.net/projects/project-kakapos/files/kakapos-0.5.5-win32-test-release.tar.gz/download)
