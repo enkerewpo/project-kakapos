@@ -6,14 +6,7 @@
 [![Join the chat at https://gitter.im/kakapos/Lobby](https://badges.gitter.im/project-kakapos/Lobby.svg)](https://gitter.im/project-kakapos/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Download project-kakapos](https://img.shields.io/sourceforge/dt/project-kakapos.svg)](https://sourceforge.net/projects/project-kakapos/files/latest/download)
 
-## Latest _kakapos_ release
-![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)
-
-[___Download___ -> Click here to view available release on Sourceforge](https://sourceforge.net/p/project-kakapos/)
-
-## Notice
-_Project kakapos IDE_ is licensed under `the GNU General Public License v3.0`, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with __Qt5__. 
-## Introduction
+__Project kakapos IDE__ is licensed under `the GNU General Public License v3.0`, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with __Qt5__. 
 [project-kakapos](https://github.com/enkerewpo/kakapos) is a next-generation open-source programming integrated development environment (IDE).
 
 ## Build from source code
@@ -33,8 +26,10 @@ $ qmake -project
 $ qmake kakapos.pro
 $ make
 ```
+## Download _kakapos_ release
+![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)
 
-Copyright (C) 2017 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
+[___Download___ -> Click here to view available release on Sourceforge](https://sourceforge.net/p/project-kakapos/)
 
 ## Development notification launchpad
 This project is totally not official and so its codes maybe somehow messy.
@@ -43,3 +38,5 @@ This project is totally not official and so its codes maybe somehow messy.
 I just gave kakapos some simple auto-tab function and AStyle extension support.
 The program is coming to be like a editor now... but now an inteligent IDE that it will be in the far furture.
 Bugs to be fixed : terrible file directory split... and first time to write codes for C++ desktop program, the codes are terrible too...
+
+Copyright (C) 2017 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
