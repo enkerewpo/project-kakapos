@@ -107,6 +107,7 @@ void MainWindow::update() {
        global_filename.endsWith(".c", Qt::CaseInsensitive)  ||
        global_filename.endsWith(".h", Qt::CaseInsensitive)) {
         highlighter = new Hightlighter_C(editor->document());
+        editor->do_autotab = true;
     }
 }
 
@@ -186,13 +187,13 @@ void MainWindow::save_obj() {
             out << editor->toPlainText();
         }
 
-        QFile file2(global_filename + ".kat");
-        if (file2.open(QIODevice::ReadWrite))
-        {
-            QTextStream out(&file);
-            qDebug() << global_filename + ".kat";
-            out << editor->toPlainText();
-        }
+//        QFile file2(global_filename + ".kat");
+//        if (file2.open(QIODevice::ReadWrite))
+//        {
+//            QTextStream out(&file);
+//            qDebug() << global_filename + ".kat";
+//            out << editor->toPlainText();
+//        }
 
     } else {
         QString savefilename = QFileDialog::getSaveFileName(this,
@@ -216,13 +217,13 @@ void MainWindow::save_obj() {
             out << editor->toPlainText();
         }
 
-        QFile file2(tmp_filename);
-        if (file2.open(QIODevice::ReadWrite))
-        {
-            QTextStream out(&file2);
-            qDebug() << tmp_filename;
-            out << editor->toPlainText();
-        }
+//        QFile file2(tmp_filename);
+//        if (file2.open(QIODevice::ReadWrite))
+//        {
+//            QTextStream out(&file2);
+//            qDebug() << tmp_filename;
+//            out << editor->toPlainText();
+//        }
 
         global_filename = savefilename;
         newfile = false;
@@ -308,21 +309,21 @@ void MainWindow::get_file_dir(){
 }
 
 void MainWindow::start_astyle(){
-    save_file(global_filename + ".kat");
+    save_file(global_filename);
     qDebug() << "DO ASTYLE!";
     QProcess astyle;
     QString path;
     QDir dir;
-    path = dir.currentPath();
-    astyle.start(path + "/astyle",QStringList() << "--style=kr" << "-p" << global_filename + ".kat");
-    qDebug() << path + "/astyle --style=kr -p " + global_filename + ".kat";
+    path = dir.absolutePath();
+    astyle.start(path + "/release/astyle",QStringList() << "--style=kr" << "-p" << global_filename);
+    qDebug() << path + "/release/astyle --style=kr -p " + global_filename;
     astyle.waitForFinished();
     while (astyle.canReadLine()) {
         qDebug() << astyle.readLine().trimmed();
     }
     editor->clear();
     pDir = new QDir(".");
-    QFile file(global_filename + ".kat");
+    QFile file(global_filename);
     if(!file.open(QIODevice::ReadWrite)) return;
     QTextStream out(&file);
     while(!file.atEnd()) {

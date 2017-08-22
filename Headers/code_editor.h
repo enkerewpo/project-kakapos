@@ -76,9 +76,11 @@ public:
     int snippets_depth;
     int cursor_position;
     int layer[10000000];
+    bool do_autotab;
     void update_layer(QString text);
 
     CodeEditor() {
+        do_autotab = false;
         cursor_position = 0;
         snippets_depth = 0;
     }

@@ -93,8 +93,13 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
+//    quotation_single_Format.setForeground(QColor("#E89D86"));
+//    rule.pattern = QRegularExpression("\".*");
+//    rule.format = quotation_single_Format;
+//    highlightingRules.append(rule);
+
     quotationFormat.setForeground(QColor("#E89D86"));
-    rule.pattern = QRegularExpression("(\".*)?(\".*\")?");
+    rule.pattern = QRegularExpression("\".*\"");
     rule.format = quotationFormat;
     highlightingRules.append(rule);
 
