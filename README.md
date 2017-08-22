@@ -6,10 +6,11 @@
 [![Join the chat at https://gitter.im/kakapos/Lobby](https://badges.gitter.im/project-kakapos/Lobby.svg)](https://gitter.im/project-kakapos/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Download project-kakapos](https://img.shields.io/sourceforge/dt/project-kakapos.svg)](https://sourceforge.net/projects/project-kakapos/files/latest/download)
 
-__Project kakapos IDE__ is licensed under `the GNU General Public License v3.0`, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with __Qt5__. 
-[project-kakapos](https://github.com/enkerewpo/kakapos) is a next-generation open-source programming integrated development environment (IDE).
+__Kakapos__ is a next-generation open-source programming integrated development environment (IDE).
 
-## Build from source code
+Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in C++ with Qt5. 
+
+## Build kakapos from source code
 The source files are under the Qt project building method.
 ### Install Qt5
 1. Download Qt5.9 from the [official website](https://www.qt.io/download/).
