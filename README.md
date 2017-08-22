@@ -5,7 +5,12 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/i6vs11mn63dyager?svg=true)](https://ci.appveyor.com/project/enkerewpo/project-kakapos)
 [![Join the chat at https://gitter.im/kakapos/Lobby](https://badges.gitter.im/project-kakapos/Lobby.svg)](https://gitter.im/project-kakapos/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Download project-kakapos](https://img.shields.io/sourceforge/dt/project-kakapos.svg)](https://sourceforge.net/projects/project-kakapos/files/latest/download)
-  
+
+## Latest test release
+![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)
+
+[__Download__ -> Click here to view available release on Sourceforge](https://sourceforge.net/p/project-kakapos/)
+
 ## Notice
 _Project kakapos IDE_ is licensed under `the GNU General Public License v3.0`, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with __Qt5__. 
 ## Introduction
@@ -38,9 +43,3 @@ This project is totally not official and so its codes maybe somehow messy.
 I just gave kakapos some simple auto-tab function and AStyle extension support.
 The program is coming to be like a editor now... but now an inteligent IDE that it will be in the far furture.
 Bugs to be fixed : terrible file directory split... and first time to write codes for C++ desktop program, the codes are terrible too...
-
-
-## Latest test release on SourceForge
-![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)
-
-[Download -> kakapos latested](https://sourceforge.net/p/project-kakapos/)
