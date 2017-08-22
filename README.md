@@ -1,4 +1,4 @@
-<div align=center><img src="https://enkerewpo.github.io/images/icon2.png" height="250" width="250"></div> 
+<div align=center><img src="https://enkerewpo.github.io/images/icon2.png" height="454" width="666"></div> 
 
 [![Build Status](https://travis-ci.org/enkerewpo/project-kakapos.svg?branch=master)](https://travis-ci.org/enkerewpo/project-kakapos)
 [![Build status](https://ci.appveyor.com/api/projects/status/i6vs11mn63dyager?svg=true)](https://ci.appveyor.com/project/enkerewpo/project-kakapos)
