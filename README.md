@@ -42,4 +42,6 @@ Bugs to be fixed : terrible file directory split... and first time to write code
 
 
 ## Latest test release on SourceForge
+[![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)](https://sourceforge.net/p/project-kakapos/)
+
 [Download -> kakapos-0.5.5-win32-release](https://sourceforge.net/projects/project-kakapos/files/kakapos-0.5.5-win32-test-release.tar.gz/download)
