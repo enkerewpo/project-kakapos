@@ -81,7 +81,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 
     signsFormat.setForeground(QColor("#B0E0E6"));
     QStringList keywordPatterns_signs;
-    keywordPatterns_signs << "[~!#%^&*()_+|\\{},.?=:/<>;]";
+    keywordPatterns_signs << "[~!#%^&*()_+|\\{},.?[]=:/<>;]";
     foreach (const QString &pattern, keywordPatterns_signs) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = signsFormat;

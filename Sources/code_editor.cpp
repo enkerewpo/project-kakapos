@@ -50,8 +50,11 @@
 
 #include <QtWidgets>
 #include <QWidget>
+#include <QByteArray>
 #include <QTextCursor>
+#include <QTypeInfo>
 #include <qDebug>
+#include <cctype>
 #include "Headers/code_editor.h"
 
 bool is_auto;
@@ -305,12 +308,26 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
             }
         }
         if(e->key() == Qt::Key_ParenLeft) {
+            QString text = toPlainText();
+            QChar cc = text[textCursor().position()];
+            QString c = "";
+            c += cc;
+            QByteArray ch = c.toLatin1();
+            const char *chs = ch.data();
+            if(isalpha(*chs) || isdigit(*chs)) goto ed_2;
             insertPlainText(")");
             QTextCursor tc = textCursor();
             tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
             setTextCursor(tc);
         }
         if(e->key() == Qt::Key_QuoteDbl) {
+            QString text = toPlainText();
+            QChar cc = text[textCursor().position()];
+            QString c = "";
+            c += cc;
+            QByteArray ch = c.toLatin1();
+            const char *chs = ch.data();
+            if(isalpha(*chs) || isdigit(*chs)) goto ed_2;
             insertPlainText("\"");
             QTextCursor tc = textCursor();
             tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
@@ -318,6 +335,13 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         }
 
         if(e->key() == Qt::Key_Apostrophe) {
+            QString text = toPlainText();
+            QChar cc = text[textCursor().position()];
+            QString c = "";
+            c += cc;
+            QByteArray ch = c.toLatin1();
+            const char *chs = ch.data();
+            if(isalpha(*chs) || isdigit(*chs)) goto ed_2;
             insertPlainText("\'");
             QTextCursor tc = textCursor();
             tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
@@ -325,11 +349,19 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         }
 
         if(e->key() == Qt::Key_BracketLeft) {
+            QString text = toPlainText();
+            QChar cc = text[textCursor().position()];
+            QString c = "";
+            c += cc;
+            QByteArray ch = c.toLatin1();
+            const char *chs = ch.data();
+            if(isalpha(*chs) || isdigit(*chs)) goto ed_2;
             insertPlainText("]");
             QTextCursor tc = textCursor();
             tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
             setTextCursor(tc);
         }
+        ed_2:;
     }
     else {
         QPlainTextEdit::keyPressEvent(event);

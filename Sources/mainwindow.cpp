@@ -54,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
 
-
+    ui->statuslabel->setText(QString("All settings have been loaded."));
     editor->setWordWrapMode(QTextOption::NoWrap);
     editor->fontsize = 11;
     editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
@@ -85,7 +85,6 @@ MainWindow::MainWindow(QWidget *parent) :
                                                           ));
 
     user_fontsize = 11;
-    editor->setGeometry(-1, 0, width() + 2, height() - 40);
 #ifdef  Q_OS_MAC
     editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
 #elif defined (Q_OS_WIN)
@@ -109,7 +108,9 @@ void MainWindow::update() {
         highlighter = new Hightlighter_C(editor->document());
         editor->do_autotab = true;
         editor->filetype = "cplusplus";
+        ui->statuslabel->setText(QString("Prasing Syntax: C++"));
     }
+    else ui->statuslabel->setText(QString("Prasing Syntax: Plain text"));
 }
 
 
@@ -151,7 +152,8 @@ void MainWindow::open_obj_file(QString fileName) {
 void MainWindow::resizeEvent(QResizeEvent *event) {
     dynamic_height = this->height();
     dynamic_width = this->width();
-    editor->setGeometry(-1, 0, width() + 2, height() - 20);
+    editor->setGeometry(-1, 0, width() + 2, height() - 35);
+    ui->statuslabel->setGeometry(2, this->height() - 40, this->width() - 2, 20);
 }
 
 void MainWindow::new_obj() {
@@ -161,7 +163,7 @@ void MainWindow::new_obj() {
 
     }
     editor->clear();
-    update();
+//    update();
 }
 
 void MainWindow::save_file(QString filename) {
