@@ -1,3 +1,4 @@
+<div align=center><img src="https://enkerewpo.github.io/images/Rectangle%201.png" height="250" width="250"></div> 
 <div align=center><img src="https://enkerewpo.github.io/images/Kakapos.png"></div> 
 
 [![Build Status](https://travis-ci.org/enkerewpo/project-kakapos.svg?branch=master)](https://travis-ci.org/enkerewpo/project-kakapos)
@@ -42,6 +43,6 @@ Bugs to be fixed : terrible file directory split... and first time to write code
 
 
 ## Latest test release on SourceForge
-[![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)](https://sourceforge.net/p/project-kakapos/)
+![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)
 
-[Download -> kakapos-0.5.5-win32-release](https://sourceforge.net/projects/project-kakapos/files/kakapos-0.5.5-win32-test-release.tar.gz/download)
+[Download -> kakapos latested](https://sourceforge.net/p/project-kakapos/)
