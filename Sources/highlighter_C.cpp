@@ -89,7 +89,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     }
 
     numbersFormat.setForeground(QColor(186, 163, 229));
-    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]*");
+    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?([0-9]+(u)?(l)?(L)?(LL)?(ll)?)+");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 

@@ -173,162 +173,166 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
 
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
-
-    if(event->key() == Qt::Key_Backspace) {
-        QString text = toPlainText();
-        int pos1 = textCursor().position() - 1;
-        int pos2 = pos1 + 1;
-        QChar c = text[pos1];
-        QChar d = text[pos2];
-        qDebug() << c << " " << d;
-        if(c == '(' && d == ')') {
-            textCursor().deleteChar();
-        }
-        if(c == '[' && d == ']') {
-            textCursor().deleteChar();
-        }
-        if(c == '\"' && d == '\"') {
-            textCursor().deleteChar();
-        }
-        if(c == '\'' && d == '\'') {
-            textCursor().deleteChar();
-        }
-    }
-
-
-
-    if(event->key() == Qt::Key_ParenRight) {
-        QString text = toPlainText();
-        int pos = textCursor().position();
-        qDebug() << pos;
-        if(text[pos] == ")") {
-            QTextCursor tc = textCursor();
-            tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
-            setTextCursor(tc);
-            goto ed;
-        }
-    }
-
-    if(event->key() == Qt::Key_QuoteDbl) {
-        QString text = toPlainText();
-        int pos = textCursor().position();
-        qDebug() << pos;
-        if(text[pos] == "\"") {
-            QTextCursor tc = textCursor();
-            tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
-            setTextCursor(tc);
-            goto ed;
-        }
-    }
-
-    if(event->key() == Qt::Key_Apostrophe) {
-        QString text = toPlainText();
-        int pos = textCursor().position();
-        qDebug() << pos;
-        if(text[pos] == "\'") {
-            QTextCursor tc = textCursor();
-            tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
-            setTextCursor(tc);
-            goto ed;
-        }
-    }
-
-    if(event->key() == Qt::Key_BracketRight) {
-        QString text = toPlainText();
-        int pos = textCursor().position();
-        qDebug() << pos;
-        if(text[pos] == "]") {
-            QTextCursor tc = textCursor();
-            tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
-            setTextCursor(tc);
-            goto ed;
-        }
-    }
-
-
-    QPlainTextEdit::keyPressEvent(event);
-
-    update_layer(toPlainText());
-
-
-    if (event->key() == Qt::Key_BraceLeft) {
-        //qDebug() << "GOT A BRACE LEFT";
-        //qDebug() << textCursor().position();
-        is_auto = true;
-    }
-
-    if(event->key() == Qt::Key_BraceRight) {
-        int pos = textCursor().position();
-        int lay = layer[pos];
-        QString text = toPlainText();
-        int start;
-        for(int i = pos - 1; ; i--) {
-            if(text[i] == '\n') {
-                //qDebug() << i;
-                start = i;
-                break;
+    if(filetype == "cplusplus") {
+        if(event->key() == Qt::Key_Backspace) {
+            QString text = toPlainText();
+            int pos1 = textCursor().position() - 1;
+            int pos2 = pos1 + 1;
+            QChar c = text[pos1];
+            QChar d = text[pos2];
+            qDebug() << c << " " << d;
+            if(c == '(' && d == ')') {
+                textCursor().deleteChar();
             }
-//            if(text[i]!= '\t' || text[i] != ' ') goto ed;
-            textCursor().deletePreviousChar();
+            if(c == '[' && d == ']') {
+                textCursor().deleteChar();
+            }
+            if(c == '\"' && d == '\"') {
+                textCursor().deleteChar();
+            }
+            if(c == '\'' && d == '\'') {
+                textCursor().deleteChar();
+            }
         }
-        textCursor().setPosition(start);
-        for(int i = 1; i <= layer[pos]; i++) {
-            //qDebug() << "AT LAYER " << layer[pos];
-            insertPlainText(QString("\t"));
-        }
-        insertPlainText("}");
-    }
-    ed:
-    QKeyEvent* e = event;
-    if(e->key() == Qt::Key_Return) {
-        int pos = textCursor().position();
-        //qDebug() << "RETURN AT POS " << pos <<" WITH LAYER " << layer[pos];
-        for(int i = 1; i <= layer[pos]; i++) {
-            //qDebug() << "AT LAYER " << layer[pos];
-            insertPlainText(QString("\t"));
-        }
-        if(is_auto) {
-            int curp = textCursor().position();
-            //qDebug() << curp ;
-            int cur_p = textCursor().position();
-            insertPlainText(QString("\n"));
-            update_layer(toPlainText());
 
-            for(int i = 1; i < layer[cur_p]; i++) {
+
+
+        if(event->key() == Qt::Key_ParenRight) {
+            QString text = toPlainText();
+            int pos = textCursor().position();
+            qDebug() << pos;
+            if(text[pos] == ")") {
+                QTextCursor tc = textCursor();
+                tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
+                setTextCursor(tc);
+                goto ed;
+            }
+        }
+
+        if(event->key() == Qt::Key_QuoteDbl) {
+            QString text = toPlainText();
+            int pos = textCursor().position();
+            qDebug() << pos;
+            if(text[pos] == "\"") {
+                QTextCursor tc = textCursor();
+                tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
+                setTextCursor(tc);
+                goto ed;
+            }
+        }
+
+        if(event->key() == Qt::Key_Apostrophe) {
+            QString text = toPlainText();
+            int pos = textCursor().position();
+            qDebug() << pos;
+            if(text[pos] == "\'") {
+                QTextCursor tc = textCursor();
+                tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
+                setTextCursor(tc);
+                goto ed;
+            }
+        }
+
+        if(event->key() == Qt::Key_BracketRight) {
+            QString text = toPlainText();
+            int pos = textCursor().position();
+            qDebug() << pos;
+            if(text[pos] == "]") {
+                QTextCursor tc = textCursor();
+                tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
+                setTextCursor(tc);
+                goto ed;
+            }
+        }
+
+
+        QPlainTextEdit::keyPressEvent(event);
+
+        update_layer(toPlainText());
+
+
+        if (event->key() == Qt::Key_BraceLeft) {
+            //qDebug() << "GOT A BRACE LEFT";
+            //qDebug() << textCursor().position();
+            is_auto = true;
+        }
+
+        if(event->key() == Qt::Key_BraceRight) {
+            int pos = textCursor().position();
+            int lay = layer[pos];
+            QString text = toPlainText();
+            int start;
+            for(int i = pos - 1; ; i--) {
+                if(text[i] == '\n') {
+                    //qDebug() << i;
+                    start = i;
+                    break;
+                }
+    //            if(text[i]!= '\t' || text[i] != ' ') goto ed;
+                textCursor().deletePreviousChar();
+            }
+            textCursor().setPosition(start);
+            for(int i = 1; i <= layer[pos]; i++) {
+                //qDebug() << "AT LAYER " << layer[pos];
                 insertPlainText(QString("\t"));
             }
             insertPlainText("}");
+        }
+        ed:
+        QKeyEvent* e = event;
+        if(e->key() == Qt::Key_Return) {
+            int pos = textCursor().position();
+            //qDebug() << "RETURN AT POS " << pos <<" WITH LAYER " << layer[pos];
+            for(int i = 1; i <= layer[pos]; i++) {
+                //qDebug() << "AT LAYER " << layer[pos];
+                insertPlainText(QString("\t"));
+            }
+            if(is_auto) {
+                int curp = textCursor().position();
+                //qDebug() << curp ;
+                int cur_p = textCursor().position();
+                insertPlainText(QString("\n"));
+                update_layer(toPlainText());
+
+                for(int i = 1; i < layer[cur_p]; i++) {
+                    insertPlainText(QString("\t"));
+                }
+                insertPlainText("}");
+                QTextCursor tc = textCursor();
+                tc.setPosition(curp, QTextCursor::MoveAnchor);
+                setTextCursor(tc);
+                is_auto = false;
+            }
+        }
+        if(e->key() == Qt::Key_ParenLeft) {
+            insertPlainText(")");
             QTextCursor tc = textCursor();
-            tc.setPosition(curp, QTextCursor::MoveAnchor);
+            tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
             setTextCursor(tc);
-            is_auto = false;
+        }
+        if(e->key() == Qt::Key_QuoteDbl) {
+            insertPlainText("\"");
+            QTextCursor tc = textCursor();
+            tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
+            setTextCursor(tc);
+        }
+
+        if(e->key() == Qt::Key_Apostrophe) {
+            insertPlainText("\'");
+            QTextCursor tc = textCursor();
+            tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
+            setTextCursor(tc);
+        }
+
+        if(e->key() == Qt::Key_BracketLeft) {
+            insertPlainText("]");
+            QTextCursor tc = textCursor();
+            tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
+            setTextCursor(tc);
         }
     }
-    if(e->key() == Qt::Key_ParenLeft) {
-        insertPlainText(")");
-        QTextCursor tc = textCursor();
-        tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
-        setTextCursor(tc);
-    }
-    if(e->key() == Qt::Key_QuoteDbl) {
-        insertPlainText("\"");
-        QTextCursor tc = textCursor();
-        tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
-        setTextCursor(tc);
-    }
-
-    if(e->key() == Qt::Key_Apostrophe) {
-        insertPlainText("\'");
-        QTextCursor tc = textCursor();
-        tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
-        setTextCursor(tc);
-    }
-
-    if(e->key() == Qt::Key_BracketLeft) {
-        insertPlainText("]");
-        QTextCursor tc = textCursor();
-        tc.setPosition(textCursor().position() - 1, QTextCursor::MoveAnchor);
-        setTextCursor(tc);
+    else {
+        QPlainTextEdit::keyPressEvent(event);
     }
 }
 

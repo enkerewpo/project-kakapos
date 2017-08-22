@@ -29,11 +29,11 @@ bool modified, saved, newfile;
 int dynamic_width, dynamic_height, user_fontsize;
 
 #ifdef Q_OS_WIN
-    int tab_len = 5;
+    int tab_len = 4;
 #elif defined (Q_OS_OSX)
     int tab_len = 4;
 #else
-int tab_len = 5;
+int tab_len = 4;
 #endif
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -56,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     editor->setWordWrapMode(QTextOption::NoWrap);
-    editor->fontsize = 12;
+    editor->fontsize = 11;
     editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
                                                           "    border: 0px solid #999999;"
                                                           "    background:transparent;"
@@ -84,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                                           "}"
                                                           ));
 
-    user_fontsize = 12;
+    user_fontsize = 11;
     editor->setGeometry(-1, 0, width() + 2, height() - 40);
 #ifdef  Q_OS_MAC
     editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
@@ -108,6 +108,7 @@ void MainWindow::update() {
        global_filename.endsWith(".h", Qt::CaseInsensitive)) {
         highlighter = new Hightlighter_C(editor->document());
         editor->do_autotab = true;
+        editor->filetype = "cplusplus";
     }
 }
 

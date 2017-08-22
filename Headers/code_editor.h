@@ -76,6 +76,7 @@ public:
     int snippets_depth;
     int cursor_position;
     int layer[10000000];
+    QString filetype;
     bool do_autotab;
     void update_layer(QString text);
 
