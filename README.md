@@ -5,8 +5,6 @@
   <a title="Build Status" href="https://travis-ci.org/enkerewpo/project-kakapos"><img src="https://travis-ci.org/enkerewpo/project-kakapos.svg?branch=master"></a>
   <a title="Build Status" href="https://ci.appveyor.com/project/enkerewpo/project-kakapos"><img src="https://ci.appveyor.com/api/projects/status/i6vs11mn63dyager?svg=true"></a>
   <a title="GitHub tag" href="https://github.com/enkerewpo/project-kakapos/tags"><img src="https://img.shields.io/github/tag/enkerewpo/project-kakapos.svg"></a>
-</p>
-<p align="center">
     <a title="Download project-kakapos" href="https://sourceforge.net/projects/project-kakapos/files/latest/download"><img src="https://img.shields.io/sourceforge/dt/project-kakapos.svg"></a>
     <a title="Join the chat at https://gitter.im/kakapos/Lobby" href="https://gitter.im/project-kakapos/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/project-kakapos/Lobby.svg"></a>
 </p>
