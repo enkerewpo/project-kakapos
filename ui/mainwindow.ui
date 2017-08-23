@@ -26,15 +26,19 @@
     <normaloff>../images/kakapos_ico.png</normaloff>../images/kakapos_ico.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
+   <string notr="true">QWidget{
+font-family:Segoe UI;
+ background-color:rgb(65,65,65);
+color:white;
+}
 
+QPlainTextEdit{
+font-family:Consolas;
+}
+
+QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
 QPushButton:hover:pressed{background-color:white;color:rgb(45,45,45);}
-
-QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;}
-
-QPushButton{font-family:Segoe UI;}
-
-font-family:Segoe UI;</string>
+QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} QPushButton{font-family:Segoe UI;}</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>
@@ -100,7 +104,7 @@ item:pressed {
  }</string>
    </property>
    <property name="nativeMenuBar">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <widget class="QMenu" name="menuHelp">
     <property name="font">

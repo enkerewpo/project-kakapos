@@ -29,7 +29,7 @@ bool modified, saved, newfile;
 int dynamic_width, dynamic_height, user_fontsize;
 
 #ifdef Q_OS_WIN
-    int tab_len = 4;
+    int tab_len = 5;
 #elif defined (Q_OS_OSX)
     int tab_len = 4;
 #else
@@ -153,7 +153,7 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
     dynamic_height = this->height();
     dynamic_width = this->width();
     editor->setGeometry(-1, 0, width() + 2, height() - 35);
-    ui->statuslabel->setGeometry(2, this->height() - 40, this->width() - 2, 20);
+    ui->statuslabel->setGeometry(14, this->height() - 39, this->width() - 2, 20);
 }
 
 void MainWindow::new_obj() {

@@ -88,6 +88,7 @@ private:
     QTextCharFormat signsFormat;
     QTextCharFormat numbersFormat;
     QTextCharFormat modulenumFormat;
+    QTextCharFormat braceFormat;
 };
 
 #endif // HIGHLIGHTER_C_H

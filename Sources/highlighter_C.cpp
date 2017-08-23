@@ -80,16 +80,17 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     highlightingRules.append(rule);
 
     signsFormat.setForeground(QColor("#B0E0E6"));
-    QStringList keywordPatterns_signs;
-    keywordPatterns_signs << "[~!#%^&*()_+|\\{},.?[]=:/<>;]";
-    foreach (const QString &pattern, keywordPatterns_signs) {
-        rule.pattern = QRegularExpression(pattern);
-        rule.format = signsFormat;
-        highlightingRules.append(rule);
-    }
+    rule.pattern = QRegularExpression("[!@#$%^&*=+-/?:<>\\[\\]\\(\\);]");
+    rule.format = signsFormat;
+    highlightingRules.append(rule);
+
+    braceFormat.setForeground(QColor("#36c84c"));
+    rule.pattern = QRegularExpression("[{}]");
+    rule.format = braceFormat;
+    highlightingRules.append(rule);
 
     numbersFormat.setForeground(QColor(186, 163, 229));
-    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?([0-9]+(u)?(l)?(L)?(LL)?(ll)?)+");
+    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]+");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
@@ -105,7 +106,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 
 
     modulenumFormat.setForeground(QColor("#9BCD9B"));
-    rule.pattern = QRegularExpression("%d?(lld)?(I64d)?c?s?u?(lf)?(llf)?");
+    rule.pattern = QRegularExpression("((%d)?(%lld)?(%I64d)?(%c)?(%s)?(%u)?(%lf)?(%llf)?)+");
     rule.format = modulenumFormat;
     highlightingRules.append(rule);
 
