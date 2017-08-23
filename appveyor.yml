@@ -4,6 +4,7 @@ install:
 build_script:
   - qmake kakapos.pro
   - mingw32-make
+  - cd release
   - mkdir kakapos-0.5.5
   - mv kakapos.exe kakapos-0.5.5
   - cd kakapos-0.5.5
