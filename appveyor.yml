@@ -12,10 +12,14 @@ build_script:
 artifacts:
   - path: kakapos-0.5.5
 deploy:
-  - provider: GitHub
-      artifact: /.*\.zip/           # upload all NuGet packages to release assets
-      draft: false
-      prerelease: true
-      on:
-        branch: master                # release from master branch only
-        appveyor_repo_tag: true       # deploy on tag push only
+  release: kakapos-v0.5.5
+  description: 'Test Appveyor release'
+  provider: GitHub
+  auth_token: 
+    secure: 22b4273a5828c3be0f5ac5ef71a5aea3798fa5fc # your encrypted token from GitHub
+  artifact: /.*\.zip/            # upload all NuGet packages to release assets
+  draft: false
+  prerelease: true
+  on:
+    branch: master                 # release from master branch only
+    appveyor_repo_tag: true        # deploy on tag push only
