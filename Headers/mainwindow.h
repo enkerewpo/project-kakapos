@@ -29,6 +29,7 @@ public slots:
     void debug();
     void get_file_dir();
     void start_astyle();
+    void load_settings();
 
 private:
     Ui::MainWindow *ui;

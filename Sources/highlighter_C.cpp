@@ -53,10 +53,15 @@
 Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent) {
     HighlightingRule rule;
 
+    numbersFormat.setForeground(QColor(186, 163, 229));
+    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]+");
+    rule.format = numbersFormat;
+    highlightingRules.append(rule);
+
     keywordFormat.setForeground(QColor("#F4E175"));
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
-    keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b" <<"\\b__inline\\b" << "\\b__int64\\b"
+    keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b" <<"\\b__inline\\b" << "\\b__int64\\b"<<"\\b__int32\\b"<<"\\b__int128\\b"
                     << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bauto\\b" <<"\\bfor\\b"
                     << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b" << "\\bconstexpr\\b"
                     << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bwhile\\b"
@@ -66,7 +71,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
                     << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bgoto\\b"
                     << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b" << "\\bcontinue\\b" << "\\bdelete\\b"
                     << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bbool\\b" << "\\busing\\b" << "\\bnew\\b"
-                    << "\\band\\b" << "\\bor\\b" << "\\bxor\\b";
+                    << "\\band\\b" << "\\bor\\b" << "\\bxor\\b" << "\\bfloat\\b";
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = keywordFormat;
@@ -80,19 +85,16 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     highlightingRules.append(rule);
 
     signsFormat.setForeground(QColor("#B0E0E6"));
-    rule.pattern = QRegularExpression("[!@#$%^&*=+-/?:<>\\[\\]\\(\\);]");
+    rule.pattern = QRegularExpression("[!@#$%^&*=+-/?:{}<>\\[\\]\\(\\);]");
     rule.format = signsFormat;
     highlightingRules.append(rule);
 
-    braceFormat.setForeground(QColor("#36c84c"));
-    rule.pattern = QRegularExpression("[{}]");
-    rule.format = braceFormat;
-    highlightingRules.append(rule);
+//    braceFormat.setForeground(QColor("#36c84c"));
+//    rule.pattern = QRegularExpression("[{}]");
+//    rule.format = braceFormat;
+//    highlightingRules.append(rule);
 
-    numbersFormat.setForeground(QColor(186, 163, 229));
-    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]+");
-    rule.format = numbersFormat;
-    highlightingRules.append(rule);
+
 
 //    quotation_single_Format.setForeground(QColor("#E89D86"));
 //    rule.pattern = QRegularExpression("\".*");

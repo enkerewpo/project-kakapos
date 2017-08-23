@@ -3,6 +3,7 @@
 #include "Headers/shadow_effect.h"
 #include <QFileDialog>
 #include <QMessageBox>
+#include <iostream>
 #include <QProcess>
 #include <QLayout>
 #include <QTime>
@@ -14,8 +15,6 @@
 #include <string>
 #include <cstdlib>
 #include <cstring>
-#include <string>
-#include <vector>
 #include <QTextStream>
 #include <yaml-cpp/yaml.h>
 #include "Headers/code_editor.h"
@@ -43,6 +42,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     editor = new CodeEditor(ui->centralWidget);
 
+        load_settings(); // LOAD kakapos_config.yml TO CONFIGURE SETTINGS
+
     setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
     connect(ui->actionAbout, &QAction::triggered, this, &MainWindow::show_about);
@@ -51,10 +52,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionNew, &QAction::triggered, this, &MainWindow::new_obj);
     connect(ui->actionBuild, &QAction::triggered, this, &MainWindow::build);
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
-
     connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
 
     ui->statuslabel->setText(QString("All settings have been loaded."));
+    newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
     editor->fontsize = 11;
     editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
@@ -110,7 +111,10 @@ void MainWindow::update() {
         editor->filetype = "cplusplus";
         ui->statuslabel->setText(QString("Prasing Syntax: C++"));
     }
-    else ui->statuslabel->setText(QString("Prasing Syntax: Plain text"));
+    else {
+        if(highlighter != NULL) highlighter = NULL;
+        ui->statuslabel->setText(QString("Prasing Syntax: Plain text"));
+    }
 }
 
 
@@ -179,6 +183,7 @@ void MainWindow::save_file(QString filename) {
 }
 
 void MainWindow::save_obj() {
+    qDebug() << newfile;
     if(!newfile) {
         pDir = new QDir(".");
         fileDir = pDir->filePath(global_filename);
@@ -206,10 +211,6 @@ void MainWindow::save_obj() {
         pDir = new QDir(".");
 
         fileDir = pDir->filePath(savefilename);
-        tmpfileDir = pDir->filePath(tmp_filename);
-
-        tmp_filename = savefilename + ".kat";
-
         get_file_dir();
 
         QFile file(savefilename);
@@ -333,4 +334,8 @@ void MainWindow::start_astyle(){
         editor->insertPlainText(out.readAll());
     }
     update();
+}
+
+void MainWindow::load_settings() {
+
 }
