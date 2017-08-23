@@ -3,7 +3,7 @@
 ------
 [![Build Status](https://travis-ci.org/enkerewpo/project-kakapos.svg?branch=master)](https://travis-ci.org/enkerewpo/project-kakapos)
 [![Build status](https://ci.appveyor.com/api/projects/status/i6vs11mn63dyager?svg=true)](https://ci.appveyor.com/project/enkerewpo/project-kakapos)
-[![GitHub tags](https://img.shields.io/github/tag/project-kakapos/rubidium.svg)](https://github.com/enkerewpo/project-kakapos/tags)
+[![GitHub tag](https://img.shields.io/github/tag/project-kakapos/project-kakapos.svg)](https://github.com/enkerewpo/project-kakapos/tags)
 [![Download project-kakapos](https://img.shields.io/sourceforge/dt/project-kakapos.svg)](https://sourceforge.net/projects/project-kakapos/files/latest/download)
 [![Join the chat at https://gitter.im/kakapos/Lobby](https://badges.gitter.im/project-kakapos/Lobby.svg)](https://gitter.im/project-kakapos/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
