@@ -31,9 +31,8 @@ $ qmake kakapos.pro
 $ make
 ```
 ## Download _kakapos_ release
-![Download project-kakapos](https://sourceforge.net/sflogo.php?type=16&group_id=2877921)
-
-[___Download___ -> Click here to view available release on Sourceforge](https://sourceforge.net/p/project-kakapos/)
+<div align=center><img src="https://sourceforge.net/sflogo.php?type=16&group_id=2877921"></div>
+<div align=center><a title="Click here to view available release on Sourceforge" href="https://sourceforge.net/p/project-kakapos/"></a></div>
 
 ## Development notification launchpad
 This project is totally not official and so its codes maybe somehow messy.
