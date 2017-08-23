@@ -11,7 +11,7 @@ build_script:
   - windeployqt kakapos.exe
   - cd ..
 artifacts:
-  - path: kakapos-0.5.5
+  - path: kakapos-0.5.5.zip
 deploy:
   release: kakapos-v0.5.5
   description: 'Test Appveyor release'
@@ -20,7 +20,7 @@ deploy:
     secure: 22b4273a5828c3be0f5ac5ef71a5aea3798fa5fc # your encrypted token from GitHub
   artifact: /.*\.zip/            # upload all NuGet packages to release assets
   draft: false
-  prerelease: true
+  prerelease: false
   on:
     branch: master                 # release from master branch only
     appveyor_repo_tag: true        # deploy on tag push only
