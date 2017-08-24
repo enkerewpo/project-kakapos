@@ -60,3 +60,11 @@ macx:{
 DISTFILES += \
     kakapos.rc \
     config/kakapos_config.yml
+
+win32: LIBS += -L$$PWD/yaml-cpp/ -lyaml-cpp
+
+INCLUDEPATH += $$PWD/yaml-cpp
+DEPENDPATH += $$PWD/yaml-cpp
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/yaml-cpp/yaml-cpp.lib
+else:win32-g++: PRE_TARGETDEPS += $$PWD/yaml-cpp/libyaml-cpp.a

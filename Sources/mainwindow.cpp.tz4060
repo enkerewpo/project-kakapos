@@ -19,6 +19,8 @@
 #include <yaml-cpp/yaml.h>
 #include "Headers/code_editor.h"
 
+#pragma comment(lib, "yaml-cpp/libyaml-cppmd.lib")
+
 CodeEditor *editor;
 QDir *pDir;
 QString fileDir, tmpfileDir;
@@ -337,6 +339,6 @@ void MainWindow::start_astyle(){
 }
 
 void MainWindow::load_settings() {
-    YAML::Node config = YAML::LoadFile("");
+    YAML::Node config = YAML::LoadFile("kakapos_config.yml");
 //    std::string font_family = config["font-family"].as<std::string>();
 }
