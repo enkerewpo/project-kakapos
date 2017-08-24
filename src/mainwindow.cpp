@@ -354,13 +354,6 @@ void MainWindow::load_settings() {
 
     QFont &font = editor->font;
 
-#ifdef  Q_OS_MAC
-    editor->setFont(QFont(editor->font_family_mac = "DejaVu Sans Mono",user_fontsize + 2));
-     QFontMetrics metrics(editor->font_family_mac);
-#elif defined (Q_OS_WIN)
-
-#endif
-
     if(json_error.error == QJsonParseError::NoError)
     {
         QVariantMap res = parse_doucment.toVariant().toMap();
