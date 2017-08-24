@@ -31,6 +31,8 @@ background-color:rgb(65,65,65);
 color:white;
 }
 
+QMenubar:hover:pressed{color:red;}
+
 QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
 QPushButton:hover:pressed{background-color:white;color:rgb(45,45,45);}
 QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} QPushButton{font-family:Segoe UI;}</string>
@@ -68,6 +70,205 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
      <height>21</height>
     </rect>
    </property>
+   <property name="palette">
+    <palette>
+     <active>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Highlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>101</red>
+         <green>180</green>
+         <blue>11</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </active>
+     <inactive>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Highlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>101</red>
+         <green>180</green>
+         <blue>11</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </inactive>
+     <disabled>
+      <colorrole role="WindowText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Button">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Text">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="ButtonText">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Base">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Window">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>65</red>
+         <green>65</green>
+         <blue>65</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="Highlight">
+       <brush brushstyle="SolidPattern">
+        <color alpha="255">
+         <red>51</red>
+         <green>153</green>
+         <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+     </disabled>
+    </palette>
+   </property>
    <property name="font">
     <font>
      <family>Segoe UI</family>
@@ -82,27 +283,31 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
     <enum>Qt::CustomContextMenu</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(255, 255, 255); 
+    <string notr="true">/*
+color:rgb(255, 255, 255); 
 background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
 stop:0 rgb(51, 185, 78), stop:1 rgb(70, 113, 63));
 
 item {
-     spacing: 3px; /* spacing between menu bar items */
+     spacing: 3px; 
      padding: 1px 4px;
      background: transparent;
      border-radius: 4px;
- }
+ }*/
 
-item:selected { /* when selected using mouse or keyboard */
-     /*background: #a8a8a8;*/
- }
-
-item:pressed {
+/*item:pressed {
      background: #888888;
- }</string>
+}*/
+
+Qmenu{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
+Qmenu:hover:pressed{background-color:white;color:rgb(45,45,45);}
+Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{font-family:Segoe UI;}</string>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
    </property>
    <property name="nativeMenuBar">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <widget class="QMenu" name="menuHelp">
     <property name="font">
@@ -126,7 +331,7 @@ item:pressed {
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">hover:!pressed{color: white;}</string>
+     <string notr="true">hover:!pressed{color: black;}</string>
     </property>
     <property name="tearOffEnabled">
      <bool>false</bool>

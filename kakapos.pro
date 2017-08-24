@@ -40,7 +40,8 @@ HEADERS += \
     include/splash_recentfile.h \
     include/highlighter_C.h \
     include/code_editor.h \
-    include/shadow_effect.h
+    include/shadow_effect.h \
+    include/headers.h
 
 
 FORMS += \
@@ -59,4 +60,10 @@ macx:{
 
 DISTFILES += \
     ui/kakapos.rc \
-    config/kakapos_config.yml
+    config/kakapos_config.yml \
+    plugin_framework/plugin_manager.py
+
+INCLUDEPATH += $$PWD/plugin_framework/include
+LIBS += -L$$PWD/plugin_framework/libs/ -lpython36
+DEPENDPATH += $$PWD/plugin_framework/libs
+PRE_TARGETDEPS += $$PWD/plugin_framework/libs/python36.lib

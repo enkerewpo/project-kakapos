@@ -1,30 +1,4 @@
-#include "include/mainwindow.h"
-#include "ui_mainwindow.h"
-#include "include/shadow_effect.h"
-#include <QFileDialog>
-#include <QJsonArray>
-#include <QJsonValuePtr>
-#include <QJsonValueRef>
-#include <QJsonParseError>
-#include <QJsonValueRefPtr>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonValue>
-#include <QMessageBox>
-#include <iostream>
-#include <QProcess>
-#include <QLayout>
-#include <QTime>
-#include <QtGlobal>
-#include <QDebug>
-#include <QWidget>
-#include <QScrollBar>
-#include <vector>
-#include <string>
-#include <cstdlib>
-#include <cstring>
-#include <QTextStream>
-#include "include/code_editor.h"
+#include <include/headers.h>
 
 CodeEditor *editor;
 QDir *pDir;
@@ -46,9 +20,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
     editor = new CodeEditor(ui->centralWidget);
 
-        load_settings(); // LOAD CONFIG TO CONFIGURE SETTINGS
+    load_settings(); // LOAD CONFIG TO CONFIGURE SETTINGS
+
+    load_plugin(); // IMPORT PYTHON PLUGINS
 
     setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
@@ -60,7 +37,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
     connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
     connect(ui->actionKakapos_settings, &QAction::triggered, this, &MainWindow::load_settings);
-
 
     ui->statuslabel->setText(QString("All settings have been loaded."));
     newfile = true;
@@ -323,8 +299,8 @@ void MainWindow::start_astyle(){
     QString path;
     QDir dir;
     path = dir.absolutePath();
-    astyle.start(path + "/release/astyle",QStringList() << "--style=kr" << "-p" << global_filename);
-    qDebug() << path + "/release/astyle --style=kr -p " + global_filename;
+    astyle.start(path + "/astyle",QStringList() << "--style=kr" << "-p" << global_filename);
+    qDebug() << path + "/astyle --style=kr -p " + global_filename;
     astyle.waitForFinished();
     while (astyle.canReadLine()) {
         qDebug() << astyle.readLine().trimmed();
@@ -342,8 +318,11 @@ void MainWindow::start_astyle(){
 
 void MainWindow::load_settings() {
     QString val;
+    QDir dir;
+    QString path = dir.absolutePath();
     QFile config;
-    config.setFileName("config.json");
+    QString filename = path + "/release" + "/Config/config.json";
+    config.setFileName(filename);
     config.open(QIODevice::ReadOnly | QIODevice::Text);
     val = config.readAll();
     qDebug() << val;
@@ -369,3 +348,33 @@ void MainWindow::load_settings() {
     QFontMetrics metrics(font);
     editor->setTabStopWidth(tab_len * metrics.width(' '));
 }
+
+void MainWindow::load_plugin() {
+    qDebug() << "IN";
+    Py_Initialize();
+    if(!Py_IsInitialized()) {
+        qDebug() << "INITAL PYTHON ERROR";
+        return;
+    }
+    PyObject *pModule = NULL;
+    PyObject *pFunc   = NULL;
+
+    pModule = PyImport_ImportModule("plugin_manager");
+
+    if(!pModule) {
+        qDebug() << "LOAD MODULE ERROR";
+        return;
+    }
+
+    pFunc   = PyObject_GetAttrString(pModule, "init");
+
+    if(!pFunc) {
+        qDebug() << "LOAD FUNCTION ERROR";
+        return;
+    }
+
+    PyEval_CallObject(pFunc, NULL);
+    Py_Finalize();
+    qDebug() << "OUT";
+}
+

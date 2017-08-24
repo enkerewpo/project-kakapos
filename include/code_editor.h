@@ -86,9 +86,6 @@ public:
         snippets_depth = 0;
     }
 
-signals:
-    void got_return_keypressed();
-
 protected:
     void resizeEvent(QResizeEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;

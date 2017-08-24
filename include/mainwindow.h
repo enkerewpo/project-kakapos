@@ -30,6 +30,7 @@ public slots:
     void get_file_dir();
     void start_astyle();
     void load_settings();
+    void load_plugin();
 
 private:
     Ui::MainWindow *ui;

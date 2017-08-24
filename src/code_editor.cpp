@@ -176,6 +176,12 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
 
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
+    if(event->key() == Qt::Key_Return) {
+        QPlainTextEdit::keyPressEvent(event);
+        textCursor().deletePreviousChar();
+        insertPlainText("\r");
+        return;
+    }
     if(filetype == "cplusplus") {
         if(event->key() == Qt::Key_Backspace) {
             QString text = toPlainText();
@@ -284,6 +290,9 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         ed:
         QKeyEvent* e = event;
         if(e->key() == Qt::Key_Return) {
+            textCursor().deletePreviousChar();
+            insertPlainText("\n");
+            textCursor().deletePreviousChar();
             int pos = textCursor().position();
             //qDebug() << "RETURN AT POS " << pos <<" WITH LAYER " << layer[pos];
             for(int i = 1; i <= layer[pos]; i++) {
