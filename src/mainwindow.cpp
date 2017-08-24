@@ -332,7 +332,7 @@ void MainWindow::load_settings() {
     QDir dir;
     QString path = dir.absolutePath();
     QFile config;
-    QString filename = path + "/release" + "/Config/config.json";
+    QString filename = path + "/Config/config.json";
     config.setFileName(filename);
     config.open(QIODevice::ReadOnly | QIODevice::Text);
     val = config.readAll();

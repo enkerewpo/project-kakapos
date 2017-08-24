@@ -53,7 +53,7 @@
 Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent) {
     HighlightingRule rule;
 
-    numbersFormat.setForeground(QColor(186, 163, 229));
+    numbersFormat.setForeground(QColor("#ff806a"));
     rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]+");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
