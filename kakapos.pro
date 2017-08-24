@@ -28,26 +28,26 @@ SOURCES += \
     main.cpp \
     src/highlighter_C.cpp \
     src/mainwindow.cpp \
-    src/splash_recentfile.cpp \
     src/splashwindow.cpp \
     src/code_editor.cpp \
-    src/shadow_effect.cpp
+    src/shadow_effect.cpp \
+    src/aboutwindow.cpp
 
 
 HEADERS += \
-        include/mainwindow.h \
+    include/mainwindow.h \
     include/splashwindow.h \
-    include/splash_recentfile.h \
     include/highlighter_C.h \
     include/code_editor.h \
     include/shadow_effect.h \
-    include/headers.h
+    include/headers.h \
+    include/aboutwindow.h
 
 
 FORMS += \
-        ui/mainwindow.ui \
+    ui/mainwindow.ui \
     ui/splashwindow.ui \
-    ui/splash_recentfile.ui \
+    ui/aboutwindow.ui
 
 win32:{
     RC_ICONS = ui/kakapos.ico
@@ -67,3 +67,6 @@ INCLUDEPATH += $$PWD/plugin_framework/include
 LIBS += -L$$PWD/plugin_framework/libs/ -lpython36
 DEPENDPATH += $$PWD/plugin_framework/libs
 PRE_TARGETDEPS += $$PWD/plugin_framework/libs/python36.lib
+
+RESOURCES += \
+    images.qrc

@@ -58,8 +58,9 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
-    keywordFormat.setForeground(QColor("#F4E175"));
+    keywordFormat.setForeground(QColor("#53c1c4"));
     keywordFormat.setFontWeight(QFont::Bold);
+    keywordFormat.setFontItalic(true);
     QStringList keywordPatterns;
     keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b" <<"\\b__inline\\b" << "\\b__int64\\b"<<"\\b__int32\\b"<<"\\b__int128\\b"
                     << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bauto\\b" <<"\\bfor\\b"
@@ -78,13 +79,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
         highlightingRules.append(rule);
     }
 
-    classFormat.setFontWeight(QFont::Bold);
-    classFormat.setForeground(QColor("#EFBCAC"));
-    rule.pattern = QRegularExpression("\\bQ[A-Za-z]+\\b");
-    rule.format = classFormat;
-    highlightingRules.append(rule);
-
-    signsFormat.setForeground(QColor("#B0E0E6"));
+    signsFormat.setForeground(QColor("#8abc27"));
     rule.pattern = QRegularExpression("[!@#$%^&*=+-/?:{}<>\\[\\]\\(\\);]");
     rule.format = signsFormat;
     highlightingRules.append(rule);
@@ -101,7 +96,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 //    rule.format = quotation_single_Format;
 //    highlightingRules.append(rule);
 
-    quotationFormat.setForeground(QColor("#E89D86"));
+    quotationFormat.setForeground(QColor("#d59d12"));
     rule.pattern = QRegularExpression("\".*\"");
     rule.format = quotationFormat;
     highlightingRules.append(rule);
@@ -112,12 +107,12 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     rule.format = modulenumFormat;
     highlightingRules.append(rule);
 
-    singleLineCommentFormat.setForeground(QColor("#71C671"));
+    singleLineCommentFormat.setForeground(QColor("#86826d"));
     rule.pattern = QRegularExpression("//[^\n]*[\"]*[^\n]*[\"]*[^\n]*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
-    multiLineCommentFormat.setForeground(QColor("#71C671"));
+    multiLineCommentFormat.setForeground(QColor("#86826d"));
 
 //    functionFormat.setFontItalic(true);
 //    functionFormat.setForeground(QColor("#63DAE8"));
@@ -125,7 +120,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 //    rule.format = functionFormat;
 //    highlightingRules.append(rule);
 
-    sharpFormat.setForeground(QColor("#ec711e"));
+    sharpFormat.setForeground(QColor("#f9275f"));
     rule.pattern = QRegularExpression("\#.*[^\n]");
     rule.format = sharpFormat;
     highlightingRules.append(rule);

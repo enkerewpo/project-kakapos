@@ -13,6 +13,8 @@
 #include <Python.h>
 
 //cplusplus
+#include <QString>
+QString tag_global;
 #include "include/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "include/shadow_effect.h"
@@ -41,5 +43,7 @@
 #include <cstring>
 #include <QTextStream>
 #include "include/code_editor.h"
+
+
 
 #endif // HEADERS_H

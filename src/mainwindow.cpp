@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
     connect(ui->actionKakapos_settings, &QAction::triggered, this, &MainWindow::load_settings);
 
+    tag = "0.5.9";
+    setWindowTitle("kakapos " + tag);
     ui->statuslabel->setText(QString("All settings have been loaded."));
     newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
@@ -112,7 +114,7 @@ void MainWindow::open_obj() {
     QFile file(fileName);
     if(!file.open(QIODevice::ReadWrite)) return;
     QTextStream out(&file);
-    this->setWindowTitle(global_filename);
+    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
     editor->clear();
     while(!file.atEnd()) {
         editor->insertPlainText(out.readAll());
@@ -160,6 +162,7 @@ void MainWindow::save_file(QString filename) {
         qDebug() << filename;
         out << editor->toPlainText();
     }
+    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
 }
 
 void MainWindow::save_obj() {
@@ -212,6 +215,7 @@ void MainWindow::save_obj() {
         global_filename = savefilename;
         newfile = false;
     }
+    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
     update();
 }
 
@@ -237,16 +241,23 @@ void MainWindow::save_as() {
     while(!file.atEnd()) {
         editor->insertPlainText(out.readAll());
     }
+    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
     update();
 }
 
 void MainWindow::show_about() {
-   QMessageBox Msgbox(QMessageBox::Information, "About", "   Kakapos intelligent IDE \n    0.5.0 under GNU GPL3\n Kvar_ispw17 Copyright 2017",QMessageBox::Ok ,this);
-    Msgbox.setStandardButtons(QMessageBox::Ok);
-    Msgbox.setButtonText(QMessageBox::Ok, QString("        OK        "));
-    Msgbox.exec();
+//   QMessageBox Msgbox(QMessageBox::Information, "About", "   Kakapos intelligent IDE \n    " + tag + " under GNU GPL3\n Kvar_ispw17 Copyright 2017",QMessageBox::Ok ,this);
+//    Msgbox.setStandardButtons(QMessageBox::Ok);
+//    Msgbox.setButtonText(QMessageBox::Ok, QString("        OK        "));
+//    Msgbox.exec();
+       AboutWindow * aw = new AboutWindow;
+       aw->tag = this->tag;
+       aw->show();
 }
 
+void MainWindow::show_license() {
+
+}
 
 void MainWindow::build() {
     this->save_obj();

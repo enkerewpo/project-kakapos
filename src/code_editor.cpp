@@ -161,7 +161,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
             QString number = " ";
             number += QString::number(blockNumber + 1);
             number += " ";
-            painter.setPen(QColor(100,100,100));
+            painter.setPen(QColor(200,200,200));
             painter.setFont(font);
             painter.drawText(1, top, lineNumberArea->width() + 7, fontMetrics().height() + 2,
                              Qt::AlignRight, number);
@@ -176,12 +176,6 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
 
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
-    if(event->key() == Qt::Key_Return) {
-        QPlainTextEdit::keyPressEvent(event);
-        textCursor().deletePreviousChar();
-        insertPlainText("\r");
-        return;
-    }
     if(filetype == "cplusplus") {
         if(event->key() == Qt::Key_Backspace) {
             QString text = toPlainText();
@@ -291,10 +285,9 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         QKeyEvent* e = event;
         if(e->key() == Qt::Key_Return) {
             textCursor().deletePreviousChar();
-            insertPlainText("\n");
-            textCursor().deletePreviousChar();
+            insertPlainText("\r");
             int pos = textCursor().position();
-            //qDebug() << "RETURN AT POS " << pos <<" WITH LAYER " << layer[pos];
+            qDebug() << "RETURN AT POS " << pos <<" WITH LAYER " << layer[pos];
             for(int i = 1; i <= layer[pos]; i++) {
                 //qDebug() << "AT LAYER " << layer[pos];
                 insertPlainText(QString("\t"));
@@ -373,7 +366,11 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         ed_2:;
     }
     else {
-        QPlainTextEdit::keyPressEvent(event);
+        if(event->key() == Qt::Key_Return) {
+            QPlainTextEdit::keyPressEvent(event);
+            textCursor().deletePreviousChar();
+            insertPlainText("\r");
+        } else QPlainTextEdit::keyPressEvent(event);
     }
 }
 
