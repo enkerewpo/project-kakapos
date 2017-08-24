@@ -65,8 +65,8 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>150</y>
+     <x>390</x>
+     <y>120</y>
      <width>114</width>
      <height>61</height>
     </rect>
@@ -82,7 +82,7 @@
     <string notr="true">color:white</string>
    </property>
    <property name="frameShape">
-    <enum>QFrame::WinPanel</enum>
+    <enum>QFrame::NoFrame</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Plain</enum>

@@ -56,13 +56,7 @@ WIN32 is still required for the locale module.
 #define HAVE_CLOCK
 #define HAVE_STRERROR
 
-#if defined(Q_OS_WIN32)
 #include <io.h>
-#endif
-
-#if #if defined(Q_OS_MAC)
-#include <sys/io.h>
-#endif
 
 #define HAVE_HYPOT
 #define HAVE_STRFTIME

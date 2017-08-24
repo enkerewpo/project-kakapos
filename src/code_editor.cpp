@@ -123,7 +123,7 @@ void CodeEditor::highlightCurrentLine()
     if (!isReadOnly()) {
         QTextEdit::ExtraSelection selection;
 
-        QColor lineColor = QColor(45,45,45);
+        QColor lineColor = QColor("#2f393c");
 
         selection.format.setBackground(lineColor);
         selection.format.setProperty(QTextFormat::FullWidthSelection, true);
@@ -141,7 +141,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(lineNumberArea);
     QRect rec = event->rect();
-    painter.fillRect(rec, QColor(40,40,40));
+    painter.fillRect(rec, QColor("#2f393c"));
 
 
     QTextBlock block = firstVisibleBlock();
