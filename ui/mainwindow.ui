@@ -27,13 +27,8 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget{
-font-family:Segoe UI;
- background-color:rgb(65,65,65);
+background-color:rgb(65,65,65);
 color:white;
-}
-
-QPlainTextEdit{
-font-family:Consolas;
 }
 
 QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
@@ -55,6 +50,9 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <width>1121</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-family:Segoe UI;</string>
     </property>
     <property name="text">
      <string>TextLabel</string>

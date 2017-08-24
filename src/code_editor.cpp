@@ -81,10 +81,10 @@ int CodeEditor::lineNumberAreaWidth()
         max /= 10;
         ++digits;
     }
+    QFontMetrics met(font);
+    int space = met.width(" ") * digits;
 
-    int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
-
-    return space + 2;
+    return space;
 }
 
 
@@ -154,9 +154,9 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 #ifdef Q_OS_MAC
             QFont font("DejaVu Sans Mono", fontsize + 1);
 #elif defined (Q_OS_WIN)
-            QFont font("Consolas", fontsize);
+//            QFont font(font_family_win, fontsize);
 #else
-            QFont font("Consolas", fontsize);
+            QFont font(font_family_linux, fontsize);
 #endif
             QString number = " ";
             number += QString::number(blockNumber + 1);

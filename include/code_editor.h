@@ -70,12 +70,11 @@ class CodeEditor : public QPlainTextEdit
 public:
     CodeEditor(QWidget *parent = 0);
 
-    int fontsize;
+    QFont font;
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
     int snippets_depth;
     int cursor_position;
-    QString font_family;
     int layer[10000000];
     QString filetype;
     bool do_autotab;

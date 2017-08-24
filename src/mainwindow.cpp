@@ -2,6 +2,14 @@
 #include "ui_mainwindow.h"
 #include "include/shadow_effect.h"
 #include <QFileDialog>
+#include <QJsonArray>
+#include <QJsonValuePtr>
+#include <QJsonValueRef>
+#include <QJsonParseError>
+#include <QJsonValueRefPtr>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
 #include <QMessageBox>
 #include <iostream>
 #include <QProcess>
@@ -27,7 +35,7 @@ bool modified, saved, newfile;
 int dynamic_width, dynamic_height, user_fontsize;
 
 #ifdef Q_OS_WIN
-    int tab_len = 5;
+    int tab_len = 4;
 #elif defined (Q_OS_OSX)
     int tab_len = 4;
 #else
@@ -38,10 +46,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
-
     editor = new CodeEditor(ui->centralWidget);
 
-        load_settings(); // LOAD kakapos_config.yml TO CONFIGURE SETTINGS
+        load_settings(); // LOAD CONFIG TO CONFIGURE SETTINGS
 
     setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
@@ -52,11 +59,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionBuild, &QAction::triggered, this, &MainWindow::build);
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
     connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
+    connect(ui->actionKakapos_settings, &QAction::triggered, this, &MainWindow::load_settings);
+
 
     ui->statuslabel->setText(QString("All settings have been loaded."));
     newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
-    editor->fontsize = 11;
+    {
     editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
                                                           "    border: 0px solid #999999;"
                                                           "    background:transparent;"
@@ -83,15 +92,11 @@ MainWindow::MainWindow(QWidget *parent) :
                                                           "    subcontrol-origin: margin;"
                                                           "}"
                                                           ));
+    }
 
-    user_fontsize = 10;
-#ifdef  Q_OS_MAC
-    editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
-#elif defined (Q_OS_WIN)
-    editor->setFont(QFont("Consolas", user_fontsize));
-#endif
     editor->setStyleSheet("color:rgb(235,235,235);");
-    editor->setTabStopWidth(fontMetrics().width(QLatin1Char('9')) * tab_len);
+
+
 }
 MainWindow::~MainWindow() {
     delete ui;
@@ -336,5 +341,38 @@ void MainWindow::start_astyle(){
 }
 
 void MainWindow::load_settings() {
+    QString val;
+    QFile config;
+    config.setFileName("config.json");
+    config.open(QIODevice::ReadOnly | QIODevice::Text);
+    val = config.readAll();
+    qDebug() << val;
+    config.close();
 
+    QJsonParseError json_error;
+    QJsonDocument parse_doucment = QJsonDocument::fromJson(val.toUtf8(), &json_error);
+
+    QFont &font = editor->font;
+
+#ifdef  Q_OS_MAC
+    editor->setFont(QFont(editor->font_family_mac = "DejaVu Sans Mono",user_fontsize + 2));
+     QFontMetrics metrics(editor->font_family_mac);
+#elif defined (Q_OS_WIN)
+
+#endif
+
+    if(json_error.error == QJsonParseError::NoError)
+    {
+        QVariantMap res = parse_doucment.toVariant().toMap();
+        font.setFamily(res["font-family"].toString());
+        font.setPointSize(res["font-size"].toInt());
+        QString style = res["font-style"].toString();
+        if(style == "monospace") {
+                font.setStyleHint(QFont::Monospace);
+        }
+        if(res["font-fixed-pitch"].toBool()) font.setFixedPitch(true);
+    }
+    editor->setFont(font);
+    QFontMetrics metrics(font);
+    editor->setTabStopWidth(tab_len * metrics.width(' '));
 }
