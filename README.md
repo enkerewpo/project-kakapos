@@ -31,8 +31,9 @@ $ qmake kakapos.pro
 $ make
 ```
 ### 4.Install Python3 for plugin support
-kakapos needs Python3 to implement plugins for kakapos. The simplest editor is wrote in C++, and the other features will be add-ons wrote in Python.
-GOTO [here](https://www.python.org/downloads/) to download it and make sure you have your $PYHONHOME and $PYHONPATH set to Python3 correctly.
+__kakapos__ needs __Python__ to implement plugins for kakapos. The simplest editor is wrote in C++, and the other features will be add-ons wrote in Python3.
+
+GOTO [here](https://www.python.org/downloads/) to download it and make sure you have your `$PYHONHOME` and `$PYHONPATH` set to Python3 correctly.
 
 ## Download _kakapos_ release
 <p align="center">
