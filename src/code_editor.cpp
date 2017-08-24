@@ -55,7 +55,7 @@
 #include <QTypeInfo>
 #include <qDebug>
 #include <cctype>
-#include "Headers/code_editor.h"
+#include "include/code_editor.h"
 
 bool is_auto;
 

@@ -1,4 +1,4 @@
-#include "Headers/shadow_effect.h"
+#include "include/shadow_effect.h"
 #include <QPainter>
 
 CustomShadowEffect::CustomShadowEffect(QObject *parent) :

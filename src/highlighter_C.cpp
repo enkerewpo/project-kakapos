@@ -48,7 +48,7 @@
 **
 ****************************************************************************/
 
-#include "Headers/highlighter_C.h"
+#include "include/highlighter_C.h"
 
 Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent) {
     HighlightingRule rule;

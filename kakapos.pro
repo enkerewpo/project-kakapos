@@ -26,21 +26,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    Sources/highlighter_C.cpp \
-    Sources/mainwindow.cpp \
-    Sources/splash_recentfile.cpp \
-    Sources/splashwindow.cpp \
-    Sources/code_editor.cpp \
-    Sources/shadow_effect.cpp
+    src/highlighter_C.cpp \
+    src/mainwindow.cpp \
+    src/splash_recentfile.cpp \
+    src/splashwindow.cpp \
+    src/code_editor.cpp \
+    src/shadow_effect.cpp
 
 
 HEADERS += \
-        Headers/mainwindow.h \
-    Headers/splashwindow.h \
-    Headers/splash_recentfile.h \
-    Headers/highlighter_C.h \
-    Headers/code_editor.h \
-    Headers/shadow_effect.h
+        include/mainwindow.h \
+    include/splashwindow.h \
+    include/splash_recentfile.h \
+    include/highlighter_C.h \
+    include/code_editor.h \
+    include/shadow_effect.h
 
 
 FORMS += \
@@ -49,22 +49,14 @@ FORMS += \
     ui/splash_recentfile.ui \
 
 win32:{
-    RC_ICONS = kakapos.ico
-    RC_FILE = kakapos.rc
+    RC_ICONS = ui/kakapos.ico
+    RC_FILE = ui/kakapos.rc
 }
 
 macx:{
-    ICON = Mac.icns
+    ICON = ui/Mac.icns
 }
 
 DISTFILES += \
-    kakapos.rc \
+    ui/kakapos.rc \
     config/kakapos_config.yml
-
-win32: LIBS += -L$$PWD/yaml-cpp/ -lyaml-cpp
-
-INCLUDEPATH += $$PWD/yaml-cpp
-DEPENDPATH += $$PWD/yaml-cpp
-
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/yaml-cpp/yaml-cpp.lib
-else:win32-g++: PRE_TARGETDEPS += $$PWD/yaml-cpp/libyaml-cpp.a

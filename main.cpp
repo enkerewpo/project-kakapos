@@ -1,6 +1,6 @@
-#include "Headers/mainwindow.h"
-#include "Headers/splashwindow.h"
-#include "Headers/shadow_effect.h"
+#include "include/mainwindow.h"
+#include "include/splashwindow.h"
+#include "include/shadow_effect.h"
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QPalette>

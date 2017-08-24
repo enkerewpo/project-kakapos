@@ -1,6 +1,6 @@
-#include "Headers/mainwindow.h"
+#include "include/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Headers/shadow_effect.h"
+#include "include/shadow_effect.h"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <iostream>
@@ -16,8 +16,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <QTextStream>
-#include <yaml-cpp/yaml.h>
-#include "Headers/code_editor.h"
+#include "include/code_editor.h"
 
 CodeEditor *editor;
 QDir *pDir;
@@ -85,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                                           "}"
                                                           ));
 
-    user_fontsize = 11;
+    user_fontsize = 10;
 #ifdef  Q_OS_MAC
     editor->setFont(QFont("DejaVu Sans Mono",user_fontsize + 2));
 #elif defined (Q_OS_WIN)
@@ -337,6 +336,5 @@ void MainWindow::start_astyle(){
 }
 
 void MainWindow::load_settings() {
-    YAML::Node config = YAML::LoadFile("");
-//    std::string font_family = config["font-family"].as<std::string>();
+
 }

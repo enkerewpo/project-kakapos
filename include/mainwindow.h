@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "Headers/highlighter_C.h"
+#include "include/highlighter_C.h"
 #include <QMainWindow>
 #include <QLayout>
 

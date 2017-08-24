@@ -1,7 +1,7 @@
-#include "Headers/splashwindow.h"
+#include "include/splashwindow.h"
 #include "ui_splashwindow.h"
-#include "Headers/mainwindow.h"
-#include "Headers/code_editor.h"
+#include "include/mainwindow.h"
+#include "include/code_editor.h"
 #include <QFileDialog>
 #include <QApplication>
 #include <QtMath>
@@ -9,7 +9,7 @@
 #include <QPen>
 #include <QPixmap>
 #include <QDesktopWidget>
-#include "Headers/shadow_effect.h"
+#include "include/shadow_effect.h"
 #include <QSyntaxHighlighter>
 
 SplashWindow::SplashWindow(QWidget *parent) :
