@@ -1,4 +1,4 @@
-<div align=center><img src="https://enkerewpo.github.io/images/icon2.png" height="454" width="666"></div>
+<div align="center"><img src="https://enkerewpo.github.io/images/icon2.png" height="454" width="666"></div>
 
 ------
 <p align="center">
@@ -11,7 +11,7 @@
 
 __Kakapos__ is a next-generation open-source programming integrated development environment (IDE).
 
-Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in C++ with Qt5. 
+Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with _Qt5_ and __Python__ in _PyCharm_.
 
 ## Build kakapos from source code
 The source files are under the Qt project building method.
