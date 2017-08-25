@@ -1,11 +1,14 @@
 #include <include/headers.h>
-
+#include <windows.h>
 CodeEditor *editor;
 QDir *pDir;
 QString fileDir, tmpfileDir;
 QString global_filename, tmp_filename, global_file_shortname, g_filedir;
 QString gcc_path;
-bool modified, saved, newfile;
+
+bool modified_b, saved;
+
+bool newfile, is_loadsettings, is_loadplugins;
 int dynamic_width, dynamic_height, user_fontsize;
 
 #ifdef Q_OS_WIN
@@ -37,10 +40,22 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::run);
     connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
     connect(ui->actionKakapos_settings, &QAction::triggered, this, &MainWindow::load_settings);
+    connect(editor, &CodeEditor::modified, this, &MainWindow::modified);
+
+    if (this->isMinimized()){
+        this->showNormal();
+    }
+    SetWindowPos(HWND(this->winId()), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+    SetWindowPos(HWND(this->winId()), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
+
+    this->activateWindow();
 
     tag = "0.5.9";
     setWindowTitle("kakapos " + tag);
-    ui->statuslabel->setText(QString("All settings have been loaded."));
+    if(is_loadsettings) {
+        ui->statuslabel->setText(QString("All settings have been loaded."));
+    } else ui->statuslabel->setText(QString("Settings file not found. Please check your Config/config.json"));
+
     newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
     {
@@ -97,10 +112,21 @@ void MainWindow::update() {
         if(highlighter != NULL) highlighter = NULL;
         ui->statuslabel->setText(QString("Prasing Syntax: Plain text"));
     }
+    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
 }
 
 
 void MainWindow::open_obj() {
+    if(modified_b) {
+        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not saved. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
+        if(rb == QMessageBox::Save)
+        {
+               save_obj();
+        }
+        if(rb == QMessageBox::Cancel) {
+            return;
+        }
+    }
     QString fileName = \
     QFileDialog::getOpenFileName(this,
                  tr("Open File"),
@@ -145,11 +171,18 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
 void MainWindow::new_obj() {
     global_filename = "";
     newfile = true;
-    if(modified) {
-
+    if(modified_b) {
+        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not saved. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
+        if(rb == QMessageBox::Save)
+        {
+               save_obj();
+        }
+        if(rb == QMessageBox::Cancel) {
+            return;
+        }
     }
     editor->clear();
-//    update();
+    update();
 }
 
 void MainWindow::save_file(QString filename) {
@@ -162,7 +195,7 @@ void MainWindow::save_file(QString filename) {
         qDebug() << filename;
         out << editor->toPlainText();
     }
-    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
+    update();
 }
 
 void MainWindow::save_obj() {
@@ -215,7 +248,6 @@ void MainWindow::save_obj() {
         global_filename = savefilename;
         newfile = false;
     }
-    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
     update();
 }
 
@@ -241,7 +273,6 @@ void MainWindow::save_as() {
     while(!file.atEnd()) {
         editor->insertPlainText(out.readAll());
     }
-    this->setWindowTitle("kakapos " + tag + " - " +global_filename);
     update();
 }
 
@@ -334,7 +365,11 @@ void MainWindow::load_settings() {
     QFile config;
     QString filename = path + "/Config/config.json";
     config.setFileName(filename);
-    config.open(QIODevice::ReadOnly | QIODevice::Text);
+    if(!config.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        is_loadsettings = false;
+        return;
+    }
+    is_loadsettings = true;
     val = config.readAll();
     qDebug() << val;
     config.close();
@@ -361,31 +396,56 @@ void MainWindow::load_settings() {
 }
 
 void MainWindow::load_plugin() {
-    qDebug() << "IN";
-    Py_Initialize();
-    if(!Py_IsInitialized()) {
-        qDebug() << "INITAL PYTHON ERROR";
-        return;
+//    qDebug() << "IN LOADING";
+//    Py_Initialize();
+//    if(!Py_IsInitialized()) {
+//        qDebug() << "INITAL PYTHON ERROR";
+//        return;
+//    }
+//    PyObject *pModule = NULL;
+//    PyObject *pFunc   = NULL;
+//    PyRun_SimpleString("import sys");
+//    PyRun_SimpleString("from PyQt5.QtWidgets import QApplication, QMainWindow");
+//    PyRun_SimpleString("from init_window import *");
+//    pModule = PyImport_ImportModule("plugin_manager");
+
+//    if(!pModule) {
+//        qDebug() << "LOAD MODULE ERROR";
+//        return;
+//    }
+
+//    pFunc   = PyObject_GetAttrString(pModule, "init");
+
+//    if(!pFunc) {
+//        qDebug() << "LOAD FUNCTION ERROR";
+//        return;
+//    }
+
+//    PyEval_CallObject(pFunc, NULL);
+//    Py_Finalize();
+//    qDebug() << "OUT LOADING";
+    QProcess proc;
+    proc.start("python plugin_manager.py");
+    proc.waitForFinished();
+    while (proc.canReadLine()) {
+        qDebug() << proc.readLine().trimmed();
     }
-    PyObject *pModule = NULL;
-    PyObject *pFunc   = NULL;
-
-    pModule = PyImport_ImportModule("plugin_manager");
-
-    if(!pModule) {
-        qDebug() << "LOAD MODULE ERROR";
-        return;
-    }
-
-    pFunc   = PyObject_GetAttrString(pModule, "init");
-
-    if(!pFunc) {
-        qDebug() << "LOAD FUNCTION ERROR";
-        return;
-    }
-
-    PyEval_CallObject(pFunc, NULL);
-    Py_Finalize();
-    qDebug() << "OUT";
 }
 
+void MainWindow::modified() {
+    modified_b = true;
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if(modified_b) {
+        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "Quiting kakapos - Warning", "File not saved. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
+        if(rb == QMessageBox::Save)
+        {
+               save_obj();
+        }
+        if(rb == QMessageBox::Cancel) {
+            return;
+        }
+    }
+}

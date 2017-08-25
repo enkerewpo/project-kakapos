@@ -86,6 +86,9 @@ public:
         snippets_depth = 0;
     }
 
+signals:
+    void modified();
+
 protected:
     void resizeEvent(QResizeEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;

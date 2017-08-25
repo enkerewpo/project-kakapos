@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QLayout>
 #include <QString>
+#include <QCloseEvent>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,7 @@ public slots:
     void start_astyle();
     void load_settings();
     void load_plugin();
+    void modified();
 
 private:
     Ui::MainWindow *ui;
@@ -43,6 +45,7 @@ private:
     // QWidget interface
 protected:
     virtual void resizeEvent(QResizeEvent *event);
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // MAINWINDOW_H

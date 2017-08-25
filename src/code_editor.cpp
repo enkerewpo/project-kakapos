@@ -176,6 +176,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 
 
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
+    emit modified();
     if(filetype == "cplusplus") {
         if(event->key() == Qt::Key_Backspace) {
             QString text = toPlainText();
