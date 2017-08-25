@@ -1,5 +1,9 @@
 #include <include/headers.h>
+
+#ifdef Q_OS_WIN
 #include <windows.h>
+#endif
+
 CodeEditor *editor;
 QDir *pDir;
 QString fileDir, tmpfileDir;
@@ -41,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAStyle, &QAction::triggered, this, &MainWindow::start_astyle);
     connect(ui->actionKakapos_settings, &QAction::triggered, this, &MainWindow::load_settings);
     connect(editor, &CodeEditor::modified, this, &MainWindow::modified);
-
+#ifdef Q_OS_WIN
     if (this->isMinimized()){
         this->showNormal();
     }
@@ -49,7 +53,7 @@ MainWindow::MainWindow(QWidget *parent) :
     SetWindowPos(HWND(this->winId()), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
 
     this->activateWindow();
-
+#endif
     tag = "0.5.9";
     setWindowTitle("kakapos " + tag);
     if(is_loadsettings) {

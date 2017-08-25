@@ -152,7 +152,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
     while (block.isValid() && top <= event->rect().bottom()) {
         if (block.isVisible() && bottom >= event->rect().top()) {
 #ifdef Q_OS_MAC
-            QFont font("DejaVu Sans Mono", fontsize + 1);
+            QFont font("DejaVu Sans Mono", 13);
 #elif defined (Q_OS_WIN)
 //            QFont font(font_family_win, fontsize);
 #else

@@ -10,7 +10,7 @@
 
 
 //python
-#include <Python.h>
+//#include <Python.h>
 
 //cplusplus
 #include "include/mainwindow.h"

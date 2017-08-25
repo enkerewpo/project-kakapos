@@ -63,6 +63,7 @@ DISTFILES += \
     config/kakapos_config.yml \
     plugin_framework/plugin_manager.py
 
+
 INCLUDEPATH += $$PWD/plugin_framework/include
 LIBS += -L$$PWD/plugin_framework/libs/ -lpython36
 DEPENDPATH += $$PWD/plugin_framework/libs
