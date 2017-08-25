@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     load_settings(); // LOAD CONFIG TO CONFIGURE SETTINGS
 
-    load_plugin(); // IMPORT PYTHON PLUGINS
+//    load_plugin(); // IMPORT PYTHON PLUGINS
 
     setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
