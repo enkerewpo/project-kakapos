@@ -10,7 +10,9 @@
 
 
 //python
-//#include <Python.h>
+#ifdef Q_OS_WIN
+#include <Python.h>
+#endif
 
 //cplusplus
 #include "include/mainwindow.h"
