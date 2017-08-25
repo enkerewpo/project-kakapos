@@ -15,21 +15,26 @@ Project kakapos IDE is licensed under the GNU General Public License v3.0, And s
 
 ## Build kakapos from source code
 The source files are under the Qt project building method.
-### Install Qt5
+### 1.Install Qt5
 1. Download Qt5.9 from the [official website](https://www.qt.io/download/).
 2. Install it with the Qt5.9 with __MinGW 5.3.0 Qt core__ just within the installer package to build this project.
 
-### Setting up qmake and make
+### 2.Setting up qmake and make
 1. Set Environment varibles in directory `PATH/TO/YOUR/QT/5.x.x/mingw_xx/bin/` to enable `qmake`.
 2. Set Environment varibles in directory `PATH/TO/GCC/bin/` which has `make` program in it.
 
-### Commandline
+### 3.Commandline
 ```bash
 $ (enter the project-kakapos source root dirctory)
 $ qmake -project
 $ qmake kakapos.pro
 $ make
 ```
+### 4.Install Python3 for plugin support
+__kakapos__ needs __Python__ to implement plugins for kakapos. The simplest editor is wrote in C++, and the other features will be add-ons wrote in Python3.
+
+GOTO [here](https://www.python.org/downloads/) to download it and make sure you have your `$PYHONHOME` and `$PYHONPATH` set to Python3 correctly.
+
 ## Download _kakapos_ release
 <p align="center">
   <a title="Sourceforge" href="https://sourceforge.net/p/project-kakapos/"><img src="https://sourceforge.net/sflogo.php?type=16&group_id=2877921"></a>
