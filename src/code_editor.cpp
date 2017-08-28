@@ -173,15 +173,14 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
         ++blockNumber;
     }
 }
-
-QString  text;
-QTextCursor brace_cur, tmp;
-int brace_cur_pos;
+QString text;
+QTextCursor backup;
+bool flag;
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
     emit modified();
     if(filetype == "cplusplus") {
         if(event->key() == Qt::Key_Backspace) {
-            QString text = toPlainText();
+            text = toPlainText();
             int pos1 = textCursor().position() - 1;
             int pos2 = pos1 + 1;
             QChar c = text[pos1];
@@ -204,7 +203,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
 
 
         if(event->key() == Qt::Key_ParenRight) {
-            QString text = toPlainText();
+            text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
             if(text[pos] == ")") {
@@ -216,7 +215,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         }
 
         if(event->key() == Qt::Key_QuoteDbl) {
-            QString text = toPlainText();
+            text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
             if(text[pos] == "\"") {
@@ -228,7 +227,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         }
 
         if(event->key() == Qt::Key_Apostrophe) {
-            QString text = toPlainText();
+            text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
             if(text[pos] == "\'") {
@@ -240,7 +239,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         }
 
         if(event->key() == Qt::Key_BracketRight) {
-            QString text = toPlainText();
+            text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
             if(text[pos] == "]") {
@@ -252,23 +251,19 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         }
 
         QPlainTextEdit::keyPressEvent(event);
-
-        update_layer(toPlainText());
-
         text = toPlainText();
-        brace_cur = textCursor();
-        qDebug() << "CURRENT " << brace_cur.position();
-        tmp = brace_cur;
-        brace_cur_pos = brace_cur.position();
-        if(text[brace_cur_pos-1] == '}') {
-            qDebug() << "GOT IT";
-            QTextCharFormat brace;
-            brace.setBackground(Qt::white);
-            brace_cur.setPosition(brace_cur_pos - 1);
-            brace_cur.setPosition(brace_cur_pos, QTextCursor::KeepAnchor);
-            qDebug() << "[" << brace_cur_pos-1 << ","<<brace_cur_pos<<"]";
-            setTextCursor(tmp);
-            brace_cur.setCharFormat(brace);
+        update_layer(text);
+
+        if(text[textCursor().position()-1] == '}') {
+            qDebug() << "START MATCHING BRACES";
+            QTextCharFormat brace_format;
+            brace_format.setBackground(Qt::white);
+            brace_format.setForeground(Qt::black);
+            QTextCursor cursor = textCursor();
+            backup = cursor;
+            cursor.setPosition(textCursor().position()-1);
+            cursor.setPosition(textCursor().position(), QTextCursor::KeepAnchor);
+            cursor.setCharFormat(brace_format);
         }
 
         if (event->key() == Qt::Key_BraceLeft) {
@@ -280,7 +275,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         if(event->key() == Qt::Key_BraceRight) {
             int pos = textCursor().position();
             int lay = layer[pos];
-            QString text = toPlainText();
+            text = toPlainText();
             int start;
             for(int i = pos - 1; ; i--) {
                 if(text[i] == '\n') {
@@ -328,7 +323,7 @@ ed:
             }
         }
         if(e->key() == Qt::Key_ParenLeft) {
-            QString text = toPlainText();
+            text = toPlainText();
             QChar cc = text[textCursor().position()];
             QString c = "";
             c += cc;
@@ -341,7 +336,7 @@ ed:
             setTextCursor(tc);
         }
         if(e->key() == Qt::Key_QuoteDbl) {
-            QString text = toPlainText();
+            text = toPlainText();
             QChar cc = text[textCursor().position()];
             QString c = "";
             c += cc;
@@ -355,7 +350,7 @@ ed:
         }
 
         if(e->key() == Qt::Key_Apostrophe) {
-            QString text = toPlainText();
+            text = toPlainText();
             QChar cc = text[textCursor().position()];
             QString c = "";
             c += cc;
@@ -369,7 +364,7 @@ ed:
         }
 
         if(e->key() == Qt::Key_BracketLeft) {
-            QString text = toPlainText();
+            text = toPlainText();
             QChar cc = text[textCursor().position()];
             QString c = "";
             c += cc;
