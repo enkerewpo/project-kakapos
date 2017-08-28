@@ -174,7 +174,9 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
     }
 }
 
-
+QString  text;
+QTextCursor brace_cur, tmp;
+int brace_cur_pos;
 void CodeEditor::keyPressEvent(QKeyEvent *event) {
     emit modified();
     if(filetype == "cplusplus") {
@@ -249,11 +251,25 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
             }
         }
 
-
         QPlainTextEdit::keyPressEvent(event);
 
         update_layer(toPlainText());
 
+        text = toPlainText();
+        brace_cur = textCursor();
+        qDebug() << "CURRENT " << brace_cur.position();
+        tmp = brace_cur;
+        brace_cur_pos = brace_cur.position();
+        if(text[brace_cur_pos-1] == '}') {
+            qDebug() << "GOT IT";
+            QTextCharFormat brace;
+            brace.setBackground(Qt::white);
+            brace_cur.setPosition(brace_cur_pos - 1);
+            brace_cur.setPosition(brace_cur_pos, QTextCursor::KeepAnchor);
+            qDebug() << "[" << brace_cur_pos-1 << ","<<brace_cur_pos<<"]";
+            setTextCursor(tmp);
+            brace_cur.setCharFormat(brace);
+        }
 
         if (event->key() == Qt::Key_BraceLeft) {
             //qDebug() << "GOT A BRACE LEFT";
@@ -282,7 +298,8 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
             }
             insertPlainText("}");
         }
-        ed:
+ed:
+
         QKeyEvent* e = event;
         if(e->key() == Qt::Key_Return) {
             textCursor().deletePreviousChar();

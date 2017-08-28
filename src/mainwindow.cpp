@@ -58,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle("kakapos " + tag);
     if(is_loadsettings) {
         ui->statuslabel->setText(QString("All settings have been loaded."));
-    } else ui->statuslabel->setText(QString("Settings file not found. Please check your Config/config.json"));
+    } else ui->statuslabel->setText(QString("Settings file not found. Please check your %INSTALLDIR%/config/config.json"));
 
     newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
@@ -113,7 +113,7 @@ void MainWindow::update() {
         ui->statuslabel->setText(QString("Prasing Syntax: C++"));
     }
     else {
-        if(highlighter != NULL) highlighter = NULL;
+        if(highlighter != NULL) delete highlighter;
         ui->statuslabel->setText(QString("Prasing Syntax: Plain text"));
     }
     this->setWindowTitle("kakapos " + tag + " - " +global_filename);
@@ -367,7 +367,7 @@ void MainWindow::load_settings() {
     QDir dir;
     QString path = dir.absolutePath();
     QFile config;
-    QString filename = path + "/Config/config.json";
+    QString filename = path + "/config/config.json";
     config.setFileName(filename);
     if(!config.open(QIODevice::ReadOnly | QIODevice::Text)) {
         is_loadsettings = false;
