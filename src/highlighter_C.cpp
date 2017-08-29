@@ -54,7 +54,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     HighlightingRule rule;
 
     numbersFormat.setForeground(QColor("#e08d8d"));
-    rule.pattern = QRegularExpression("[0-9]+");
+    rule.pattern = QRegularExpression("[0-9]+[uU]?[lL]?[(ll)(LL)]?");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
@@ -68,8 +68,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
-//    functionFormat.setFontWeight(QFont::Bold);
-    functionFormat.setForeground(QColor("#f5742c"));
+    functionFormat.setForeground(QColor("#9375d3"));
     rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
     rule.format = functionFormat;
     highlightingRules.append(rule);
@@ -97,6 +96,16 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = keywordFormat;
+        highlightingRules.append(rule);
+    }
+
+    forformat.setForeground(QColor("#44a2ce"));
+    QStringList forlist;
+    forlist << "\\bfor\\b" << "\\bswitch\\b" << "\\bwhile\\b" << "\\bdo\\b"
+            << "\\bif\\b" << "\\bforeach\\b";
+    foreach (const QString &pattern, forlist) {
+        rule.pattern = QRegularExpression(pattern);
+        rule.format = forformat;
         highlightingRules.append(rule);
     }
 
