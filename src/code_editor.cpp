@@ -83,7 +83,6 @@ int CodeEditor::lineNumberAreaWidth()
     }
     QFontMetrics met(font);
     int space = met.width(" ") * digits;
-
     return space;
 }
 
@@ -161,7 +160,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
             QString number = " ";
             number += QString::number(blockNumber + 1);
             number += " ";
-            painter.setPen(QColor(200,200,200));
+            painter.setPen(QColor(120,120,140));
             painter.setFont(font);
             painter.drawText(1, top, lineNumberArea->width() + 7, fontMetrics().height() + 2,
                              Qt::AlignRight, number);
@@ -254,17 +253,17 @@ void CodeEditor::keyPressEvent(QKeyEvent *event) {
         text = toPlainText();
         update_layer(text);
 
-        if(text[textCursor().position()-1] == '}') {
-            qDebug() << "START MATCHING BRACES";
-            QTextCharFormat brace_format;
-            brace_format.setBackground(Qt::white);
-            brace_format.setForeground(Qt::black);
-            QTextCursor cursor = textCursor();
-            backup = cursor;
-            cursor.setPosition(textCursor().position()-1);
-            cursor.setPosition(textCursor().position(), QTextCursor::KeepAnchor);
-            cursor.setCharFormat(brace_format);
-        }
+//        if(text[textCursor().position()-1] == '}') {
+//            qDebug() << "START MATCHING BRACES";
+//            QTextCharFormat brace_format;
+//            brace_format.setBackground(Qt::white);
+//            brace_format.setForeground(Qt::black);
+//            QTextCursor cursor = textCursor();
+//            backup = cursor;
+//            cursor.setPosition(textCursor().position()-1);
+//            cursor.setPosition(textCursor().position(), QTextCursor::KeepAnchor);
+//            cursor.setCharFormat(brace_format);
+//        }
 
         if (event->key() == Qt::Key_BraceLeft) {
             //qDebug() << "GOT A BRACE LEFT";

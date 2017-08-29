@@ -54,12 +54,27 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     HighlightingRule rule;
 
     numbersFormat.setForeground(QColor("#e08d8d"));
-    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]+");
+    rule.pattern = QRegularExpression("[0-9]+");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
+    over.setForeground(QColor(235,235,235));
+    rule.pattern = QRegularExpression("[a-zA-Z]+[0-9]+");
+    rule.format = over;
+    highlightingRules.append(rule);
+
+    numbersFormat.setForeground(QColor("#e08d8d"));
+    rule.pattern = QRegularExpression("0[xX][0-9a-fA-F]+");
+    rule.format = numbersFormat;
+    highlightingRules.append(rule);
+
+//    functionFormat.setFontWeight(QFont::Bold);
+    functionFormat.setForeground(QColor("#f5742c"));
+    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
+    rule.format = functionFormat;
+    highlightingRules.append(rule);
+
     keywordFormat.setForeground(QColor("#27f9ad"));
-//    keywordFormat.setFontWeight(QFont::Bold);
     keywordFormat.setFontItalic(true);
     QStringList keywordPatterns;
     keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b" <<"\\b__inline\\b" << "\\b__int64\\b"<<"\\b__int32\\b"<<"\\b__int128\\b"
@@ -85,8 +100,8 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
         highlightingRules.append(rule);
     }
 
-    signsFormat.setForeground(QColor("#7bd12e"));
-    rule.pattern = QRegularExpression("[!@#$%^&*=+-/?:{}<>\\[\\]\\(\\);]");
+    signsFormat.setForeground(QColor("#a2e1ec"));
+    rule.pattern = QRegularExpression("[!~@#$%^&*=+-/?:{}<>\\[\\]\\(\\);]");
     rule.format = signsFormat;
     highlightingRules.append(rule);
 
@@ -126,7 +141,6 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 //    rule.format = functionFormat;
 //    highlightingRules.append(rule);
 
-//    sharpFormat.setFontWeight(QFont::Bold);
     sharpFormat.setForeground(QColor("#f92672"));
     rule.pattern = QRegularExpression("\#.*[^\n]");
     rule.format = sharpFormat;
