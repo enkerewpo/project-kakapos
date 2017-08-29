@@ -66,13 +66,19 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
                     << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bauto\\b" <<"\\bfor\\b"
                     << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b" << "\\bconstexpr\\b"
                     << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bwhile\\b"
-                    << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bswitch\\b"
-                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\breturn\\b"
+                    << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bswitch\\b" << "\\bfinal\\b"
+                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\breturn\\b" <<"\\boverride\\b"
                     << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\bif\\b" << "\\bbreak\\b"
                     << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bgoto\\b"
                     << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b" << "\\bcontinue\\b" << "\\bdelete\\b"
                     << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bbool\\b" << "\\busing\\b" << "\\bnew\\b"
-                    << "\\band\\b" << "\\bor\\b" << "\\bxor\\b" << "\\bfloat\\b" << "\\bcase\\b";
+                    << "\\band\\b" << "\\bor\\b" << "\\bxor\\b" << "\\bfloat\\b" << "\\bcase\\b" << "\\bstatic_assert\\b"
+                    << "\\bwchar_t\\b" <<"\\bthis\\b" << "\\bthrow\\b" << "\\btry\\b" << "\\balignas\\b" << "\\balignof\\b"
+                    << "\\btypeid\\b" << "\\bregister\\b" << "\\bstatic_cast\\b" << "\\breinterpret_cast\\b" << "\\brequires\\b"
+                    << "\\bsizeof\\b" << "\\bmutable\\b" << "\\band_eq\\b" << "\\bor_eq\\b" << "\\bcompl\\b"
+                    << "\\bunion\\b" << "\\bnot_eq\\b" << "\\bor_eq\\b" << "\\bconst_cast\\b" << "\\bdecltype\\b"
+                    << "\\bxor_eq\\b" << "\\bnoexcept\\b" << "\\basm\\b" << "\\bregister\\b" << "\\bdefault\\b" << "\\bconcept\\b"
+                    << "\\bexplicit\\b" << "\\bdynamic_cast\\b" << "\\bnullptr\\b" << "\\bbitand\\b" << "\\bbitor\\b";
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = keywordFormat;
