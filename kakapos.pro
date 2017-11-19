@@ -64,10 +64,10 @@ DISTFILES += \
     plugin_framework/plugin_manager.py
 
 
-INCLUDEPATH += $$PWD/plugin_framework/include
-LIBS += -L$$PWD/plugin_framework/libs/ -lpython36
-DEPENDPATH += $$PWD/plugin_framework/libs
-PRE_TARGETDEPS += $$PWD/plugin_framework/libs/python36.lib
+#INCLUDEPATH += $$PWD/plugin_framework/include
+#LIBS += -L$$PWD/plugin_framework/libs/ -lpython36
+#DEPENDPATH += $$PWD/plugin_framework/libs
+#PRE_TARGETDEPS += $$PWD/plugin_framework/libs/python36.lib
 
 RESOURCES += \
     images.qrc

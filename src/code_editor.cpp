@@ -53,7 +53,7 @@
 #include <QByteArray>
 #include <QTextCursor>
 #include <QTypeInfo>
-#include <qDebug>
+#include <QDebug>
 #include <cctype>
 #include "include/code_editor.h"
 
@@ -155,7 +155,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 #elif defined (Q_OS_WIN)
 //            QFont font(font_family_win, fontsize);
 #else
-            QFont font(font_family_linux, fontsize);
+//            QFont font(font_family_linux, fontsize);
 #endif
             QString number = " ";
             number += QString::number(blockNumber + 1);
