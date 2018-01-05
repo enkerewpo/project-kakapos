@@ -107,11 +107,11 @@ void MainWindow::update() {
         highlighter = new Hightlighter_C(editor->document());
         editor->do_autotab = true;
         editor->filetype = "cplusplus";
-        ui->statuslabel->setText(QString("Prasing Syntax: C++"));
+        ui->statuslabel->setText(QString("Parsing Syntax: C++"));
     }
     else {
         if(highlighter != NULL) delete highlighter;
-        ui->statuslabel->setText(QString("Prasing Syntax: Plain text"));
+        ui->statuslabel->setText(QString("Parsing Syntax: Plain text"));
     }
     this->setWindowTitle("kakapos " + tag + " - " +global_filename);
 }
