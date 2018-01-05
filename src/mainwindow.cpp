@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
     newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
     {
-    editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
+   /*editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
                                                           "    border: 0px solid #999999;"
                                                           "    background:transparent;"
                                                           "    width:10px;    "
@@ -88,12 +88,9 @@ MainWindow::MainWindow(QWidget *parent) :
                                                           "    subcontrol-position: top;"
                                                           "    subcontrol-origin: margin;"
                                                           "}"
-                                                          ));
+                                                          ));*/
     }
-
     editor->setStyleSheet("color:rgb(235,235,235);");
-
-
 }
 MainWindow::~MainWindow() {
     delete ui;
