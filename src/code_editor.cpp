@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
@@ -82,7 +82,7 @@ int CodeEditor::lineNumberAreaWidth()
         ++digits;
     }
     QFontMetrics met(font);
-    int space = met.width(" ") * digits;
+    int space = met.width(" ") * digits + 9;
     return space;
 }
 
@@ -90,7 +90,7 @@ int CodeEditor::lineNumberAreaWidth()
 
 void CodeEditor::updateLineNumberAreaWidth(int /* newBlockCount */)
 {
-    setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
+    setViewportMargins(lineNumberAreaWidth() + 16, 0, 0, 0);
 }
 
 
@@ -100,7 +100,7 @@ void CodeEditor::updateLineNumberArea(const QRect &rect, int dy)
     if (dy)
         lineNumberArea->scroll(0, dy);
     else
-        lineNumberArea->update(0, rect.y(), lineNumberArea->width()+6, rect.height());
+        lineNumberArea->update(0, rect.y(), lineNumberArea->width(), rect.height());
 
     if (rect.contains(viewport()->rect()))
         updateLineNumberAreaWidth(0);
@@ -112,7 +112,7 @@ void CodeEditor::resizeEvent(QResizeEvent *e)
 {
     QPlainTextEdit::resizeEvent(e);
     QRect cr = contentsRect();
-    lineNumberArea->setGeometry(QRect(cr.left()-3, cr.top(), lineNumberAreaWidth()+6, cr.height()+1));
+    lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth() + 15, cr.height()));
 }
 
 void CodeEditor::highlightCurrentLine()
@@ -122,7 +122,7 @@ void CodeEditor::highlightCurrentLine()
     if (!isReadOnly()) {
         QTextEdit::ExtraSelection selection;
 
-        QColor lineColor = QColor("#2f393c");
+        QColor lineColor = QColor(Qt::white);
 
         selection.format.setBackground(lineColor);
         selection.format.setProperty(QTextFormat::FullWidthSelection, true);
@@ -140,7 +140,7 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(lineNumberArea);
     QRect rec = event->rect();
-    painter.fillRect(rec, QColor("#2f393c"));
+    painter.fillRect(rec, QColor(Qt::gray));
 
 
     QTextBlock block = firstVisibleBlock();
@@ -160,9 +160,9 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
             QString number = " ";
             number += QString::number(blockNumber + 1);
             number += " ";
-            painter.setPen(QColor(120,120,140));
+            painter.setPen(Qt::black);
             painter.setFont(font);
-            painter.drawText(1, top, lineNumberArea->width() + 7, fontMetrics().height() + 2,
+            painter.drawText(0, top, lineNumberArea->width() + 3, fontMetrics().height() + 2,
                              Qt::AlignRight, number);
         }
 

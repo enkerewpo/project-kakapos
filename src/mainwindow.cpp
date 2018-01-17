@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 //    load_plugin(); // IMPORT PYTHON PLUGINS
 
-    setAttribute(Qt::WA_TranslucentBackground);
+    //setAttribute(Qt::WA_TranslucentBackground);
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
     connect(ui->actionAbout, &QAction::triggered, this, &MainWindow::show_about);
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::save_obj);
@@ -62,35 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
-    {
-   /*editor->verticalScrollBar()->setStyleSheet(QString::fromUtf8("QScrollBar:vertical {"
-                                                          "    border: 0px solid #999999;"
-                                                          "    background:transparent;"
-                                                          "    width:10px;    "
-                                                          "    margin: 0px 0px 0px 0px;"
-                                                          "}"
-                                                          "QScrollBar::handle:vertical {"
-                                                          "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-                                                          "    stop: 0 white, stop: 0.5 white, stop:1 white);"
-                                                          "    min-height: 0px;"
-                                                          "}"
-                                                          "QScrollBar::add-line:vertical {"
-                                                          "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-                                                          "    stop: 0 white, stop: 0.5 white,  stop:1 white);"
-                                                          "    height: 0px;"
-                                                          "    subcontrol-position: bottom;"
-                                                          "    subcontrol-origin: margin;"
-                                                          "}"
-                                                          "QScrollBar::sub-line:vertical {"
-                                                          "    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-                                                          "    stop: 0  white, stop: 0.5 white,  stop:1 white);"
-                                                          "    height: 0 px;"
-                                                          "    subcontrol-position: top;"
-                                                          "    subcontrol-origin: margin;"
-                                                          "}"
-                                                          ));*/
-    }
-    editor->setStyleSheet("color:rgb(235,235,235);");
+//    editor->setStyleSheet("color:rgb(235,235,235);");
 }
 MainWindow::~MainWindow() {
     delete ui;
@@ -368,6 +340,9 @@ void MainWindow::load_settings() {
     config.setFileName(filename);
     if(!config.open(QIODevice::ReadOnly | QIODevice::Text)) {
         is_loadsettings = false;
+        QFont fdefault;
+        fdefault.setFamily("Monospace");
+        editor->setFont(fdefault);
         return;
     }
     is_loadsettings = true;

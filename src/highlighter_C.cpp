@@ -53,27 +53,28 @@
 Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent) {
     HighlightingRule rule;
 
-    numbersFormat.setForeground(QColor("#e08d8d"));
+    numbersFormat.setForeground(Qt::red);
     rule.pattern = QRegularExpression("[0-9]+[uU]?[lL]?[(ll)(LL)]?");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
-    over.setForeground(QColor(235,235,235));
+    over.setForeground(Qt::black);
     rule.pattern = QRegularExpression("[a-zA-Z]+[0-9]+");
     rule.format = over;
     highlightingRules.append(rule);
 
-    numbersFormat.setForeground(QColor("#e08d8d"));
+    numbersFormat.setForeground(Qt::red);
     rule.pattern = QRegularExpression("0[xX][0-9a-fA-F]+");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
-    functionFormat.setForeground(QColor("#9375d3"));
+    functionFormat.setForeground(Qt::black);
+    functionFormat.setFontWeight(QFont::Bold);
     rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
     rule.format = functionFormat;
     highlightingRules.append(rule);
 
-    keywordFormat.setForeground(QColor("#27f9ad"));
+    keywordFormat.setForeground(Qt::blue);
     keywordFormat.setFontItalic(true);
     QStringList keywordPatterns;
     keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b" <<"\\b__inline\\b" << "\\b__int64\\b"<<"\\b__int32\\b"<<"\\b__int128\\b"
@@ -99,7 +100,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
         highlightingRules.append(rule);
     }
 
-    forformat.setForeground(QColor("#44a2ce"));
+    forformat.setForeground(Qt::blue);
     QStringList forlist;
     forlist << "\\bfor\\b" << "\\bswitch\\b" << "\\bwhile\\b" << "\\bdo\\b"
             << "\\bif\\b" << "\\bforeach\\b";
@@ -109,7 +110,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
         highlightingRules.append(rule);
     }
 
-    signsFormat.setForeground(QColor("#a2e1ec"));
+    signsFormat.setForeground(Qt::black);
     rule.pattern = QRegularExpression("[!~@#$%^&*=+-/?:{}<>\\[\\]\\(\\);]");
     rule.format = signsFormat;
     highlightingRules.append(rule);
@@ -150,7 +151,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 //    rule.format = functionFormat;
 //    highlightingRules.append(rule);
 
-    sharpFormat.setForeground(QColor("#f92672"));
+    sharpFormat.setForeground(Qt::darkGreen);
     rule.pattern = QRegularExpression("\#.*[^\n]");
     rule.format = sharpFormat;
     highlightingRules.append(rule);
