@@ -27,9 +27,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Segoe UI Light</family>
-     <pointsize>53</pointsize>
-     <stylestrategy>PreferAntialias</stylestrategy>
+     <pointsize>48</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -42,18 +40,11 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>412</x>
-     <y>217</y>
-     <width>131</width>
-     <height>20</height>
+     <x>431</x>
+     <y>212</y>
+     <width>120</width>
+     <height>30</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI Light</family>
-     <pointsize>10</pointsize>
-     <stylestrategy>PreferAntialias</stylestrategy>
-    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color:white</string>
@@ -73,9 +64,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Segoe UI Light</family>
-     <pointsize>35</pointsize>
-     <stylestrategy>PreferAntialias</stylestrategy>
+     <pointsize>28</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -99,13 +88,6 @@
      <width>131</width>
      <height>20</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI Light</family>
-     <pointsize>10</pointsize>
-     <stylestrategy>PreferAntialias</stylestrategy>
-    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color:white</string>

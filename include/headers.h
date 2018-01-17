@@ -15,7 +15,7 @@
 #endif
 
 //cplusplus
-#include "include/mainwindow.h"
+#include "include/mainWindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QJsonArray>
@@ -33,7 +33,7 @@
 #include <QTime>
 #include <QtGlobal>
 #include <QDebug>
-#include <include/aboutwindow.h>
+#include <include/aboutWindow.h>
 #include <QWidget>
 #include <QScrollBar>
 #include <vector>
@@ -41,6 +41,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <QTextStream>
-#include "include/code_editor.h"
+#include "include/codeEditor.h"
 
 #endif // HEADERS_H

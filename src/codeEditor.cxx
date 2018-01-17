@@ -48,7 +48,7 @@
 **
 ****************************************************************************/
 
-#include "include/code_editor.h"
+#include "include/codeEditor.h"
 #include <QByteArray>
 #include <QDebug>
 #include <QTextCursor>

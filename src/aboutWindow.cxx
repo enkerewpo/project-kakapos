@@ -1,4 +1,4 @@
-#include "include/aboutwindow.h"
+#include "include/aboutWindow.h"
 #include "ui_aboutwindow.h"
 
 AboutWindow::AboutWindow(QWidget *parent) :

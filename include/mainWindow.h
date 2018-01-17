@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "include/highlighter_C.h"
+#include "include/highlighterC.h"
 #include <QMainWindow>
 #include <QLayout>
 #include <QString>
@@ -20,22 +20,22 @@ public:
     QString tag;
 
 public slots:
-    void open_obj();
-    void open_obj_file(QString fileName);
-    void new_obj();
-    void show_about();
-    void show_license();
-    void save_obj();
-    void save_file(QString filename);
-    void save_as();
+    void openObj();
+    void openObjFile(QString fileName);
+    void newObj();
+    void showAbout();
+    void showLicense();
+    void saveObj();
+    void saveFile(QString filename);
+    void saveAs();
     void update();
     void build();
     void run();
     void debug();
-    void get_file_dir();
-    void start_astyle();
-    void load_settings();
-    void load_plugin();
+    void getFileDir();
+    void startAstyle();
+    void loadSettings();
+    void loadPlugin();
     void modified();
 
 private:

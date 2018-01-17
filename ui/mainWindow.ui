@@ -13,11 +13,6 @@
     <height>608</height>
    </rect>
   </property>
-  <property name="font">
-   <font>
-    <family>Helvetica Neue</family>
-   </font>
-  </property>
   <property name="acceptDrops">
    <bool>true</bool>
   </property>
@@ -55,7 +50,7 @@
      <x>0</x>
      <y>0</y>
      <width>1123</width>
-     <height>28</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="palette">
@@ -230,13 +225,6 @@
      </disabled>
     </palette>
    </property>
-   <property name="font">
-    <font>
-     <family>Helvetica Neue</family>
-     <pointsize>10</pointsize>
-     <stylestrategy>PreferAntialias</stylestrategy>
-    </font>
-   </property>
    <property name="focusPolicy">
     <enum>Qt::StrongFocus</enum>
    </property>
@@ -358,15 +346,10 @@
    <property name="text">
     <string>&amp;New</string>
    </property>
-   <property name="font">
-    <font>
-     <stylestrategy>PreferAntialias</stylestrategy>
-    </font>
-   </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
    </property>
-   <property name="shortcutVisibleInContextMenu">
+   <property name="shortcutVisibleInContextMenu" stdset="0">
     <bool>true</bool>
    </property>
   </action>

@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-CONFIG   += c++11
+CONFIG   += c++14
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,25 +25,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    main.cpp \
-    src/highlighter_C.cpp \
-    src/mainwindow.cpp \
-    src/code_editor.cpp \
-    src/aboutwindow.cpp
+    src/aboutWindow.cxx \
+    src/codeEditor.cxx \
+    src/highlighterC.cxx \
+    src/mainWindow.cxx \
+    main.cxx
 
 
 HEADERS += \
-    include/mainwindow.h \
-    include/splashwindow.h \
-    include/highlighter_C.h \
-    include/code_editor.h \
     include/headers.h \
-    include/aboutwindow.h
+    include/highlighterC.h \
+    include/codeEditor.h \
+    include/aboutWindow.h \
+    include/mainWindow.h
 
 
 FORMS += \
-    ui/mainwindow.ui \
-    ui/aboutwindow.ui
+    ui/aboutWindow.ui \
+    ui/mainWindow.ui
 
 win32:{
     RC_ICONS = ui/kakapos.ico
