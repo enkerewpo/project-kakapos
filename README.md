@@ -25,7 +25,7 @@ The source files are under the Qt project building method.
 
 ### 3.Commandline
 ```bash
-$ (enter the project-kakapos source root dirctory)
+$ cd /path/to/project-kakapos
 $ qmake -project
 $ qmake kakapos.pro
 $ make

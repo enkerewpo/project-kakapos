@@ -53,75 +53,87 @@
 Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent) {
     HighlightingRule rule;
 
-    numbersFormat.setForeground(QColor("#e08d8d"));
-    rule.pattern = QRegularExpression("(0x[0-9A-Fa-f]*)?[0-9]+");
+    numbersFormat.setForeground(Qt::black);
+    rule.pattern = QRegularExpression("[0-9]+[uU]?[lL]?[(ll)(LL)]?");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
 
-    keywordFormat.setForeground(QColor("#27f9ad"));
-//    keywordFormat.setFontWeight(QFont::Bold);
+    over.setForeground(Qt::black);
+    rule.pattern = QRegularExpression("[a-zA-Z]+[0-9]+");
+    rule.format = over;
+    highlightingRules.append(rule);
+
+    numbersFormat.setForeground(Qt::black);
+    rule.pattern = QRegularExpression("0[xX][0-9a-fA-F]+");
+    rule.format = numbersFormat;
+    highlightingRules.append(rule);
+
+    functionFormat.setForeground(Qt::black);
+    functionFormat.setFontWeight(QFont::Bold);
+    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
+    rule.format = functionFormat;
+    highlightingRules.append(rule);
+
+    keywordFormat.setForeground(Qt::blue);
     keywordFormat.setFontItalic(true);
     QStringList keywordPatterns;
     keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b" <<"\\b__inline\\b" << "\\b__int64\\b"<<"\\b__int32\\b"<<"\\b__int128\\b"
                     << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bauto\\b" <<"\\bfor\\b"
                     << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b" << "\\bconstexpr\\b"
                     << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bwhile\\b"
-                    << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bswitch\\b"
-                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\breturn\\b"
+                    << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bswitch\\b" << "\\bfinal\\b"
+                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\breturn\\b" <<"\\boverride\\b"
                     << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\bif\\b" << "\\bbreak\\b"
                     << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bgoto\\b"
                     << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b" << "\\bcontinue\\b" << "\\bdelete\\b"
                     << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bbool\\b" << "\\busing\\b" << "\\bnew\\b"
-                    << "\\band\\b" << "\\bor\\b" << "\\bxor\\b" << "\\bfloat\\b" << "\\bcase\\b";
+                    << "\\band\\b" << "\\bor\\b" << "\\bxor\\b" << "\\bfloat\\b" << "\\bcase\\b" << "\\bstatic_assert\\b"
+                    << "\\bwchar_t\\b" <<"\\bthis\\b" << "\\bthrow\\b" << "\\btry\\b" << "\\balignas\\b" << "\\balignof\\b"
+                    << "\\btypeid\\b" << "\\bregister\\b" << "\\bstatic_cast\\b" << "\\breinterpret_cast\\b" << "\\brequires\\b"
+                    << "\\bsizeof\\b" << "\\bmutable\\b" << "\\band_eq\\b" << "\\bor_eq\\b" << "\\bcompl\\b"
+                    << "\\bunion\\b" << "\\bnot_eq\\b" << "\\bor_eq\\b" << "\\bconst_cast\\b" << "\\bdecltype\\b"
+                    << "\\bxor_eq\\b" << "\\bnoexcept\\b" << "\\basm\\b" << "\\bregister\\b" << "\\bdefault\\b" << "\\bconcept\\b"
+                    << "\\bexplicit\\b" << "\\bdynamic_cast\\b" << "\\bnullptr\\b" << "\\bbitand\\b" << "\\bbitor\\b";
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = keywordFormat;
         highlightingRules.append(rule);
     }
 
-    signsFormat.setForeground(QColor("#7bd12e"));
-    rule.pattern = QRegularExpression("[!@#$%^&*=+-/?:{}<>\\[\\]\\(\\);]");
+    forformat.setForeground(Qt::blue);
+    QStringList forlist;
+    forlist << "\\bfor\\b" << "\\bswitch\\b" << "\\bwhile\\b" << "\\bdo\\b"
+            << "\\bif\\b" << "\\bforeach\\b";
+    foreach (const QString &pattern, forlist) {
+        rule.pattern = QRegularExpression(pattern);
+        rule.format = forformat;
+        highlightingRules.append(rule);
+    }
+
+    signsFormat.setForeground(Qt::black);
+    rule.pattern = QRegularExpression("[!~@#$%^&*=+-/?:{}<>\\[\\]\\(\\);]");
     rule.format = signsFormat;
     highlightingRules.append(rule);
 
-//    braceFormat.setForeground(QColor("#36c84c"));
-//    rule.pattern = QRegularExpression("[{}]");
-//    rule.format = braceFormat;
-//    highlightingRules.append(rule);
-
-
-
-//    quotation_single_Format.setForeground(QColor("#E89D86"));
-//    rule.pattern = QRegularExpression("\".*");
-//    rule.format = quotation_single_Format;
-//    highlightingRules.append(rule);
-
-    quotationFormat.setForeground(QColor("#e6a41d"));
+    quotationFormat.setForeground(Qt::magenta);
     rule.pattern = QRegularExpression("\".*\"");
     rule.format = quotationFormat;
     highlightingRules.append(rule);
 
 
-    modulenumFormat.setForeground(QColor("#9BCD9B"));
+    modulenumFormat.setForeground(Qt::darkCyan);
     rule.pattern = QRegularExpression("((%d)?(%lld)?(%I64d)?(%c)?(%s)?(%u)?(%lf)?(%llf)?)+");
     rule.format = modulenumFormat;
     highlightingRules.append(rule);
 
-    singleLineCommentFormat.setForeground(QColor("#6d7257"));
+    singleLineCommentFormat.setForeground(Qt::gray);
     rule.pattern = QRegularExpression("//[^\n]*[\"]*[^\n]*[\"]*[^\n]*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
     multiLineCommentFormat.setForeground(QColor("#6d7257"));
 
-//    functionFormat.setFontItalic(true);
-//    functionFormat.setForeground(QColor("#63DAE8"));
-//    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
-//    rule.format = functionFormat;
-//    highlightingRules.append(rule);
-
-//    sharpFormat.setFontWeight(QFont::Bold);
-    sharpFormat.setForeground(QColor("#f92672"));
+    sharpFormat.setForeground(Qt::darkGreen);
     rule.pattern = QRegularExpression("\#.*[^\n]");
     rule.format = sharpFormat;
     highlightingRules.append(rule);

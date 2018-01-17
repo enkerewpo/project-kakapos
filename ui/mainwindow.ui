@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,7 +15,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Segoe UI</family>
+    <family>Helvetica Neue</family>
    </font>
   </property>
   <property name="acceptDrops">
@@ -24,18 +27,6 @@
   <property name="windowIcon">
    <iconset>
     <normaloff>../images/kakapos_ico.png</normaloff>../images/kakapos_ico.png</iconset>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget{
-background-color:rgb(34,40,42);
-color:white;
-}
-
-QMenubar:hover:pressed{color:red;}
-
-QPushButton{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
-QPushButton:hover:pressed{background-color:white;color:rgb(45,45,45);}
-QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} QPushButton{font-family:Segoe UI;}</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>
@@ -53,9 +44,6 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <height>20</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font-family:Segoe UI;</string>
-    </property>
     <property name="text">
      <string>TextLabel</string>
     </property>
@@ -67,7 +55,7 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
      <x>0</x>
      <y>0</y>
      <width>1123</width>
-     <height>21</height>
+     <height>28</height>
     </rect>
    </property>
    <property name="palette">
@@ -76,9 +64,9 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <colorrole role="WindowText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -94,18 +82,18 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <colorrole role="Text">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="ButtonText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -132,9 +120,9 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <colorrole role="WindowText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -150,18 +138,18 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <colorrole role="Text">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="ButtonText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -188,9 +176,9 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <colorrole role="WindowText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -206,18 +194,18 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
       <colorrole role="Text">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="ButtonText">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>255</red>
-         <green>255</green>
-         <blue>255</blue>
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -244,8 +232,8 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
    </property>
    <property name="font">
     <font>
-     <family>Segoe UI</family>
-     <pointsize>9</pointsize>
+     <family>Helvetica Neue</family>
+     <pointsize>10</pointsize>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -256,25 +244,7 @@ QPushButton:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Q
     <enum>Qt::CustomContextMenu</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">/*
-color:rgb(255, 255, 255); 
-background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-stop:0 rgb(51, 185, 78), stop:1 rgb(70, 113, 63));
-
-item {
-     spacing: 3px; 
-     padding: 1px 4px;
-     background: transparent;
-     border-radius: 4px;
- }*/
-
-/*item:pressed {
-     background: #888888;
-}*/
-
-Qmenu{background-color:groove gray;color:white;border-radius:2px;border:1px white;border-style:outset}
-Qmenu:hover:pressed{background-color:white;color:rgb(45,45,45);}
-Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{font-family:Segoe UI;}</string>
+    <string notr="true">color:black</string>
    </property>
    <property name="defaultUp">
     <bool>false</bool>
@@ -283,34 +253,20 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
     <bool>true</bool>
    </property>
    <widget class="QMenu" name="menuHelp">
-    <property name="font">
-     <font>
-      <family>Segoe UI</family>
-     </font>
-    </property>
     <property name="title">
      <string>Help</string>
     </property>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuFile">
-    <property name="font">
-     <font>
-      <family>Segoe UI</family>
-      <stylestrategy>PreferAntialias</stylestrategy>
-     </font>
-    </property>
     <property name="autoFillBackground">
      <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">hover:!pressed{color: black;}</string>
     </property>
     <property name="tearOffEnabled">
      <bool>false</bool>
     </property>
     <property name="title">
-     <string>File</string>
+     <string>Fi&amp;le</string>
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen_File"/>
@@ -320,7 +276,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
    </widget>
    <widget class="QMenu" name="menuCompule">
     <property name="title">
-     <string>Compile</string>
+     <string>&amp;Compile</string>
     </property>
     <addaction name="separator"/>
     <addaction name="actionBuild"/>
@@ -347,7 +303,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
    </widget>
    <widget class="QMenu" name="menuPreferences">
     <property name="title">
-     <string>Preferences</string>
+     <string>P&amp;references</string>
     </property>
     <addaction name="actionKakapos_settings"/>
     <addaction name="actionUser_settings"/>
@@ -361,23 +317,12 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </widget>
   <action name="actionAbout">
    <property name="text">
-    <string>About...</string>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
+    <string>&amp;About...</string>
    </property>
   </action>
   <action name="actionOpen_File">
    <property name="text">
-    <string>Open File...</string>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-     <stylestrategy>PreferAntialias</stylestrategy>
-    </font>
+    <string>&amp;Open File...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -385,7 +330,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionSave">
    <property name="text">
-    <string>Save</string>
+    <string>&amp;Save</string>
    </property>
    <property name="font">
     <font>
@@ -398,7 +343,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionSave_As">
    <property name="text">
-    <string>Save As...</string>
+    <string>Sa&amp;ve As...</string>
    </property>
    <property name="font">
     <font>
@@ -411,7 +356,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionNew">
    <property name="text">
-    <string>New</string>
+    <string>&amp;New</string>
    </property>
    <property name="font">
     <font>
@@ -421,10 +366,13 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
    <property name="shortcut">
     <string>Ctrl+N</string>
    </property>
+   <property name="shortcutVisibleInContextMenu">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="actionBuild">
    <property name="text">
-    <string>Build</string>
+    <string>&amp;Build</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+B</string>
@@ -432,7 +380,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionRun">
    <property name="text">
-    <string>Run</string>
+    <string>&amp;Run</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
@@ -440,7 +388,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionDebug">
    <property name="text">
-    <string>Debug</string>
+    <string>&amp;Debug</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -448,7 +396,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionUndo">
    <property name="text">
-    <string>Undo</string>
+    <string>&amp;Undo</string>
    </property>
    <property name="font">
     <font>
@@ -461,7 +409,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionRedo">
    <property name="text">
-    <string>Redo</string>
+    <string>&amp;Redo</string>
    </property>
    <property name="font">
     <font>
@@ -474,7 +422,7 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionAStyle">
    <property name="text">
-    <string>AStyle...</string>
+    <string>&amp;AStyle...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+F</string>
@@ -482,12 +430,12 @@ Qmenu:hover:!pressed{background-color:rgb(45,45,45);border-style:inset;} Qmenu{f
   </action>
   <action name="actionKakapos_settings">
    <property name="text">
-    <string>Kakapos settings...</string>
+    <string>&amp;Kakapos settings...</string>
    </property>
   </action>
   <action name="actionUser_settings">
    <property name="text">
-    <string>User settings...</string>
+    <string>&amp;User settings...</string>
    </property>
   </action>
   <action name="actionLicense">
