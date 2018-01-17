@@ -16,9 +16,9 @@ bool newfile, is_loadsettings, is_loadplugins;
 int dynamic_width, dynamic_height, user_fontsize;
 
 #ifdef Q_OS_WIN
-    int tab_len = 4;
+int tab_len = 4;
 #elif defined (Q_OS_OSX)
-    int tab_len = 4;
+int tab_len = 4;
 #else
 int tab_len = 4;
 #endif
@@ -27,14 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
     ui->setupUi(this);
-
     editor = new CodeEditor(ui->centralWidget);
-
-    load_settings(); // LOAD CONFIG TO CONFIGURE SETTINGS
-
-//    load_plugin(); // IMPORT PYTHON PLUGINS
-
-    //setAttribute(Qt::WA_TranslucentBackground);
+    load_settings();
     connect(ui->actionOpen_File, &QAction::triggered, this, &MainWindow::open_obj);
     connect(ui->actionAbout, &QAction::triggered, this, &MainWindow::show_about);
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::save_obj);
@@ -62,7 +56,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     newfile = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
-//    editor->setStyleSheet("color:rgb(235,235,235);");
 }
 MainWindow::~MainWindow() {
     delete ui;
@@ -71,11 +64,11 @@ MainWindow::~MainWindow() {
 void MainWindow::update() {
     this->setWindowTitle(global_filename);
     if(global_filename.endsWith(".cpp", Qt::CaseInsensitive) ||
-       global_filename.endsWith(".cc", Qt::CaseInsensitive)  ||
-       global_filename.endsWith(".c++", Qt::CaseInsensitive)  ||
-       global_filename.endsWith(".hpp", Qt::CaseInsensitive)  ||
-       global_filename.endsWith(".c", Qt::CaseInsensitive)  ||
-       global_filename.endsWith(".h", Qt::CaseInsensitive)) {
+            global_filename.endsWith(".cc", Qt::CaseInsensitive)  ||
+            global_filename.endsWith(".c++", Qt::CaseInsensitive)  ||
+            global_filename.endsWith(".hpp", Qt::CaseInsensitive)  ||
+            global_filename.endsWith(".c", Qt::CaseInsensitive)  ||
+            global_filename.endsWith(".h", Qt::CaseInsensitive)) {
         highlighter = new Hightlighter_C(editor->document());
         editor->do_autotab = true;
         editor->filetype = "cplusplus";
@@ -88,23 +81,22 @@ void MainWindow::update() {
     this->setWindowTitle("kakapos " + tag + " - " +global_filename);
 }
 
-
 void MainWindow::open_obj() {
     if(modified_b) {
         QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not saved. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
         if(rb == QMessageBox::Save)
         {
-               save_obj();
+            save_obj();
         }
         if(rb == QMessageBox::Cancel) {
             return;
         }
     }
     QString fileName = \
-    QFileDialog::getOpenFileName(this,
-                 tr("Open File"),
-                 "",
-               tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
+            QFileDialog::getOpenFileName(this,
+                                         tr("Open File"),
+                                         "",
+                                         tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
     pDir = new QDir(".");
     global_filename = fileName;
     get_file_dir();
@@ -137,8 +129,8 @@ void MainWindow::open_obj_file(QString fileName) {
 void MainWindow::resizeEvent(QResizeEvent *event) {
     dynamic_height = this->height();
     dynamic_width = this->width();
-    editor->setGeometry(-1, 0, width() + 2, height() - 35);
-    ui->statuslabel->setGeometry(14, this->height() - 39, this->width() - 2, 20);
+    editor->setGeometry(-1, 0, width() + 2, height() - 48);
+    ui->statuslabel->setGeometry(14, this->height() - 47, this->width() - 2, 20);
 }
 
 void MainWindow::new_obj() {
@@ -148,7 +140,7 @@ void MainWindow::new_obj() {
         QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not saved. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
         if(rb == QMessageBox::Save)
         {
-               save_obj();
+            save_obj();
         }
         if(rb == QMessageBox::Cancel) {
             return;
@@ -184,24 +176,14 @@ void MainWindow::save_obj() {
             out << editor->toPlainText();
         }
 
-//        QFile file2(global_filename + ".kat");
-//        if (file2.open(QIODevice::ReadWrite))
-//        {
-//            QTextStream out(&file);
-//            qDebug() << global_filename + ".kat";
-//            out << editor->toPlainText();
-//        }
-
     } else {
         QString savefilename = QFileDialog::getSaveFileName(this,
-            tr("Save File"),
-            "",
-            tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
+                                                            tr("Save File"),
+                                                            "",
+                                                            tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
         pDir = new QDir(".");
-
         fileDir = pDir->filePath(savefilename);
         get_file_dir();
-
         QFile file(savefilename);
         if (file.open(QIODevice::ReadWrite))
         {
@@ -209,15 +191,6 @@ void MainWindow::save_obj() {
             qDebug() << savefilename;
             out << editor->toPlainText();
         }
-
-//        QFile file2(tmp_filename);
-//        if (file2.open(QIODevice::ReadWrite))
-//        {
-//            QTextStream out(&file2);
-//            qDebug() << tmp_filename;
-//            out << editor->toPlainText();
-//        }
-
         global_filename = savefilename;
         newfile = false;
     }
@@ -226,10 +199,9 @@ void MainWindow::save_obj() {
 
 void MainWindow::save_as() {
     QString savefilename = QFileDialog::getSaveFileName(this,
-        tr("Save File"),
-        global_file_shortname,
-        tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
-
+                                                        tr("Save File"),
+                                                        global_file_shortname,
+                                                        tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
     pDir = new QDir(".");
     fileDir = pDir->filePath(savefilename);
 
@@ -250,24 +222,20 @@ void MainWindow::save_as() {
 }
 
 void MainWindow::show_about() {
-//   QMessageBox Msgbox(QMessageBox::Information, "About", "   Kakapos intelligent IDE \n    " + tag + " under GNU GPL3\n Kvar_ispw17 Copyright 2017",QMessageBox::Ok ,this);
-//    Msgbox.setStandardButtons(QMessageBox::Ok);
-//    Msgbox.setButtonText(QMessageBox::Ok, QString("        OK        "));
-//    Msgbox.exec();
-       AboutWindow * aw = new AboutWindow;
-       aw->tag = this->tag;
-       aw->show();
+    AboutWindow * aw = new AboutWindow;
+    aw->tag = this->tag;
+    aw->show();
 }
 
 void MainWindow::show_license() {
-
+    return;
 }
 
 void MainWindow::build() {
     this->save_obj();
     QProcess p(0);
     QString path = QCoreApplication::applicationDirPath();
-    QString arguments = " -Wall -m32 -o ";
+    QString arguments = " -Wall -o ";
     QString command = "g++ " + global_filename + arguments + g_filedir + global_filename.mid(0, global_filename.length() - 4);
     p.start(command);
     qDebug() << command;
@@ -276,14 +244,14 @@ void MainWindow::build() {
 }
 
 void MainWindow::run(){
-    QString command = global_filename.mid(0, global_filename.length() - 4)+ "& pause";
+    QString command = global_filename.mid(0, global_filename.length() - 4);
     QByteArray ba = command.toLatin1();
     char *mm = ba.data();
     std::system(mm);
 }
 
 void MainWindow::debug() {
-
+    return;
 }
 
 void MainWindow::get_file_dir(){
@@ -300,14 +268,15 @@ void MainWindow::get_file_dir(){
         break;
     }
     while ((pos = match.indexIn(global_filename, pos)) != -1) {
-       str = match.cap(0);
-       vec.push_back(str);
-       pos += match.matchedLength();
+        str = match.cap(0);
+        vec.push_back(str);
+        pos += match.matchedLength();
     }
     global_file_shortname = str;
 }
 
 void MainWindow::start_astyle(){
+#ifdef ASTYLE_SUPPORT
     save_file(global_filename);
     qDebug() << "DO ASTYLE!";
     QProcess astyle;
@@ -329,6 +298,7 @@ void MainWindow::start_astyle(){
         editor->insertPlainText(out.readAll());
     }
     update();
+#endif
 }
 
 void MainWindow::load_settings() {
@@ -343,18 +313,17 @@ void MainWindow::load_settings() {
         QFont fdefault;
         fdefault.setFamily("Monospace");
         editor->setFont(fdefault);
+        QFontMetrics metrics(fdefault);
+        editor->setTabStopWidth(tab_len * metrics.width(' '));
         return;
     }
     is_loadsettings = true;
     val = config.readAll();
     qDebug() << val;
     config.close();
-
     QJsonParseError json_error;
     QJsonDocument parse_doucment = QJsonDocument::fromJson(val.toUtf8(), &json_error);
-
     QFont &font = editor->font;
-
     if(json_error.error == QJsonParseError::NoError)
     {
         QVariantMap res = parse_doucment.toVariant().toMap();
@@ -362,7 +331,7 @@ void MainWindow::load_settings() {
         font.setPointSize(res["font-size"].toInt());
         QString style = res["font-style"].toString();
         if(style == "monospace") {
-                font.setStyleHint(QFont::Monospace);
+            font.setStyleHint(QFont::Monospace);
         }
         if(res["font-fixed-pitch"].toBool()) font.setFixedPitch(true);
     }
@@ -372,40 +341,42 @@ void MainWindow::load_settings() {
 }
 
 void MainWindow::load_plugin() {
-//    qDebug() << "IN LOADING";
-//    Py_Initialize();
-//    if(!Py_IsInitialized()) {
-//        qDebug() << "INITAL PYTHON ERROR";
-//        return;
-//    }
-//    PyObject *pModule = NULL;
-//    PyObject *pFunc   = NULL;
-//    PyRun_SimpleString("import sys");
-//    PyRun_SimpleString("from PyQt5.QtWidgets import QApplication, QMainWindow");
-//    PyRun_SimpleString("from init_window import *");
-//    pModule = PyImport_ImportModule("plugin_manager");
+#ifdef PLUGIN_SUPPORT
+    qDebug() << "IN LOADING";
+    Py_Initialize();
+    if(!Py_IsInitialized()) {
+        qDebug() << "INITAL PYTHON ERROR";
+        return;
+    }
+    PyObject *pModule = NULL;
+    PyObject *pFunc   = NULL;
+    PyRun_SimpleString("import sys");
+    PyRun_SimpleString("from PyQt5.QtWidgets import QApplication, QMainWindow");
+    PyRun_SimpleString("from init_window import *");
+    pModule = PyImport_ImportModule("plugin_manager");
 
-//    if(!pModule) {
-//        qDebug() << "LOAD MODULE ERROR";
-//        return;
-//    }
+    if(!pModule) {
+        qDebug() << "LOAD MODULE ERROR";
+        return;
+    }
 
-//    pFunc   = PyObject_GetAttrString(pModule, "init");
+    pFunc   = PyObject_GetAttrString(pModule, "init");
 
-//    if(!pFunc) {
-//        qDebug() << "LOAD FUNCTION ERROR";
-//        return;
-//    }
+    if(!pFunc) {
+        qDebug() << "LOAD FUNCTION ERROR";
+        return;
+    }
 
-//    PyEval_CallObject(pFunc, NULL);
-//    Py_Finalize();
-//    qDebug() << "OUT LOADING";
+    PyEval_CallObject(pFunc, NULL);
+    Py_Finalize();
+    qDebug() << "OUT LOADING";
     QProcess proc;
     proc.start("python plugin_manager.py");
     proc.waitForFinished();
     while (proc.canReadLine()) {
         qDebug() << proc.readLine().trimmed();
     }
+#endif
 }
 
 void MainWindow::modified() {
@@ -418,7 +389,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "Quiting kakapos - Warning", "File not saved. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
         if(rb == QMessageBox::Save)
         {
-               save_obj();
+            save_obj();
         }
         if(rb == QMessageBox::Cancel) {
             return;

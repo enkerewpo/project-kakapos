@@ -28,9 +28,7 @@ SOURCES += \
     main.cpp \
     src/highlighter_C.cpp \
     src/mainwindow.cpp \
-    src/splashwindow.cpp \
     src/code_editor.cpp \
-    src/shadow_effect.cpp \
     src/aboutwindow.cpp
 
 
@@ -39,14 +37,12 @@ HEADERS += \
     include/splashwindow.h \
     include/highlighter_C.h \
     include/code_editor.h \
-    include/shadow_effect.h \
     include/headers.h \
     include/aboutwindow.h
 
 
 FORMS += \
     ui/mainwindow.ui \
-    ui/splashwindow.ui \
     ui/aboutwindow.ui
 
 win32:{

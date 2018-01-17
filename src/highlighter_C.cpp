@@ -53,7 +53,7 @@
 Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent) {
     HighlightingRule rule;
 
-    numbersFormat.setForeground(Qt::red);
+    numbersFormat.setForeground(Qt::black);
     rule.pattern = QRegularExpression("[0-9]+[uU]?[lL]?[(ll)(LL)]?");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
@@ -63,7 +63,7 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
     rule.format = over;
     highlightingRules.append(rule);
 
-    numbersFormat.setForeground(Qt::red);
+    numbersFormat.setForeground(Qt::black);
     rule.pattern = QRegularExpression("0[xX][0-9a-fA-F]+");
     rule.format = numbersFormat;
     highlightingRules.append(rule);
@@ -127,29 +127,23 @@ Hightlighter_C::Hightlighter_C(QTextDocument *parent): QSyntaxHighlighter(parent
 //    rule.format = quotation_single_Format;
 //    highlightingRules.append(rule);
 
-    quotationFormat.setForeground(QColor("#e6a41d"));
+    quotationFormat.setForeground(Qt::magenta);
     rule.pattern = QRegularExpression("\".*\"");
     rule.format = quotationFormat;
     highlightingRules.append(rule);
 
 
-    modulenumFormat.setForeground(QColor("#9BCD9B"));
+    modulenumFormat.setForeground(Qt::darkCyan);
     rule.pattern = QRegularExpression("((%d)?(%lld)?(%I64d)?(%c)?(%s)?(%u)?(%lf)?(%llf)?)+");
     rule.format = modulenumFormat;
     highlightingRules.append(rule);
 
-    singleLineCommentFormat.setForeground(QColor("#6d7257"));
+    singleLineCommentFormat.setForeground(Qt::gray);
     rule.pattern = QRegularExpression("//[^\n]*[\"]*[^\n]*[\"]*[^\n]*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
     multiLineCommentFormat.setForeground(QColor("#6d7257"));
-
-//    functionFormat.setFontItalic(true);
-//    functionFormat.setForeground(QColor("#63DAE8"));
-//    rule.pattern = QRegularExpression("\\b[A-Za-z0-9_]+(?=\\()");
-//    rule.format = functionFormat;
-//    highlightingRules.append(rule);
 
     sharpFormat.setForeground(Qt::darkGreen);
     rule.pattern = QRegularExpression("\#.*[^\n]");

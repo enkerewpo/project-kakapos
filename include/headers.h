@@ -17,7 +17,6 @@
 //cplusplus
 #include "include/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "include/shadow_effect.h"
 #include <QFileDialog>
 #include <QJsonArray>
 #include <QJsonValuePtr>
