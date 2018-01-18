@@ -1,6 +1,9 @@
 <div align="center"><img src="https://enkerewpo.github.io/images/icon2.png" height="454" width="666"></div>
 
 ------
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2491ab04d86947f1b7440e79a6fc8a04)](https://www.codacy.com/app/enkerewpo/project-kakapos?utm_source=github.com&utm_medium=referral&utm_content=enkerewpo/project-kakapos&utm_campaign=badger)
+
 <p align="center">
   <a title="Build Status" href="https://travis-ci.org/enkerewpo/project-kakapos"><img src="https://travis-ci.org/enkerewpo/project-kakapos.svg?branch=master"></a>
   <a title="Build Status" href="https://ci.appveyor.com/project/enkerewpo/project-kakapos"><img src="https://ci.appveyor.com/api/projects/status/i6vs11mn63dyager?svg=true"></a>
