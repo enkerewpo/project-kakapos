@@ -6,13 +6,13 @@
 
 CodeEditor *editor;
 QDir *fileLocationDir;
-QString fileDir_String, fileDir_String_Temp;
-QString globalFilename_String, filename_String_Temp, globalFileShortname_String, globalFileDir_String;
+QString fileDir_str, fileDir_str_temp;
+QString globalFilename_str, filename_str_temp, globalFileShortname_str, globalFileDir_str;
 QString gcc_path;
 
-bool isModified_Bool, isSaved_Bool;
+bool isModified_b, isSaved_b;
 
-bool newFile_Bool, isLoadsettings_Bool, isLoadplugins_Bool;
+bool newFile_b, isLoadsettings_b, isLoadplugins_b;
 int dynamicWidth, dynamicHeight, userFontsize;
 
 #ifdef Q_OS_WIN
@@ -43,18 +43,15 @@ MainWindow::MainWindow(QWidget *parent) :
     if (this->isMinimized()){
         this->showNormal();
     }
-    SetWindowPos(HWND(this->winId()), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
-    SetWindowPos(HWND(this->winId()), HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
-
     this->activateWindow();
 #endif
     tag = "0.5.9";
     setWindowTitle("kakapos " + tag);
-    if(isLoadsettings_Bool) {
+    if(isLoadsettings_b) {
         ui->statuslabel->setText(QString("All settings have been loaded."));
     } else ui->statuslabel->setText(QString("Settings file not found. Please check your %INSTALLDIR%/JSON_Config_File/JSON_Config_File.json"));
 
-    newFile_Bool = true;
+    newFile_b = true;
     editor->setWordWrapMode(QTextOption::NoWrap);
 }
 MainWindow::~MainWindow() {
@@ -62,13 +59,13 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::update() {
-    this->setWindowTitle(globalFilename_String);
-    if(globalFilename_String.endsWith(".cpp", Qt::CaseInsensitive) ||
-            globalFilename_String.endsWith(".cc", Qt::CaseInsensitive)  ||
-            globalFilename_String.endsWith(".c++", Qt::CaseInsensitive)  ||
-            globalFilename_String.endsWith(".hpp", Qt::CaseInsensitive)  ||
-            globalFilename_String.endsWith(".c", Qt::CaseInsensitive)  ||
-            globalFilename_String.endsWith(".h", Qt::CaseInsensitive)) {
+    this->setWindowTitle(globalFilename_str);
+    if(globalFilename_str.endsWith(".cpp", Qt::CaseInsensitive) ||
+            globalFilename_str.endsWith(".cc", Qt::CaseInsensitive)  ||
+            globalFilename_str.endsWith(".c++", Qt::CaseInsensitive)  ||
+            globalFilename_str.endsWith(".hpp", Qt::CaseInsensitive)  ||
+            globalFilename_str.endsWith(".c", Qt::CaseInsensitive)  ||
+            globalFilename_str.endsWith(".h", Qt::CaseInsensitive)) {
         highlighter = new Hightlighter_C(editor->document());
         editor->do_autotab = true;
         editor->filetype = "cplusplus";
@@ -78,12 +75,12 @@ void MainWindow::update() {
         if(highlighter != NULL) delete highlighter;
         ui->statuslabel->setText(QString("Parsing Syntax: Plain text"));
     }
-    this->setWindowTitle("kakapos " + tag + " - " +globalFilename_String);
+    this->setWindowTitle("kakapos " + tag + " - " +globalFilename_str);
 }
 
 void MainWindow::openObj() {
-    if(isModified_Bool) {
-        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not isSaved_Bool. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
+    if(isModified_b) {
+        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not isSaved_b. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
         if(rb == QMessageBox::Save)
         {
             saveObj();
@@ -98,14 +95,14 @@ void MainWindow::openObj() {
                                          "",
                                          tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
     fileLocationDir = new QDir(".");
-    globalFilename_String = fileName;
+    globalFilename_str = fileName;
     getFileDir();
     update();
-    fileDir_String = fileLocationDir->filePath(fileName);
+    fileDir_str = fileLocationDir->filePath(fileName);
     QFile file(fileName);
     if(!file.open(QIODevice::ReadWrite)) return;
     QTextStream out(&file);
-    this->setWindowTitle("kakapos " + tag + " - " +globalFilename_String);
+    this->setWindowTitle("kakapos " + tag + " - " +globalFilename_str);
     editor->clear();
     while(!file.atEnd()) {
         editor->insertPlainText(out.readAll());
@@ -114,8 +111,8 @@ void MainWindow::openObj() {
 
 void MainWindow::openObjFile(QString fileName) {
     fileLocationDir = new QDir(".");
-    globalFilename_String = fileName;
-    fileDir_String = fileLocationDir->filePath(fileName);
+    globalFilename_str = fileName;
+    fileDir_str = fileLocationDir->filePath(fileName);
     getFileDir();
     QFile file(fileName);
     if(!file.open(QIODevice::ReadWrite)) return;
@@ -134,10 +131,10 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
 }
 
 void MainWindow::newObj() {
-    globalFilename_String = "";
-    newFile_Bool = true;
-    if(isModified_Bool) {
-        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not isSaved_Bool. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
+    globalFilename_str = "";
+    newFile_b = true;
+    if(isModified_b) {
+        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "New file - Warning", "File not isSaved_b. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
         if(rb == QMessageBox::Save)
         {
             saveObj();
@@ -152,7 +149,7 @@ void MainWindow::newObj() {
 
 void MainWindow::saveFile(QString filename) {
     fileLocationDir = new QDir(".");
-    fileDir_String = fileLocationDir->filePath(filename);
+    fileDir_str = fileLocationDir->filePath(filename);
     QFile file(filename);
     if (file.open(QIODevice::ReadWrite))
     {
@@ -164,57 +161,57 @@ void MainWindow::saveFile(QString filename) {
 }
 
 void MainWindow::saveObj() {
-    qDebug() << newFile_Bool;
-    if(!newFile_Bool) {
+    qDebug() << newFile_b;
+    if(!newFile_b) {
         fileLocationDir = new QDir(".");
-        fileDir_String = fileLocationDir->filePath(globalFilename_String);
-        QFile file(globalFilename_String);
+        fileDir_str = fileLocationDir->filePath(globalFilename_str);
+        QFile file(globalFilename_str);
         if (file.open(QIODevice::ReadWrite))
         {
             QTextStream out(&file);
-            qDebug() << globalFilename_String;
+            qDebug() << globalFilename_str;
             out << editor->toPlainText();
         }
 
     } else {
-        QString saveFilename_String = QFileDialog::getSaveFileName(this,
+        QString saveFilename_str = QFileDialog::getSaveFileName(this,
                                                             tr("Save File"),
                                                             "",
                                                             tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
         fileLocationDir = new QDir(".");
-        fileDir_String = fileLocationDir->filePath(saveFilename_String);
+        fileDir_str = fileLocationDir->filePath(saveFilename_str);
         getFileDir();
-        QFile file(saveFilename_String);
+        QFile file(saveFilename_str);
         if (file.open(QIODevice::ReadWrite))
         {
             QTextStream out(&file);
-            qDebug() << saveFilename_String;
+            qDebug() << saveFilename_str;
             out << editor->toPlainText();
         }
-        globalFilename_String = saveFilename_String;
-        newFile_Bool = false;
+        globalFilename_str = saveFilename_str;
+        newFile_b = false;
     }
     update();
 }
 
 void MainWindow::saveAs() {
-    QString saveFilename_String = QFileDialog::getSaveFileName(this,
+    QString saveFilename_str = QFileDialog::getSaveFileName(this,
                                                         tr("Save File"),
-                                                        globalFileShortname_String,
+                                                        globalFileShortname_str,
                                                         tr("All file(*.*);;C++ files(*.cc;*.cpp;*.c++;*.hpp;*.h);;C files(*.c;*.h);;Plain text(*.txt)"));
     fileLocationDir = new QDir(".");
-    fileDir_String = fileLocationDir->filePath(saveFilename_String);
+    fileDir_str = fileLocationDir->filePath(saveFilename_str);
 
-    QFile file(saveFilename_String);
+    QFile file(saveFilename_str);
     if (file.open(QIODevice::ReadWrite))
     {
         QTextStream out(&file);
-        qDebug() << saveFilename_String;
+        qDebug() << saveFilename_str;
         out << editor->toPlainText();
-        globalFilename_String = saveFilename_String;
+        globalFilename_str = saveFilename_str;
     }
     QTextStream out(&file);
-    this->setWindowTitle(saveFilename_String);
+    this->setWindowTitle(saveFilename_str);
     while(!file.atEnd()) {
         editor->insertPlainText(out.readAll());
     }
@@ -236,7 +233,7 @@ void MainWindow::build() {
     QProcess p(0);
     QString path = QCoreApplication::applicationDirPath();
     QString arguments = " -Wall -o ";
-    QString command = "g++ " + globalFilename_String + arguments + globalFileDir_String + globalFilename_String.mid(0, globalFilename_String.length() - 4);
+    QString command = "g++ " + globalFilename_str + arguments + globalFileDir_str + globalFilename_str.mid(0, globalFilename_str.length() - 4);
     p.start(command);
     qDebug() << command;
     p.waitForStarted();
@@ -244,7 +241,7 @@ void MainWindow::build() {
 }
 
 void MainWindow::run(){
-    QString command = globalFilename_String.mid(0, globalFilename_String.length() - 4);
+    QString command = globalFilename_str.mid(0, globalFilename_str.length() - 4);
     QByteArray ba = command.toLatin1();
     char *mm = ba.data();
     std::system(mm);
@@ -255,43 +252,43 @@ void MainWindow::debug() {
 }
 
 void MainWindow::getFileDir(){
-    QRegExp match(globalFilename_String);
-    QRegExp diskLabel(globalFilename_String);
+    QRegExp match(globalFilename_str);
+    QRegExp diskLabel(globalFilename_str);
     diskLabel.setPattern("[a-z_A-Z]:");
     match.setPattern("\/[a-z_A-Z_0-9]+");
     int pos = 0;
     QString str;
     std::vector<QString> vec;
-    while ((pos = diskLabel.indexIn(globalFilename_String, pos)) != -1) {
+    while ((pos = diskLabel.indexIn(globalFilename_str, pos)) != -1) {
         str = diskLabel.cap(0);
         vec.push_back(str);
         break;
     }
-    while ((pos = match.indexIn(globalFilename_String, pos)) != -1) {
+    while ((pos = match.indexIn(globalFilename_str, pos)) != -1) {
         str = match.cap(0);
         vec.push_back(str);
         pos += match.matchedLength();
     }
-    globalFileShortname_String = str;
+    globalFileShortname_str = str;
 }
 
 void MainWindow::startAstyle(){
 #ifdef ASTYLE_SUPPORT
-    saveFile(globalFilename_String);
+    saveFile(globalFilename_str);
     qDebug() << "DO ASTYLE!";
     QProcess astyle;
     QString path;
     QDir dir;
     path = dir.absolutePath();
-    astyle.start(path + "/astyle",QStringList() << "--style=kr" << "-p" << globalFilename_String);
-    qDebug() << path + "/astyle --style=kr -p " + globalFilename_String;
+    astyle.start(path + "/astyle",QStringList() << "--style=kr" << "-p" << globalFilename_str);
+    qDebug() << path + "/astyle --style=kr -p " + globalFilename_str;
     astyle.waitForFinished();
     while (astyle.canReadLine()) {
         qDebug() << astyle.readLine().trimmed();
     }
     editor->clear();
     fileLocationDir = new QDir(".");
-    QFile file(globalFilename_String);
+    QFile file(globalFilename_str);
     if(!file.open(QIODevice::ReadWrite)) return;
     QTextStream out(&file);
     while(!file.atEnd()) {
@@ -309,7 +306,7 @@ void MainWindow::loadSettings() {
     QString filename = path + "/config/config.json";
     JSON_Config_File.setFileName(filename);
     if(!JSON_Config_File.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        isLoadsettings_Bool = false;
+        isLoadsettings_b = false;
         QFont fdefault;
 #ifdef Q_OS_WIN
         fdefault.setFamily("consolas");
@@ -324,7 +321,7 @@ void MainWindow::loadSettings() {
         editor->setTabStopWidth(tabLength * metrics.width(' '));
         return;
     }
-    isLoadsettings_Bool = true;
+    isLoadsettings_b = true;
     val = JSON_Config_File.readAll();
     qDebug() << val;
     JSON_Config_File.close();
@@ -387,13 +384,13 @@ void MainWindow::loadPlugin() {
 }
 
 void MainWindow::modified() {
-    isModified_Bool = true;
+    isModified_b = true;
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if(isModified_Bool) {
-        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "Quiting kakapos - Warning", "File not isSaved_Bool. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
+    if(isModified_b) {
+        QMessageBox::StandardButton rb = QMessageBox::warning(NULL, "Quiting kakapos - Warning", "File not isSaved_b. Do you want to save now?", QMessageBox::Save | QMessageBox::Cancel | QMessageBox::Discard, QMessageBox::Save);
         if(rb == QMessageBox::Save)
         {
             saveObj();
