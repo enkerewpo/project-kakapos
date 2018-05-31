@@ -1,0 +1,10 @@
+// =======================================================
+//  move this file to {install_root}/config/{config.json}
+// =======================================================
+
+{
+	"font-family" : "consolas",
+	"font-size" : 11,
+	"font-style" : "monospace",
+	"font-fixed-pitch" : true
+}
