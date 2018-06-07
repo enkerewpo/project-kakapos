@@ -21,7 +21,11 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../images/kakapos_ico.png</normaloff>../images/kakapos_ico.png</iconset>
+    <normaloff>../images/kakapos_ico.png</normaloff>
+    <normalon>:/images/logo</normalon>../images/kakapos_ico.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">button:hover{color:gray}</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>
@@ -50,7 +54,7 @@
      <x>0</x>
      <y>0</y>
      <width>1123</width>
-     <height>28</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="palette">
@@ -68,9 +72,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -95,18 +99,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -124,9 +128,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -151,18 +155,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -180,9 +184,9 @@
       <colorrole role="Button">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -207,18 +211,18 @@
       <colorrole role="Base">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
       <colorrole role="Window">
        <brush brushstyle="SolidPattern">
         <color alpha="255">
-         <red>34</red>
-         <green>40</green>
-         <blue>42</blue>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
         </color>
        </brush>
       </colorrole>
@@ -232,7 +236,8 @@
     <enum>Qt::CustomContextMenu</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:black</string>
+    <string notr="true">background:white
+</string>
    </property>
    <property name="defaultUp">
     <bool>false</bool>
@@ -342,7 +347,7 @@
    <property name="shortcut">
     <string>Ctrl+N</string>
    </property>
-   <property name="shortcutVisibleInContextMenu">
+   <property name="shortcutVisibleInContextMenu" stdset="0">
     <bool>true</bool>
    </property>
   </action>
@@ -421,7 +426,7 @@
    <property name="text">
     <string>License</string>
    </property>
-   <property name="shortcutVisibleInContextMenu">
+   <property name="shortcutVisibleInContextMenu" stdset="0">
     <bool>false</bool>
    </property>
   </action>
