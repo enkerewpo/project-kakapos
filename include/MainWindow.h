@@ -46,7 +46,7 @@ public slots:
     void showAbout();
     void showLicense();
     void saveObj();
-    void saveFileWithFilname(QString fileName);
+    void saveFileWithFilename(QString fileName);
     void saveAs();
     void update();
     void build();
@@ -58,6 +58,9 @@ public slots:
     void loadPlugin();
     void modified();
     void dropOnEditor(QString fileName);
+
+signals:
+    void spreadVersionTag(QString versionTag);
 
 private:
     Ui::MainWindow *ui;

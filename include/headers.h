@@ -45,6 +45,7 @@
 #include <QLayout>
 #include <QTime>
 #include <QtGlobal>
+#include <QDateTime>
 #include <QDebug>
 #include <QWidget>
 #include <QScrollBar>

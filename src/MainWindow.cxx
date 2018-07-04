@@ -67,8 +67,9 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     this->activateWindow();
 #endif
-    versionTag = "0.5.9";
+    versionTag = "0.0.2";
     setWindowTitle("kakapos " + versionTag);
+    emit spreadVersionTag(versionTag);
     if(isLoadsettings_b) {
         ui->statuslabel->setText(QString("All settings have been loaded."));
     } else {
@@ -182,7 +183,7 @@ void MainWindow::newObj() {
     update();
 }
 
-void MainWindow::saveFileWithFilname(QString fileName) {
+void MainWindow::saveFileWithFilename(QString fileName) {
     fileLocationDir = new QDir(".");
     fileDir_str = fileLocationDir->filePath(fileName);
     QFile file(fileName);

@@ -53,6 +53,7 @@
 #include <QByteArray>
 #include <QDebug>
 #include <QTextCursor>
+#include <QChar>
 #include <QTypeInfo>
 #include <QWidget>
 #include <QtWidgets>
@@ -196,7 +197,7 @@ void CodeEditor::keyPressEvent(QKeyEvent* event)
             text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
-            if (text[pos] == ")") {
+            if ((QString)(QString)text[pos] ==  ")") {
                 QTextCursor tc = textCursor();
                 tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
                 setTextCursor(tc);
@@ -208,7 +209,7 @@ void CodeEditor::keyPressEvent(QKeyEvent* event)
             text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
-            if (text[pos] == "\"") {
+            if ((QString)(QString)text[pos] ==  "\"") {
                 QTextCursor tc = textCursor();
                 tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
                 setTextCursor(tc);
@@ -220,7 +221,7 @@ void CodeEditor::keyPressEvent(QKeyEvent* event)
             text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
-            if (text[pos] == "\'") {
+            if ((QString)text[pos] ==  "\'") {
                 QTextCursor tc = textCursor();
                 tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
                 setTextCursor(tc);
@@ -232,7 +233,7 @@ void CodeEditor::keyPressEvent(QKeyEvent* event)
             text = toPlainText();
             int pos = textCursor().position();
             qDebug() << pos;
-            if (text[pos] == "]") {
+            if ((QString)text[pos] ==  "]") {
                 QTextCursor tc = textCursor();
                 tc.setPosition(pos + 1, QTextCursor::MoveAnchor);
                 setTextCursor(tc);
@@ -249,7 +250,7 @@ void CodeEditor::keyPressEvent(QKeyEvent* event)
 
         if (event->key() == Qt::Key_BraceRight) {
             int pos = textCursor().position();
-            int lay = layer[pos];
+//            int lay = layer[pos];
             text = toPlainText();
             int start;
             for (int i = pos - 1;; i--) {

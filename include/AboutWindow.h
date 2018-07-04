@@ -36,6 +36,9 @@ public:
     ~AboutWindow();
     QString versionTag;
 
+public slots:
+    void receiveVersionTag();
+
 private:
     Ui::AboutWindow *ui;
 };
