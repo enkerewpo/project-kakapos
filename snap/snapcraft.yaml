@@ -10,16 +10,14 @@
 
   apps:
     kakapos:
-      command: desktop-launch kakapos
+      command: kakapos
       plugs: [network, network-manager, unity7, opengl]
  
   parts:
-    qt-app:    
+    kakapos:
       source: .
       plugin: qmake
       qt-version: qt5 
       prime:  
         - -usr/share/doc  
         - -usr/include
-      install: |
-        echo "INSTALLATION PARTS"
