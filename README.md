@@ -1,9 +1,8 @@
-<div align="center"><img src="https://enkerewpo.github.io/images/icon2.png" height="454" width="666"></div>
+<div align="center"><img src="https://enkerewpo.top/pics/icon2.png" height="454" width="666"></div>
 
 ------
 
 <p align="center">
-  <a title="Build Status" href="https://build.snapcraft.io/user/enkerewpo/project-kakapos"><img src="https://build.snapcraft.io/badge/enkerewpo/project-kakapos.svg"></a>
   <a title="Build Status" href="https://travis-ci.org/enkerewpo/project-kakapos"><img src="https://travis-ci.org/enkerewpo/project-kakapos.svg?branch=master"></a>
   <a title="Build Status" href="https://ci.appveyor.com/project/enkerewpo/project-kakapos"><img src="https://ci.appveyor.com/api/projects/status/i6vs11mn63dyager?svg=true"></a>
   <a class="badge-align" href="https://www.codacy.com/app/enkerewpo/project-kakapos?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=enkerewpo/project-kakapos&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/f959a36c0fb94ad3adf3bdbc758ab49f"/></a>
