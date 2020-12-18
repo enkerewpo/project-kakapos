@@ -1,4 +1,4 @@
-<div align="center"><img src="https://enkerewpo.top/pics/icon2.png" height="454" width="666"></div>
+<div align="center"><img src="https://enkerewpo.top/pics/icon2.png"></div>
 
 ------
 
