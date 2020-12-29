@@ -93,7 +93,7 @@ color:black;</string>
     <enum>QFrame::Plain</enum>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Copyright 2017-2018 &amp;copy;&lt;span style=&quot; font-family:'Segoe UI,Arial,Helvetica,sans-serif'; font-size:16px; color:#444444; background-color:#ffffff;&quot;/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Kvar_ispw17 &lt;/span&gt;(&lt;a href=&quot;mailto:enkerewpo@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;enkerewpo@gmail.com&lt;/span&gt;&lt;/a&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Copyright 2017-2020 ©&lt;span style=&quot; font-weight:600;&quot;&gt;Kvar_ispw17 &lt;/span&gt;(&lt;a href=&quot;mailto:enkerewpo@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;enkerewpo@hotmail.com&lt;/span&gt;&lt;/a&gt;)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="qtVersion">
