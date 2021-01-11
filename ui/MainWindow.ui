@@ -24,9 +24,6 @@
     <normaloff>../images/kakapos_ico.png</normaloff>
     <normalon>:/images/logo</normalon>../images/kakapos_ico.png</iconset>
   </property>
-  <property name="styleSheet">
-   <string notr="true">button:hover{color:gray}</string>
-  </property>
   <property name="documentMode">
    <bool>false</bool>
   </property>
@@ -54,7 +51,7 @@
      <x>0</x>
      <y>0</y>
      <width>1123</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="palette">
@@ -114,6 +111,15 @@
         </color>
        </brush>
       </colorrole>
+      <colorrole role="PlaceholderText">
+       <brush brushstyle="NoBrush">
+        <color alpha="128">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
      </active>
      <inactive>
       <colorrole role="WindowText">
@@ -167,6 +173,15 @@
          <red>255</red>
          <green>255</green>
          <blue>255</blue>
+        </color>
+       </brush>
+      </colorrole>
+      <colorrole role="PlaceholderText">
+       <brush brushstyle="NoBrush">
+        <color alpha="128">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
         </color>
        </brush>
       </colorrole>
@@ -226,6 +241,15 @@
         </color>
        </brush>
       </colorrole>
+      <colorrole role="PlaceholderText">
+       <brush brushstyle="NoBrush">
+        <color alpha="128">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </colorrole>
      </disabled>
     </palette>
    </property>
@@ -234,10 +258,6 @@
    </property>
    <property name="contextMenuPolicy">
     <enum>Qt::CustomContextMenu</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background:white
-</string>
    </property>
    <property name="defaultUp">
     <bool>false</bool>
@@ -347,7 +367,7 @@
    <property name="shortcut">
     <string>Ctrl+N</string>
    </property>
-   <property name="shortcutVisibleInContextMenu" stdset="0">
+   <property name="shortcutVisibleInContextMenu">
     <bool>true</bool>
    </property>
   </action>
@@ -426,7 +446,7 @@
    <property name="text">
     <string>License</string>
    </property>
-   <property name="shortcutVisibleInContextMenu" stdset="0">
+   <property name="shortcutVisibleInContextMenu">
     <bool>false</bool>
    </property>
   </action>
