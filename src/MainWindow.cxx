@@ -286,6 +286,7 @@ void MainWindow::debug() {
 }
 
 void MainWindow::getFileDir(){
+    /*
     QRegExp match(globalFilename_str);
     QRegExp diskLabel(globalFilename_str);
     diskLabel.setPattern("[a-z_A-Z]:");
@@ -304,6 +305,7 @@ void MainWindow::getFileDir(){
         pos += match.matchedLength();
     }
     globalFileShortname_str = str;
+    */
 }
 
 void MainWindow::startAstyle(){
@@ -352,7 +354,7 @@ void MainWindow::loadSettings() {
         fdefault.setPointSize(10);
         mainTextEditor->setFont(fdefault);
         QFontMetrics metrics(fdefault);
-        mainTextEditor->setTabStopWidth(tabLength * metrics.width(' '));
+//        mainTextEditor->setTabStopWidth(tabLength * metrics.width(' '));
         return;
     }
     isLoadsettings_b = true;
@@ -375,7 +377,7 @@ void MainWindow::loadSettings() {
     }
     mainTextEditor->setFont(font);
     QFontMetrics metrics(font);
-    mainTextEditor->setTabStopWidth(tabLength * metrics.width(' '));
+//    mainTextEditor->setTabStopWidth(tabLength * metrics.width(' '));
 }
 
 void MainWindow::loadPlugin() {

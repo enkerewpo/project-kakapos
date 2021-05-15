@@ -4,10 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-CONFIG   += c++14
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui widgets
+CONFIG   += c++23
 
 TARGET = kakapos
 TEMPLATE = app

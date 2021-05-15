@@ -26,15 +26,14 @@
 
 #include "include/MainWindow.h"
 #include "include/CodeEditor.h"
-#include <include/AboutWindow.h>
+#include "include/AboutWindow.h"
 
 #include "ui_MainWindow.h"
 #include <QFileDialog>
 #include <QJsonArray>
-#include <QJsonValuePtr>
+#include <QJsonValue>
 #include <QJsonValueRef>
 #include <QJsonParseError>
-#include <QJsonValueRefPtr>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonValue>
@@ -48,6 +47,7 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QWidget>
+#include <QRegularExpression>
 #include <QScrollBar>
 #include <vector>
 #include <string>
