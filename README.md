@@ -14,13 +14,13 @@
 
 __Kakapos__ is a next-generation open-source programming integrated development environment (IDE).
 
-Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with _Qt5_.
+Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with _Qt6.1_.
 
 ## Build kakapos from source code
 The source files are under the Qt project building method.
-### 1.Install Qt5
-1. Download Qt5.9 from the [official website](https://www.qt.io/download/).
-2. Install it with the Qt5.9 with __MinGW 5.3.0 Qt core__ just within the installer package to build this project.
+### 1.Install Qt6
+1. Download Qt6.1 from the [official website](https://www.qt.io/download/).
+2. Install it with the Qt6 with __MinGW Qt core__ just within the installer package to build this project.
 
 ### 2.Setting up qmake and make
 1. Set Environment varibles in directory `PATH/TO/YOUR/QT/5.x.x/mingw_xx/bin/` to enable `qmake`.
@@ -46,7 +46,8 @@ I just gave kakapos some simple auto-tab function and AStyle extension support.
 The program is coming to be like a editor now... but now an inteligent IDE that it will be in the far furture.
 Bugs to be fixed : terrible file directory split... and first time to write codes for C++ desktop program, the codes are terrible too...
 
-Copyright (C) 2017 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
-
 ### 2021.5.15
-Upgrade to qt6 and the code cannot working! I probably would rewrite the code and get a decent naming rule.
+Upgraded to Qt 6.1 and the code won't get working! I probably should rewrite the code and get a decent naming rule.
+
+
+Copyright (C) 2021 [Kvar_ispw17](mailto:enkerewpo@gmail.com)
