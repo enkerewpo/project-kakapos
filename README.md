@@ -6,7 +6,7 @@
 
 __Kakapos__ is a next-generation open-source programming integrated development environment (IDE).
 
-Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with _Qt6.1_.
+Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with _Qt 6.1_.
 
 ## Build kakapos from source code
 The source files are under the Qt project building method.
