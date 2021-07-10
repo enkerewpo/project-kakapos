@@ -10,13 +10,13 @@ Project kakapos IDE is licensed under the GNU General Public License v3.0, And s
 
 ## Build kakapos from source code
 The source files are under the Qt project building method.
-### 1.Install Qt6
-1. Download Qt6.1 from the [official website](https://www.qt.io/download/).
-2. Install it with the Qt6 with __MinGW Qt core__ just within the installer package to build this project.
+### 1.Install Qt 6
+ 1. Download Qt 6.1 from the [official website](https://www.qt.io/download/).
+ 2. Install it with the Qt 6 with __MinGW Qt core__ just within the installer package to build this project.
 
 ### 2.Setting up qmake and make
-1. Set Environment varibles in directory `PATH/TO/YOUR/QT/5.x.x/mingw_xx/bin/` to enable `qmake`.
-2. Set Environment varibles in directory `PATH/TO/GCC/bin/` which has `make` program in it.
+ 1. Set Environment varibles in directory `PATH/TO/YOUR/QT/5.x.x/mingw_xx/bin/` to enable `qmake`.
+ 2. Set Environment varibles in directory `PATH/TO/GCC/bin/` which has `make` program in it.
 
 ### 3.Commandline
 ```bash
