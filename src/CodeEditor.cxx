@@ -90,8 +90,8 @@ int CodeEditor::lineNumberAreaWidth()
         ++digits;
     }
     QFontMetrics met(font);
-//    int space = met.width(" ") * digits + 9;
-    int space = 0;
+    int space = 2 * digits + 9;
+//    int space = 0;
     return space;
 }
 

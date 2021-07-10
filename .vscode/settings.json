@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "qmainwindow": "cpp",
+        "qregularexpression": "cpp",
+        "qtextcharformat": "cpp",
+        "qsyntaxhighlighter": "cpp",
+        "compare": "cpp",
+        "qfiledialog": "cpp"
+    }
+}
