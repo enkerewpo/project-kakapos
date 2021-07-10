@@ -2,13 +2,7 @@
 
 ------
 
-
-<p align="center">
-  <a title="Build Status" href="https://travis-ci.org/enkerewpo/project-kakapos"><img src="https://travis-ci.org/enkerewpo/project-kakapos.svg?branch=master"></a>
-  <a title="Build Status" href="https://ci.appveyor.com/project/enkerewpo/project-kakapos"><img src="https://ci.appveyor.com/api/projects/status/i6vs11mn63dyager?svg=true"></a>
-  <a class="badge-align" href="https://www.codacy.com/app/enkerewpo/project-kakapos?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=enkerewpo/project-kakapos&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/f959a36c0fb94ad3adf3bdbc758ab49f"/></a>
-    <a title="Join the chat at https://gitter.im/kakapos/Lobby" href="https://gitter.im/project-kakapos/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/project-kakapos/Lobby.svg"></a>
-</p>
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/223cd5e0d7c9433eb06b447b53bbc1d8)](https://www.codacy.com/gh/enkerewpo/project-kakapos/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=enkerewpo/project-kakapos&amp;utm_campaign=Badge_Grade)
 
 __Kakapos__ is a next-generation open-source programming integrated development environment (IDE).
 
