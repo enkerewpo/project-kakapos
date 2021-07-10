@@ -23,11 +23,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    main.cxx \
-    src/AboutWindow.cxx \
-    src/CodeEditor.cxx \
-    src/HighlighterC.cxx \
-    src/MainWindow.cxx
+    main.cc \
+    src/AboutWindow.cc \
+    src/CodeEditor.cc \
+    src/HighlighterC.cc \
+    src/MainWindow.cc
 
 
 HEADERS += \
