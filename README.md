@@ -2,8 +2,6 @@
 
 ------
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/223cd5e0d7c9433eb06b447b53bbc1d8)](https://www.codacy.com/gh/enkerewpo/project-kakapos/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=enkerewpo/project-kakapos&amp;utm_campaign=Badge_Grade)
-
 __Kakapos__ is a next-generation open-source programming integrated development environment (IDE).
 
 Project kakapos IDE is licensed under the GNU General Public License v3.0, And some part of the source codes may be used under the licenses of BSD, etc. This software is written in __C++__ with _Qt 6.1_.
